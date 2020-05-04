@@ -1,0 +1,16 @@
+# CONFIGS
+reload_all_config:
+  alias: Reload Configs
+  sequence:
+    - service: input_text.reload
+    - service: input_datetime.reload
+    - service: input_boolean.reload
+    - service: input_select.reload
+    - service: input_number.reload
+    - service: automation.reload
+    - service: group.reload
+    - service: script.reload
+    - service: scene.reload
+    - service: person.reload
+    - service: zone.reload
+    - service: homeassistant.reload_core_config

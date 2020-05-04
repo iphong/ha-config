@@ -1,0 +1,66 @@
+lights:
+  name: Lights
+  entities:
+    - light.balcony_light
+    - light.bedroom_light
+    - light.kitchen_light
+    - light.dining_room_light
+    - light.living_room_light
+wyzesense:
+  name: Wyze Sensors
+  entities:
+  - binary_sensor.wyzesense_778cabc6 # door front
+  - binary_sensor.wyzesense_778cc063 # door bathroom
+  - binary_sensor.wyzesense_777ef4c8 # door bedroom
+  - binary_sensor.wyzesense_777eacaf # door balcony
+  - binary_sensor.wyzesense_77834fbf
+  - binary_sensor.wyzesense_778305f1
+  - binary_sensor.wyzesense_7792df02
+  - binary_sensor.wyzesense_777ef42b
+  - binary_sensor.wyzesense_777eaf2e
+  - binary_sensor.wyzesense_7792dfc0
+  - binary_sensor.wyzesense_7793fdd5 # motion
+  - binary_sensor.wyzesense_777c5cdc # motion
+  - binary_sensor.wyzesense_779241f5 # motion
+  - binary_sensor.wyzesense_778c0ea5 # motion
+
+disk_use:
+  name: Disk Usage
+  entities:
+    - sensor.disk_use_percent
+    - sensor.disk_use
+    - sensor.disk_free
+sys_stats:
+  name: System
+  entities:
+    - sensor.last_boot
+    - sensor.processor_use
+    - sensor.memory_use_percent
+    - sensor.memory_use
+    - sensor.memory_free
+    - sensor.swap_use_percent
+    - sensor.swap_use
+    - sensor.swap_free
+    - sensor.load_1m
+    - sensor.load_5m
+    - sensor.load_15m
+if_stats_eth0:
+  name: "Interface (eth0)"
+  entities:
+  - sensor.ipv4_address_eth0
+  - sensor.network_in_eth0
+  - sensor.network_out_eth0
+  - sensor.packets_in_eth0
+  - sensor.packets_out_eth0
+  - sensor.network_throughput_in_eth0
+  - sensor.network_throughput_out_eth0
+if_stats_wlan0:
+  name: "Interface (wlan0)"
+  entities:
+  - sensor.ipv4_address_wlan0
+  - sensor.network_in_wlan0
+  - sensor.network_out_wlan0
+  - sensor.packets_in_wlan0
+  - sensor.packets_out_wlan0
+  - sensor.network_throughput_in_wlan0
+  - sensor.network_throughput_out_wlan0

@@ -1,0 +1,49 @@
+substitutions:
+  name: sonoff_rgb_light_1
+
+<<: !include share/common.yaml
+
+wifi: !include share/wifi.yaml
+
+esphome: !include share/esp8285.yaml
+
+status_led:
+  pin:
+    number: 13
+    inverted: true
+
+power_supply:
+
+  - id: psu_1
+    enable_time: 500ms
+    keep_on_time: 5s
+    pin: 12 # relay pin
+
+output:
+  
+  - platform: esp8266_pwm
+    id: output_1
+    pin: 1
+    power_supply: psu_1
+
+  - platform: esp8266_pwm
+    id: output_2
+    pin: 2
+    power_supply: psu_1
+#
+  - platform: esp8266_pwm
+    id: output_3
+    pin: 3
+    power_supply: psu_1
+
+light:
+  
+  - platform: rgb
+    name: Sonoff RGB Light 1
+    blue: output_1
+    green: output_2
+    red: output_3
+  
+
+
+

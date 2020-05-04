@@ -1,0 +1,9 @@
+name: ${name}
+platform: ESP8266
+board: d1_mini
+build_path: build/${name}
+esp8266_restore_from_flash: true
+platformio_options:
+  upload_speed: 230400
+  board_build.f_cpu: 160000000L
+  board_build.f_flash: 80000000L

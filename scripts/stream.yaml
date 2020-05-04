@@ -1,0 +1,41 @@
+# STREAM CAMERAS
+stream_cam_1:
+  alias: camera 1 stream
+  sequence:
+    - data:
+        entity_id: media_player.bedroom_display
+        media_content_id: http://10.0.0.114:81/stream
+        media_content_type: image/jpeg
+      entity_id: media_player.bedroom_display
+      service: media_player.play_media
+
+stream_cam_2:
+  alias: camera 2 stream
+  sequence:
+    - data:
+        entity_id: media_player.bedroom_display
+#        media_content_id: http://10.0.0.119:81/stream
+        media_content_id: http://10.0.0.134:3000
+        media_content_type: image/jpeg
+      entity_id: media_player.bedroom_display
+      service: media_player.play_media
+
+stream_cam_3:
+  alias: camera 3 stream
+  sequence:
+    - data:
+        entity_id: camera.xiaofang
+        format: hls
+        media_player: media_player.bedroom_display
+      entity_id: camera.xiaofang
+      service: camera.play_stream
+
+stream_cam_4:
+  alias: camera 4 stream
+  sequence:
+    - data:
+        entity_id: camera.wyzecam_v2
+        format: hls
+        media_player: media_player.bedroom_display
+      entity_id: camera.wyzecam_v2
+      service: camera.play_stream

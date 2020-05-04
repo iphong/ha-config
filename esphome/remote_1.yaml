@@ -1,0 +1,5 @@
+substitutions:
+  name: remote_1
+  area: Bedroom
+  
+<<: !include templates/remote.yaml

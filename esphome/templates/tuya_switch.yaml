@@ -1,0 +1,57 @@
+
+<<: !include ../share/common.yaml
+
+wifi: !include ../share/wifi.yaml
+
+esphome:
+  name: ${name}
+  platform: ESP8266
+  board: modwifi
+  build_path: build/${name}
+  esp8266_restore_from_flash: true
+
+binary_sensor:
+  
+  - platform: gpio
+    id: input_1
+    pin:
+      number: 14
+      inverted: true
+    internal: true
+    on_press:
+      switch.toggle: switch_1
+  
+  - platform: gpio
+    id: input_2
+    pin:
+      number: 5
+      inverted: true
+    internal: true
+    on_press:
+      switch.toggle: switch_2
+  
+  - platform: gpio
+    id: input_3
+    pin:
+      number: 12
+      inverted: true
+    internal: true
+    on_press:
+      switch.toggle: switch_3
+
+switch:
+  
+  - platform: gpio
+    id: switch_1
+    pin: 4
+    name: ${area}A
+  
+  - platform: gpio
+    id: switch_2
+    pin: 15
+    name: ${area}B
+  
+  - platform: gpio
+    id: switch_3
+    pin: 13
+    name: ${area}C

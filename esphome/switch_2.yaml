@@ -1,0 +1,5 @@
+<<: !include templates/tuya_switch.yaml
+
+substitutions:
+  name: switch_2
+  area: Switch 2

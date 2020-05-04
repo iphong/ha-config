@@ -1,0 +1,75 @@
+substitutions:
+  name: bathroom
+  area: Bathroom
+  
+logger:
+  baud_rate: 0
+
+<<: !include share/common.yaml
+
+wifi:
+#  use_address: 10.0.0.112
+  <<: !include share/wifi.yaml
+
+esphome: !include share/esp8285.yaml
+
+binary_sensor:
+  
+  # - platform: gpio
+  #   pin:
+  #     number: 13
+  #     inverted: false
+  #   name: ${area} Motion
+  #   device_class: motion
+  #   filters:
+  #     - delayed_on_off: 300ms
+
+  - platform: homeassistant
+    name: ${area} Motion
+    entity_id: binary_sensor.wyzesense_777c5cdc
+    device_class: motion
+    
+  - platform: homeassistant
+    name: ${area} Door
+    entity_id: binary_sensor.wyzesense_778cc063
+    device_class: door
+    
+  - platform: gpio
+    pin:
+      number: 0
+      inverted: true
+    name: ${area} Button
+    internal: true
+    on_press: {}
+
+output:
+  
+  - platform: gpio
+    id: output_1
+    pin: 12
+    
+  - platform: esp8266_pwm
+    id: output_2
+    pin: 1 #tx pin
+    
+  - platform: esp8266_pwm
+    id: output_3
+    pin: 3 #rx pin
+  
+light:
+  - platform: cwww
+    name: ${area} Light
+    id: light_1
+    cold_white: output_2
+    warm_white: output_3
+    cold_white_color_temperature: 5700 K
+    warm_white_color_temperature: 2700 K
+    effects:
+      - strobe:
+
+fan:
+  - platform: binary
+    output: output_1
+    id: fan_1
+    name: ${area} Fan
+

@@ -1,0 +1,23 @@
+#- platform: mjpeg
+#  name: ESP Camera 1
+#  mjpeg_url: http://10.0.0.114:81/stream
+#  still_image_url: http://10.0.0.114/capture
+
+- platform: mjpeg
+  name: ESP Camera 2
+#  mjpeg_url: http://10.0.0.119:81/stream
+  mjpeg_url: http://10.0.0.134:3000
+  still_image_url: http://10.0.0.119/capture
+
+#- platform: mjpeg
+#  name: ESP Camera 3
+#  mjpeg_url: http://10.0.0.191:81/stream
+#  still_image_url: http://10.0.0.191/capture
+
+- name: Wyzecam
+  platform: ffmpeg
+  input: -rtsp_transport tcp -i rtsp://user:123@10.0.0.121:8554/unicast
+
+- name: Xiaofang
+  platform: ffmpeg
+  input: -rtsp_transport tcp -i rtsp://user:123@10.0.0.122:8554/unicast

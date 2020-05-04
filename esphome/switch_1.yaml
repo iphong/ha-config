@@ -1,0 +1,89 @@
+
+<<: !include share/common.yaml
+
+substitutions:
+  name: switch_1
+  area: Bathroom
+  <<: !include share/tuya_3btn_pinout.yaml
+
+wifi:
+#  use_address: 10.0.0.187
+  <<: !include share/wifi.yaml
+
+esphome: !include share/esp01.yaml
+
+binary_sensor:
+  
+  - platform: gpio
+    pin:
+      number: ${button_pin_1}
+      inverted: true
+    id: input_1
+    on_press:
+      then:
+        if:
+          condition:
+            lambda: 'return id(switch_1).state == false;'
+          then:
+            - switch.turn_on: switch_1
+            - homeassistant.service:
+                service: light.turn_on
+                data:
+                  entity_id: light.bathroom_light
+          else:
+            - switch.turn_off: switch_1
+            - homeassistant.service:
+                service: light.turn_off
+                data:
+                  entity_id: light.bathroom_light
+
+
+  - platform: gpio
+    pin:
+      number: ${button_pin_2}
+      inverted: true
+    id: input_2
+    on_press:
+      then:
+        if:
+          condition:
+            lambda: 'return id(switch_2).state == false;'
+          then:
+            - switch.turn_on: switch_2
+            - homeassistant.service:
+                service: light.turn_on
+                data:
+                  entity_id: light.bathroom_light
+          else:
+            - switch.turn_off: switch_2
+            - homeassistant.service:
+                service: light.turn_off
+                data:
+                  entity_id: light.bathroom_light
+
+  - platform: gpio
+    pin:
+      number: ${button_pin_3}
+      inverted: true
+    id: input_3
+    on_press:
+      - switch.toggle: switch_3
+
+switch:
+  
+  - platform: gpio
+    pin: ${output_pin_1}
+    name: ${area} Light
+    id: switch_1
+  
+  - platform: gpio
+    pin: ${output_pin_2}
+    name: ${area} Fan
+    id: switch_2
+  
+  - platform: gpio
+    pin: ${output_pin_3}
+    id: switch_3
+    name: ${area} Hot Water
+    icon: mdi:radiator
+

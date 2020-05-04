@@ -1,0 +1,33 @@
+<<: !include ../share/common.yaml
+
+wifi: !include ../share/wifi.yaml
+
+esphome: !include ../share/esp01.yaml
+
+sensor:
+  - platform: dht
+    pin:
+      number: 2
+      inverted: true
+    model: DHT11
+    temperature:
+      id: temperature
+      name: ${area} Temperature
+    humidity:
+      id: humidity
+      name: ${area} Humidity
+
+remote_transmitter:
+  id: transmitter
+  pin: 14
+  carrier_duty_percent: 50%
+  
+climate:
+  - platform: daikin
+    name: ${area} Climate
+    sensor: temperature
+    transmitter_id: transmitter
+    visual:
+      min_temperature: 18 °C
+      max_temperature: 30 °C
+      temperature_step: 0.1 °C
