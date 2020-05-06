@@ -1,5 +1,17 @@
-<<: !include templates/tuya_switch.yaml
+<<: !include .switch.yaml
 
 substitutions:
-  name: switch_3
-  area: Switch 3
+  id: '23'
+  address: 10.0.0.23
+  
+  button_1_host: 10.0.0.173
+  button_1_domain: light
+  button_1_entity_id: bedroom_light
+  
+  button_2_host: 10.0.0.196
+  button_2_domain: light
+  button_2_entity_id: balcony_light
+  
+  button_3_host: 10.0.0.188
+  button_3_domain: cover
+  button_3_entity_id: bedroom_curtain

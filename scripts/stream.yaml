@@ -14,8 +14,7 @@ stream_cam_2:
   sequence:
     - data:
         entity_id: media_player.bedroom_display
-#        media_content_id: http://10.0.0.119:81/stream
-        media_content_id: http://10.0.0.134:3000
+        media_content_id: http://10.0.0.119:81/stream
         media_content_type: image/jpeg
       entity_id: media_player.bedroom_display
       service: media_player.play_media

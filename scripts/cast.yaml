@@ -7,7 +7,7 @@ system_status_view:
     - service: cast.show_lovelace_view
       data:
         entity_id: media_player.bedroom_display
-        dashboard_path: lovelace-cast
+        dashboard_path: lovelace
         view_path: sys
 
 # CAST CAMERA VIEWS
@@ -18,17 +18,17 @@ home_view:
     - service: cast.show_lovelace_view
       data:
         entity_id: media_player.bedroom_display
-        dashboard_path: lovelace-cast
+        dashboard_path: lovelace
         view_path: home
 
 dev_view:
-  alias: Dev View
+  alias: Test View
   sequence:
     - service: cast.show_lovelace_view
       data:
         entity_id: media_player.bedroom_display
-        dashboard_path: lovelace-cast
-        view_path: dev
+        dashboard_path: lovelace
+        view_path: test
 
 all_camera_view:
   alias: All cameras view
@@ -36,7 +36,7 @@ all_camera_view:
     - service: cast.show_lovelace_view
       data:
         entity_id: media_player.bedroom_display
-        dashboard_path: lovelace-cast
+        dashboard_path: lovelace
         view_path: cameras
 
 cam_1_view:
@@ -45,7 +45,7 @@ cam_1_view:
     - service: cast.show_lovelace_view
       data:
         entity_id: media_player.bedroom_display
-        dashboard_path: lovelace-cast
+        dashboard_path: lovelace
         view_path: cam1
 cam_2_view:
   alias: Camera 2 view
@@ -53,7 +53,7 @@ cam_2_view:
     - service: cast.show_lovelace_view
       data:
         entity_id: media_player.bedroom_display
-        dashboard_path: lovelace-cast
+        dashboard_path: lovelace
         view_path: cam2
 cam_3_view:
   alias: Camera 3 view
@@ -61,7 +61,7 @@ cam_3_view:
     - service: cast.show_lovelace_view
       data:
         entity_id: media_player.bedroom_display
-        dashboard_path: lovelace-cast
+        dashboard_path: lovelace
         view_path: cam3
 cam_4_view:
   alias: Camera 4 view
@@ -69,5 +69,5 @@ cam_4_view:
     - service: cast.show_lovelace_view
       data:
         entity_id: media_player.bedroom_display
-        dashboard_path: lovelace-cast
+        dashboard_path: lovelace
         view_path: cam4

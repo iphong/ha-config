@@ -1,16 +1,19 @@
 # github key: 4be3ce0720c7d7fedf6fd1505501723dcb94dd3d
 
 default_config:
+
 homeassistant:
   name: Home
-  latitude: 21.0186862
-  longitude: 105.822914
+  latitude: 21.0197167
+  longitude: 105.8228603
   elevation: 10
   unit_system: metric
   time_zone: Asia/Ho_Chi_Minh
   customize: !include_dir_merge_named customizes
+  
 frontend:
   themes: !include_dir_merge_named themes
+  
 script: !include_dir_merge_named scripts
 scene: !include_dir_merge_named scenes
 group: !include_dir_merge_named groups

@@ -1,0 +1,122 @@
+<<: !include ../share/common.yaml
+
+wifi: !include ../share/wifi.yaml
+
+esphome: !include ../share/esp_modwifi.yaml
+
+http_request:
+  useragent: esphome/${name}
+  timeout: 1s
+
+binary_sensor:
+  
+  - platform: gpio
+    id: button_1
+    pin:
+      number: 14
+      inverted: true
+    on_press:
+      switch.toggle: switch_1
+  
+  - platform: gpio
+    id: button_2
+    pin:
+      number: 5
+      inverted: true
+    on_press:
+      switch.toggle: switch_2
+  
+  - platform: gpio
+    id: button_3
+    pin:
+      number: 12
+      inverted: true
+    on_press:
+      switch.toggle: switch_3
+
+switch:
+  
+  - platform: gpio
+    id: switch_1
+    pin: 4
+    on_turn_on:
+      if:
+        condition:
+          api.connected:
+        then:
+          - homeassistant.service:
+              service: homeassistant.turn_on
+              data:
+                entity_id: ${button_1_domain}.${button_1_entity_id}
+        else:
+          - http_request.post:
+              url: http://${button_1_host}/${button_1_domain}/${button_1_entity_id}/turn_on
+    on_turn_off:
+      if:
+        condition:
+          api.connected:
+        then:
+          - homeassistant.service:
+              service: homeassistant.turn_off
+              data:
+                entity_id: ${button_1_domain}.${button_1_entity_id}
+        else:
+          - http_request.post:
+              url: http://${button_1_host}/${button_1_domain}/${button_1_entity_id}/turn_off
+  
+  - platform: gpio
+    id: switch_2
+    pin: 15
+    on_turn_on:
+      if:
+        condition:
+          api.connected:
+        then:
+          - homeassistant.service:
+              service: homeassistant.turn_on
+              data:
+                entity_id: ${button_2_domain}.${button_2_entity_id}
+        else:
+          - http_request.post:
+              url: http://${button_2_host}/${button_2_domain}/${button_2_entity_id}/turn_on
+    on_turn_off:
+      if:
+        condition:
+          api.connected:
+        then:
+          - homeassistant.service:
+              service: homeassistant.turn_off
+              data:
+                entity_id: ${button_2_domain}.${button_2_entity_id}
+        else:
+          - http_request.post:
+              url: http://${button_2_host}/${button_2_domain}/${button_2_entity_id}/turn_off
+  
+  - platform: gpio
+    id: switch_3
+    pin: 13
+    on_turn_on:
+      if:
+        condition:
+          api.connected:
+        then:
+          - homeassistant.service:
+              service: homeassistant.turn_on
+              data:
+                entity_id: ${button_3_domain}.${button_3_entity_id}
+        else:
+          - http_request.post:
+              url: http://${button_3_host}/${button_3_domain}/${button_3_entity_id}/turn_on
+    on_turn_off:
+      if:
+        condition:
+          api.connected:
+        then:
+          - homeassistant.service:
+              service: homeassistant.turn_off
+              data:
+                entity_id: ${button_3_domain}.${button_3_entity_id}
+        else:
+          - http_request.post:
+              url: http://${button_3_host}/${button_3_domain}/${button_3_entity_id}/turn_off
+  
