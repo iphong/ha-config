@@ -65,13 +65,13 @@ output:
     id: output_1
     pin: 1 # tx pin
     power_supply: psu_1
-    frequency: 10000hz
+    frequency: 100hz
   
   - platform: esp8266_pwm
     id: output_2
     pin: 3 # rx pin
     power_supply: psu_1
-    frequency: 10000hz
+    frequency: 100hz
 
 light:
   

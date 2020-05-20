@@ -1,0 +1,3 @@
+[submodule "lovelace"]
+	path = www/lovelave
+	url = https://github.com/iphong/pure-web-components.git
