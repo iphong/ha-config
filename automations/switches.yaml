@@ -1,115 +1,10 @@
-- alias: SYNC BEDROOM LIGHT SWITCH ON
-  trigger:
-    - entity_id:
-        - light.bedroom_light
-        - switch.switch_4A
-      platform: state
-      to: 'on'
-  action:
-    - service: switch.turn_on
-      data:
-        entity_id:
-          - switch.switch_4A
-    - service: light.turn_on
-      data:
-        entity_id: light.bedroom_light
-- alias: SYNC BEDROOM LIGHT SWITCH OFF
-  trigger:
-    - entity_id:
-        - light.bedroom_light
-        - switch.switch_4A
-      platform: state
-      to: 'off'
-  action:
-    - service: switch.turn_off
-      data:
-        entity_id:
-          - switch.switch_4A
-    - service: light.turn_off
-      data:
-        entity_id: light.bedroom_light
 
-- alias: SYNC BEDROOM CURTAIN SWITCH ON
+# ALTER LIGHT - 3A
+- alias: SYNC ALTER LIGHT SWITCH ON
   trigger:
     - entity_id:
-        - cover.bedroom_curtain
-      platform: state
-      to: 'open'
-      for: 00:00:01
-  action:
-    - service: switch.turn_on
-      data:
-        entity_id:
-          - switch.switch_4C
-- alias: SYNC BEDROOM CURTAIN SWITCH ON 2
-  trigger:
-    - entity_id:
-        - switch.switch_4C
-      platform: state
-      to: 'on'
-  action:
-    - service: cover.open_cover
-      data:
-        entity_id: cover.bedroom_curtain
-- alias: SYNC BEDROOM CURTAIN SWITCH OFF
-  trigger:
-    - entity_id:
-        - cover.bedroom_curtain
-      platform: state
-      to: 'close'
-  action:
-    - service: switch.turn_off
-      data:
-        entity_id:
-          - switch.switch_4C
-- alias: SYNC BEDROOM CURTAIN SWITCH OFF 2
-  trigger:
-    - entity_id:
-        - switch.switch_4C
-      platform: state
-      to: 'off'
-  action:
-    - service: cover.close_cover
-      data:
-        entity_id: cover.bedroom_curtain
-
-- alias: SYNC BALCONY LIGHT SWITCH ON
-  trigger:
-    - entity_id:
-        - light.balcony_light
-        - switch.switch_4B
-      platform: state
-      to: 'on'
-  action:
-    - service: switch.turn_on
-      data:
-        entity_id:
-          - switch.switch_4B
-    - service: light.turn_on
-      data:
-        entity_id: light.balcony_light
-- alias: SYNC BALCONY LIGHT SWITCH OFF
-  trigger:
-    - entity_id:
-        - light.balcony_light
-        - switch.switch_4B
-      platform: state
-      to: 'off'
-  action:
-    - service: switch.turn_off
-      data:
-        entity_id:
-          - switch.switch_4B
-    - service: light.turn_off
-      data:
-        entity_id: light.balcony_light
-        
-- alias: SYNC KITCHEN LIGHT SWITCH ON
-  trigger:
-    - entity_id:
-        - light.kitchen_light
+        - light.alter_light
         - switch.switch_3A
-        - switch.switch_2A
       platform: state
       to: 'on'
   action:
@@ -117,7 +12,38 @@
       data:
         entity_id:
           - switch.switch_3A
-          - switch.switch_2A
+    - service: light.turn_on
+      data:
+        entity_id: light.alter_light
+- alias: SYNC ALTER LIGHT SWITCH OFF
+  trigger:
+    - entity_id:
+        - light.alter_light
+        - switch.switch_3A
+      platform: state
+      to: 'off'
+  action:
+    - service: switch.turn_off
+      data:
+        entity_id:
+          - switch.switch_3A
+    - service: light.turn_off
+      data:
+        entity_id: light.alter_light
+
+# KITCHEN LIGHT - 3B
+- alias: SYNC KITCHEN LIGHT SWITCH ON
+  trigger:
+    - entity_id:
+        - light.kitchen_light
+        - switch.switch_3B
+      platform: state
+      to: 'on'
+  action:
+    - service: switch.turn_on
+      data:
+        entity_id:
+          - switch.switch_3B
     - service: light.turn_on
       data:
         entity_id: light.kitchen_light
@@ -125,34 +51,32 @@
   trigger:
     - entity_id:
         - light.kitchen_light
-        - switch.switch_3A
-        - switch.switch_2A
+        - switch.switch_3B
       platform: state
       to: 'off'
   action:
     - service: switch.turn_off
       data:
         entity_id:
-          - switch.switch_3A
-          - switch.switch_2A
+          - switch.switch_3B
     - service: light.turn_off
       data:
         entity_id: light.kitchen_light
         
+
+# DINING LIGHT - 3C
 - alias: SYNC DINING LIGHT SWITCH ON
   trigger:
     - entity_id:
         - light.dining_room_light
-        - switch.switch_3B
-        - switch.switch_2B
+        - switch.switch_3C
       platform: state
       to: 'on'
   action:
     - service: switch.turn_on
       data:
         entity_id:
-          - switch.switch_3B
-          - switch.switch_2B
+          - switch.switch_3C
     - service: light.turn_on
       data:
         entity_id: light.dining_room_light
@@ -160,34 +84,32 @@
   trigger:
     - entity_id:
         - light.dining_room_light
-        - switch.switch_3B
-        - switch.switch_2B
+        - switch.switch_3C
       platform: state
       to: 'off'
   action:
     - service: switch.turn_off
       data:
         entity_id:
-          - switch.switch_3B
-          - switch.switch_2B
+          - switch.switch_3C
     - service: light.turn_off
       data:
         entity_id: light.dining_room_light
         
+
+# LIVING ROOM LIGHT - 2A
 - alias: SYNC LIVING ROOM LIGHT SWITCH ON
   trigger:
     - entity_id:
         - light.living_room_light
-        - switch.switch_3C
-        - switch.switch_2C
+        - switch.switch_2B
       platform: state
       to: 'on'
   action:
     - service: switch.turn_on
       data:
         entity_id:
-          - switch.switch_3C
-          - switch.switch_2C
+          - switch.switch_2B
     - service: light.turn_on
       data:
         entity_id: light.living_room_light
@@ -195,20 +117,19 @@
   trigger:
     - entity_id:
         - light.living_room_light
-        - switch.switch_3C
-        - switch.switch_2C
+        - switch.switch_2B
       platform: state
       to: 'off'
   action:
     - service: switch.turn_off
       data:
         entity_id:
-          - switch.switch_3C
-          - switch.switch_2C
+          - switch.switch_2B
     - service: light.turn_off
       data:
         entity_id: light.living_room_light
 
+# BATHROOM - 1A
 - alias: SYNC BATHROOM LIGHT SWITCH ON
   trigger:
     - entity_id:
@@ -238,6 +159,7 @@
       data:
         entity_id: light.bathroom_light
 
+# BATHROOM FAN - 1B
 - alias: SYNC BATHROOM FAN SWITCH ON
   trigger:
     - entity_id:

@@ -1,6 +1,6 @@
 <<: !include .remote.yaml
 
 substitutions:
-  name: remote_1
-  area: Bedroom
+  name: remote_2
+  area: Living Room
   

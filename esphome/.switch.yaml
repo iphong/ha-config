@@ -1,8 +1,9 @@
+
 esphome:
-  name: switch_$id
+  name: $name
   board: modwifi
   platform: ESP8266
-  build_path: build/switch_$id
+  build_path: build/$name
   esp8266_restore_from_flash: true
   platformio_options:
     upload_speed: 921600
@@ -11,13 +12,8 @@ wifi:
   ssid: !secret wifi_ssid
   password: !secret wifi_password
   reboot_timeout: 0s
-  use_address: $address
-  manual_ip:
-    static_ip: 10.0.0.$id
-    gateway: 10.0.0.1
-    subnet: 255.0.0.0
   ap:
-    ssid: switch_$id wifi
+    ssid: esphome - $name wifi
     password: !secret wifi_password
     ap_timeout: 0s
 
@@ -33,7 +29,7 @@ logger:
 web_server:
 
 http_request:
-  useragent: esphome/switch_$id
+  useragent: esphome/$name
   timeout: 1s
 
 binary_sensor:
@@ -55,10 +51,10 @@ binary_sensor:
               - homeassistant.service:
                   service: homeassistant.toggle
                   data:
-                    entity_id: ${button_1_domain}.${button_1_entity_id}
+                    entity_id: ${button_1_domain}.${button_1_entity}
             else:
               - http_request.post:
-                  url: http://${button_1_host}/${button_1_domain}/${button_1_entity_id}/toggle
+                  url: http://${button_1_host}/${button_1_domain}/${button_1_entity}/toggle
   
   - platform: gpio
     id: button_2
@@ -77,10 +73,10 @@ binary_sensor:
               - homeassistant.service:
                   service: homeassistant.toggle
                   data:
-                    entity_id: ${button_2_domain}.${button_2_entity_id}
+                    entity_id: ${button_2_domain}.${button_2_entity}
             else:
               - http_request.post:
-                  url: http://${button_2_host}/${button_2_domain}/${button_2_entity_id}/toggle
+                  url: http://${button_2_host}/${button_2_domain}/${button_2_entity}/toggle
   
   - platform: gpio
     id: button_3
@@ -99,10 +95,10 @@ binary_sensor:
               - homeassistant.service:
                   service: homeassistant.toggle
                   data:
-                    entity_id: ${button_3_domain}.${button_3_entity_id}
+                    entity_id: ${button_3_domain}.${button_3_entity}
             else:
               - http_request.post:
-                  url: http://${button_3_host}/${button_3_domain}/${button_3_entity_id}/toggle
+                  url: http://${button_3_host}/${button_3_domain}/${button_3_entity}/toggle
 
 
 switch:

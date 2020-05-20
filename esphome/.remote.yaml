@@ -1,8 +1,8 @@
-<<: !include ../share/common.yaml
+<<: !include share/common.yaml
 
-wifi: !include ../share/wifi.yaml
+wifi: !include share/wifi.yaml
 
-esphome: !include ../share/esp_modwifi.yaml
+esphome: !include share/esp_modwifi.yaml
 
 sensor:
   - platform: dht

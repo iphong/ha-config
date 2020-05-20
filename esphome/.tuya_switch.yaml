@@ -1,7 +1,7 @@
 
-<<: !include ../share/common.yaml
+<<: !include share/common.yaml
 
-wifi: !include ../share/wifi.yaml
+wifi: !include share/wifi.yaml
 
 esphome:
   name: ${name}
