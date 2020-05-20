@@ -24,10 +24,10 @@ remote_transmitter:
   
 climate:
   - platform: daikin
-    name: ${area} Thermostat
+    name: ${area} AC
     sensor: temperature
     transmitter_id: transmitter
     visual:
       min_temperature: 18 °C
       max_temperature: 30 °C
-      temperature_step: 0.1 °C
+      temperature_step: 1 °C
