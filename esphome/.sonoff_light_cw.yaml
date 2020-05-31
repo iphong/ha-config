@@ -1,34 +1,6 @@
-substitutions:
-  name: bedroom
-  area: Bedroom
-
-<<: !include share/common.yaml
-
-wifi:
-  <<: !include share/wifi.yaml
-
-esphome:
-  <<: !include share/esp8285.yaml
-
-status_led:
-  pin:
-    number: 13
-    inverted: true
+<<: !include .sonoff.yaml
 
 binary_sensor:
-    
-  - platform: homeassistant
-    id: motion_1
-    name: ${area} Motion
-    entity_id: binary_sensor.wyzesense_778c0ea5
-    device_class: motion
-
-  - platform: homeassistant
-    id: door_1
-    name: ${area} Door
-    entity_id: binary_sensor.wyzesense_777ef4c8
-    device_class: door
-  
   - platform: gpio
     pin:
       number: 0 # button pin
@@ -38,14 +10,12 @@ binary_sensor:
     on_press: {}
 
 power_supply:
-  
   - id: psu_1
     enable_time: 20ms
     keep_on_time: 5s
     pin: 12 # relay pin
 
 output:
-  
   - platform: esp8266_pwm
     id: output_1
     pin: 1 # tx pin
@@ -59,7 +29,6 @@ output:
     frequency: 100hz
 
 light:
-  
   - platform: cwww
     id: light_1
     name: ${area} Light
@@ -67,5 +36,3 @@ light:
     warm_white: output_2
     cold_white_color_temperature: 6000 K
     warm_white_color_temperature: 3000 K
-
-

@@ -1,0 +1,28 @@
+<<: !include .sonoff.yaml
+
+binary_sensor:
+  - platform: gpio
+    pin:
+      number: 0
+      inverted: true
+    name: ${area} Button
+    on_press:
+      - light.toggle: light_1
+  - platform: gpio
+    pin:
+      number: 3
+      inverted: true
+    name: ${area} Sensor
+    filters:
+      delayed_on_off: 300ms
+
+output:
+  - platform: gpio
+    pin: 12
+    id: output_1
+
+light:
+  - platform: binary
+    output: output_1
+    id: light_1
+    name: ${area} Light

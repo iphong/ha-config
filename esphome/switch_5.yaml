@@ -1,5 +1,6 @@
-<<: !include templates/tuya_switch.yaml
+<<: !include .switch.yaml
 
 substitutions:
   name: switch_5
   area: Switch 5
+  code: '00101'

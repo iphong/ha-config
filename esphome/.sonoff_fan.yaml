@@ -1,0 +1,16 @@
+<<: !include .sonoff.yaml
+
+binary_sensor:
+  - platform: gpio
+    pin:
+      number: 0 # button pin
+      inverted: true
+    name: ${area} Button
+    internal: true
+    on_press: {}
+
+fan:
+  - platform: binary
+    output: output_1
+    id: fan_1
+    name: ${area} Fan
