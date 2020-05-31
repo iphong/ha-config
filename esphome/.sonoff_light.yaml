@@ -8,13 +8,6 @@ binary_sensor:
     name: ${area} Button
     on_press:
       - light.toggle: light_1
-  - platform: gpio
-    pin:
-      number: 3
-      inverted: true
-    name: ${area} Sensor
-    filters:
-      delayed_on_off: 300ms
 
 output:
   - platform: gpio

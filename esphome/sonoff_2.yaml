@@ -1,0 +1,5 @@
+<<: !include .sonoff.yaml
+
+substitutions:
+  name: sonoff_2
+  area: Sonoff 2

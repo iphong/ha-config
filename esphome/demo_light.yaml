@@ -1,5 +1,0 @@
-<<: !include .sonoff_light.yaml
-
-substitutions:
-  name: demo_light
-  area: Demo

@@ -32,30 +32,37 @@ status_led:
     number: 16
     inverted: true
 
-#remote_transmitter:
-#  pin: 3
-#  carrier_duty_percent: 100%
-
-switch:
+output:
   
-  - platform: gpio
-    id: switch_1
+  - platform: esp8266_pwm
+    id: output_1
+    frequency: 100hz
     pin: 4
   
-  - platform: gpio
-    id: switch_2
+  - platform: esp8266_pwm
+    id: output_2
+    frequency: 100hz
     pin: 15
   
-  - platform: gpio
-    id: switch_3
+  - platform: esp8266_pwm
+    id: output_3
+    frequency: 100hz
     pin: 13
+    
+light:
+  
+  - platform: monochromatic
+    id: light_1
+    output: output_1
 
-  - platform: gpio
-    pin:
-      number: 0
-      inverted: true
-    name: ${area} Output
+  - platform: monochromatic
+    id: light_2
+    output: output_2
 
+  - platform: monochromatic
+    id: light_3
+    output: output_3
+    
 binary_sensor:
   
   - platform: gpio
@@ -64,13 +71,12 @@ binary_sensor:
       number: 14
       inverted: true
     on_release:
-      - switch.turn_off: switch_1
+      - light.turn_off: light_1
     on_press:
       then:
-        - switch.turn_on: switch_1
-#        - remote_transmitter.transmit_rc_switch_raw:
-#            code: '100010000000000010111110'
-#            protocol: 2
+        - light.turn_on:
+            id: light_1
+            transition_length: 0s
 
   - platform: gpio
     id: input_2
@@ -78,13 +84,12 @@ binary_sensor:
       number: 5
       inverted: true
     on_release:
-      - switch.turn_off: switch_2
+      - light.turn_off: light_2
     on_press:
       then:
-        - switch.turn_on: switch_2
-#        - remote_transmitter.transmit_rc_switch_raw:
-#            code: '100010000000000010111110'
-#            protocol: 2
+        - light.turn_on:
+            id: light_2
+            transition_length: 0s
 
   - platform: gpio
     id: input_3
@@ -92,10 +97,9 @@ binary_sensor:
       number: 12
       inverted: true
     on_release:
-      - switch.turn_off: switch_3
+      - light.turn_off: light_3
     on_press:
       then:
-        - switch.turn_on: switch_3
-#        - remote_transmitter.transmit_rc_switch_raw:
-#            code: '100010000000000010111110'
-#            protocol: 2
+        - light.turn_on:
+            id: light_3
+            transition_length: 0s
