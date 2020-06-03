@@ -1,4 +1,4 @@
-<<: !include .sonoff.yaml
+<<: !include .sonoff_light.yaml
 
 substitutions:
   name: sonoff_2

@@ -3,4 +3,5 @@
 substitutions:
   name: switch_5
   area: Switch 5
-  code: '00101'
+  button2_entity: light.bedroom_light
+  button2_code: '100010000000000010111110'

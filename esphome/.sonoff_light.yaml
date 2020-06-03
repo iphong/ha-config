@@ -1,6 +1,15 @@
 <<: !include .sonoff.yaml
 
 binary_sensor:
+  - platform: remote_receiver
+    id: rf_1
+    rc_switch_raw:
+      code: '100010000000000010111110'
+      protocol: 2
+    on_press:
+      then:
+        - light.toggle: light_1
+
   - platform: gpio
     pin:
       number: 0
@@ -8,6 +17,12 @@ binary_sensor:
     name: ${area} Button
     on_press:
       - light.toggle: light_1
+
+  - platform: gpio
+    pin:
+      number: 2
+      inverted: true
+    name: ${area} RC
 
 output:
   - platform: gpio

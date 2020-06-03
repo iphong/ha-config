@@ -31,3 +31,9 @@ climate:
       min_temperature: 18 °C
       max_temperature: 30 °C
       temperature_step: 1 °C
+
+binary_sensor:
+  
+  - platform: gpio
+    pin: 1
+    name: ${area} Input

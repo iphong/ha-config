@@ -21,12 +21,23 @@ ota:
   password: !secret wifi_password
 
 api:
-#  reboot_timeout: 0s
+  reboot_timeout: 0s
 
 logger:
   baud_rate: 0
 
 web_server:
+
+remote_receiver:
+  pin:
+    number: 3
+    inverted: true
+  dump:
+    - rc_switch
+  tolerance: 50%
+  filter: 250us
+  idle: 4ms
+  buffer_size: 2kb
 
 status_led:
   pin:
