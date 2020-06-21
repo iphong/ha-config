@@ -15,6 +15,47 @@ status_led:
     number: 13
     inverted: true
 
+globals:
+  - id: is_occupied
+    type: bool
+    initial_value: 'false'
+
+script:
+  - id: set_occupied
+    then:
+      - lambda: |-
+          id(occupancy_1).publish_state(true);
+  - id: debounce_off
+    then:
+      - globals.set:
+          id: is_occupied
+          value: 'true'
+      - if:
+          condition:
+            - script.is_running: debounce_off
+          then:
+            - script.stop: debounce_off
+      - delay: 10s
+      - if:
+          condition:
+            binary_sensor.is_off: motion_1
+          then:
+            - globals.set:
+                id: is_occupied
+                value: 'false'
+            - lambda: |-
+                id(occupancy_1).publish_state(false);
+          else:
+            - script.execute: debounce_off
+
+switch:
+  - platform: template
+    name: ${area} Automation
+    id: allow_automation
+    restore_state: true
+    assumed_state: true
+    optimistic: true
+
 binary_sensor:
     
   - platform: homeassistant
@@ -22,12 +63,32 @@ binary_sensor:
     name: ${area} Motion
     entity_id: binary_sensor.wyzesense_778c0ea5
     device_class: motion
+    on_release: # motion on
+      - script.execute: set_occupied
+    on_press: # motion off
+      - script.execute: debounce_off
 
   - platform: homeassistant
     id: door_1
     name: ${area} Door
     entity_id: binary_sensor.wyzesense_777ef4c8
     device_class: door
+    on_state:
+      - script.execute: debounce_off
+
+  - platform: homeassistant
+    id: activate_1
+    name: ${area} Activation
+    entity_id: binary_sensor.wyzesense_778305f1
+    on_state:
+      - script.execute: debounce_off
+  
+  - platform: template
+    id: occupancy_1
+    name: ${area} Occupancy
+    device_class: occupancy
+    lambda: |-
+      return !!id(is_occupied);
   
   - platform: gpio
     pin:

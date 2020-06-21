@@ -1,7 +1,7 @@
-- alias: BEDROOM LIGHT ON WHEN MOTION DETECTED
+- alias: BEDROOM LIGHT ON WHEN OCCUPIED
   trigger:
     - platform: state
-      entity_id: binary_sensor.bedroom_motion
+      entity_id: binary_sensor.bedroom_occupancy
       from: 'off'
       to: 'on'
     - platform: state
@@ -17,10 +17,10 @@
     - service: light.turn_on
       entity_id: light.bedroom_light
 
-- alias: BEDROOM LIGHT OFF WHEN MOTION CLEARED
+- alias: BEDROOM LIGHT OFF WHEN CLEARED
   trigger:
     - platform: state
-      entity_id: binary_sensor.bedroom_motion
+      entity_id: binary_sensor.bedroom_occupancy
       from: 'on'
       to: 'off'
       for: '00:05:00'

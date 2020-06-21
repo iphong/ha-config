@@ -1,0 +1,28 @@
+<<: !include .espcam.yaml
+
+substitutions:
+  host: espcam_1
+  name: Camera 1
+
+remote_transmitter:
+  pin: 2
+  carrier_duty_percent: 100%
+
+script:
+  - id: send_button
+    then:
+      - remote_transmitter.transmit_rc_switch_raw:
+          code: '000001000000101000000001'
+          protocol: 2
+          repeat:
+            times: 3
+            wait_time: 100ms
+
+switch:
+  - platform: template
+    name: ${name} Button
+    turn_on_action:
+      then:
+        - script.execute: send_button
+    
+  

@@ -1,0 +1,7 @@
+ota:
+  password: !secret wifi_password
+api:
+  reboot_timeout: 0s
+logger:
+  baud_rate: 9600
+web_server:

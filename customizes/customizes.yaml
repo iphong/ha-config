@@ -1,0 +1,19 @@
+# Customize individual entity
+
+#binary_sensor.wyzesense_778c0ea5:
+#  friendly_name: Bedroom Motion Sensor
+#binary_sensor.wyzesense_777c5cdc:
+#  friendly_name: Bathroom Motion Sensor
+#binary_sensor.wyzesense_779241f5:
+#  friendly_name: Kitchen Motion Sensor
+#binary_sensor.wyzesense_7793fdd5:
+#  friendly_name: Living Room Motion Sensor
+
+switch.wyzecam_recording:
+  hidden: false
+switch.wyzecam_motion_detection:
+  hidden: false
+switch.xiaofang_recording:
+  hidden: false
+switch.xiaofang_motion_detection:
+  hidden: false

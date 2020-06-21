@@ -1,0 +1,43 @@
+ota:
+  password: !secret wifi_password
+api:
+  reboot_timeout: 0s
+  
+logger:
+  baud_rate: 0
+  
+web_server:
+
+wifi:
+  <<: !include share/wifi.yaml
+
+esphome:
+  name: $host
+  platform: ESP32
+  board: esp32cam
+  build_path: build/$host
+  platformio_options:
+    upload_speed: 921600
+    board_build.f_cpu: 240000000L
+    board_build.f_flash: 80000000L
+
+status_led:
+  pin: 33
+
+esp32_camera:
+  name: $name
+  external_clock:
+    pin: 0
+    frequency: 20MHz
+  i2c_pins:
+    sda: 26
+    scl: 27
+  data_pins: [5, 18, 19, 21, 36, 39, 34, 35]
+  vsync_pin: 25
+  href_pin: 23
+  pixel_clock_pin: 22
+  power_down_pin: 32
+  
+  resolution: 1024x768
+  vertical_flip: false
+  horizontal_mirror: false

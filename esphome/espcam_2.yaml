@@ -1,0 +1,21 @@
+<<: !include .espcam.yaml
+
+substitutions:
+  host: espcam_2
+  name: Camera 2
+
+remote_receiver:
+  pin: 2
+  dump:
+    - rc_switch
+  tolerance: 50 %
+  filter: 250us
+  idle: 4ms
+  buffer_size: 2kb
+
+binary_sensor:
+  - platform: remote_receiver
+    name: ${name} Input
+    rc_switch_raw:
+      code: '000001000000101000000001'
+      protocol: 2

@@ -13,10 +13,29 @@
 #  mjpeg_url: http://10.0.0.191:81/stream
 #  still_image_url: http://10.0.0.191/capture
 
-#- name: Wyzecam
-#  platform: ffmpeg
-#  input: -rtsp_transport tcp -i rtsp://user:123@10.0.0.121:8554/unicast
+- name: Living Room Camera
+  platform: ffmpeg
+  input: -rtsp_transport tcp -i rtsp://user:123@10.0.0.121:8554/unicast
 
-#- name: Xiaofang
-#  platform: ffmpeg
-#  input: -rtsp_transport tcp -i rtsp://user:123@10.0.0.122:8554/unicast
+- name: Kitchen Camera
+  platform: ffmpeg
+  input: -rtsp_transport tcp -i rtsp://user:123@10.0.0.122:8554/unicast
+
+
+#- platform: generic
+#  name: Kitchen Camera
+#  username: root
+#  password: 123
+#  authentication: basic
+#  still_image_url: https://10.0.0.122/cgi-bin/currentpic.cgi
+#  verify_ssl: false
+#  scan_interval: 1
+
+#- platform: generic
+#  name: Living Room Camera
+#  username: root
+#  password: 123
+#  authentication: basic
+#  still_image_url: https://10.0.0.121/cgi-bin/currentpic.cgi
+#  verify_ssl: false
+#  scan_interval: 1

@@ -4,7 +4,7 @@ binary_sensor:
   - platform: remote_receiver
     id: rf_1
     rc_switch_raw:
-      code: '100010000000000010111110'
+      code: '000001000000101100000001'
       protocol: 2
     on_press:
       then:

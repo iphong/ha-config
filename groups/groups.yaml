@@ -1,5 +1,19 @@
-lights:
-  name: Lights
+people:
+  name: People
+  entities:
+    - person.phong
+    - person.sumi
+    - person.tram
+#living_room:
+#  name: Living Room
+#  entities:
+#    camera.living_room_camera
+#kitchen:
+#  name: Kitchen
+#  entities:
+#    camera.kitchen_camera
+all_lights:
+  name: All Lights
   entities:
     - light.balcony_light
     - light.bedroom_light
@@ -7,32 +21,31 @@ lights:
     - light.dining_room_light
     - light.living_room_light
 wyzesense:
+  all: true
   name: Wyze Sensors
   entities:
-  - binary_sensor.wyzesense_778cabc6 # door front
-  - binary_sensor.wyzesense_778cc063 # door bathroom
-  - binary_sensor.wyzesense_777ef4c8 # door bedroom
-  - binary_sensor.wyzesense_777eacaf # door balcony
-  - binary_sensor.wyzesense_77834fbf
-  - binary_sensor.wyzesense_778305f1
-  - binary_sensor.wyzesense_7792df02
-  - binary_sensor.wyzesense_777ef42b
-  - binary_sensor.wyzesense_777eaf2e
-  - binary_sensor.wyzesense_7792dfc0
-  - binary_sensor.wyzesense_7793fdd5 # motion
-  - binary_sensor.wyzesense_777c5cdc # motion
-  - binary_sensor.wyzesense_779241f5 # motion
-  - binary_sensor.wyzesense_778c0ea5 # motion
+    - binary_sensor.wyzesense_778cabc6 # door front
+    - binary_sensor.wyzesense_778cc063 # door bathroom
+    - binary_sensor.wyzesense_777ef4c8 # door bedroom
+    - binary_sensor.wyzesense_777eacaf # door balcony
+    - binary_sensor.wyzesense_77834fbf
+    - binary_sensor.wyzesense_778305f1
+    - binary_sensor.wyzesense_7792df02
+    - binary_sensor.wyzesense_777ef42b
+    - binary_sensor.wyzesense_777eaf2e
+    - binary_sensor.wyzesense_7792dfc0
+    - binary_sensor.wyzesense_7793fdd5 # motion
+    - binary_sensor.wyzesense_777c5cdc # motion
+    - binary_sensor.wyzesense_779241f5 # motion
+    - binary_sensor.wyzesense_778c0ea5 # motion
 
-disk_use:
-  name: Disk Usage
-  entities:
-    - sensor.disk_use_percent
-    - sensor.disk_use
-    - sensor.disk_free
 sys_stats:
+  all: true
   name: System
   entities:
+    - binary_sensor.updater
+    - sensor.hacs
+    - binary_sensor.remote_ui
     - sensor.last_boot
     - sensor.processor_use
     - sensor.memory_use_percent
@@ -44,23 +57,28 @@ sys_stats:
     - sensor.load_1m
     - sensor.load_5m
     - sensor.load_15m
+    - sensor.disk_use_percent
+    - sensor.disk_use
+    - sensor.disk_free
 if_stats_eth0:
+  all: true
   name: "Interface (eth0)"
   entities:
-  - sensor.ipv4_address_eth0
-  - sensor.network_in_eth0
-  - sensor.network_out_eth0
-  - sensor.packets_in_eth0
-  - sensor.packets_out_eth0
-  - sensor.network_throughput_in_eth0
-  - sensor.network_throughput_out_eth0
+    - sensor.ipv4_address_eth0
+    - sensor.network_in_eth0
+    - sensor.network_out_eth0
+    - sensor.packets_in_eth0
+    - sensor.packets_out_eth0
+    - sensor.network_throughput_in_eth0
+    - sensor.network_throughput_out_eth0
 if_stats_wlan0:
+  all: true
   name: "Interface (wlan0)"
   entities:
-  - sensor.ipv4_address_wlan0
-  - sensor.network_in_wlan0
-  - sensor.network_out_wlan0
-  - sensor.packets_in_wlan0
-  - sensor.packets_out_wlan0
-  - sensor.network_throughput_in_wlan0
-  - sensor.network_throughput_out_wlan0
+    - sensor.ipv4_address_wlan0
+    - sensor.network_in_wlan0
+    - sensor.network_out_wlan0
+    - sensor.packets_in_wlan0
+    - sensor.packets_out_wlan0
+    - sensor.network_throughput_in_wlan0
+    - sensor.network_throughput_out_wlan0

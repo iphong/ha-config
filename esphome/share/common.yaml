@@ -2,11 +2,13 @@ ota:
   password: !secret wifi_password
 api:
   reboot_timeout: 0s
-  services:
-    - service: restart
-      then:
-        lambda: |-
-          return ESP_LOGD("restart", "Request for restart");
+#  services:
+#    - service: restart
+#      then:
+#        lambda: |-
+#          return ESP_LOGD("restart", "Request for restart");
+
 logger:
   baud_rate: 0
+
 web_server:

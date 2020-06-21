@@ -1,73 +1,73 @@
-
-# CAST MONITORING VIEWS
-
-system_status_view:
-  alias: System Status View
-  sequence:
-    - service: cast.show_lovelace_view
-      data:
-        entity_id: media_player.bedroom_display
-        dashboard_path: lovelace
-        view_path: sys
-
-# CAST CAMERA VIEWS
-
+#
+## CAST MONITORING VIEWS
+#
+#system_status_view:
+#  alias: System Status View
+#  sequence:
+#    - service: cast.show_lovelace_view
+#      data:
+#        entity_id: media_player.bedroom_display
+#        dashboard_path: lovelace
+#        view_path: sys
+#
+## CAST CAMERA VIEWS
+#
 home_view:
   alias: Home View
   sequence:
     - service: cast.show_lovelace_view
       data:
         entity_id: media_player.bedroom_display
-        dashboard_path: lovelace
+        dashboard_path: lovelace-cast
         view_path: home
 
-dev_view:
-  alias: Test View
-  sequence:
-    - service: cast.show_lovelace_view
-      data:
-        entity_id: media_player.bedroom_display
-        dashboard_path: lovelace
-        view_path: test
-
-all_camera_view:
-  alias: All cameras view
-  sequence:
-    - service: cast.show_lovelace_view
-      data:
-        entity_id: media_player.bedroom_display
-        dashboard_path: lovelace
-        view_path: cameras
-
-cam_1_view:
-  alias: Camera 1 view
-  sequence:
-    - service: cast.show_lovelace_view
-      data:
-        entity_id: media_player.bedroom_display
-        dashboard_path: lovelace
-        view_path: cam1
-cam_2_view:
-  alias: Camera 2 view
-  sequence:
-    - service: cast.show_lovelace_view
-      data:
-        entity_id: media_player.bedroom_display
-        dashboard_path: lovelace
-        view_path: cam2
-cam_3_view:
-  alias: Camera 3 view
-  sequence:
-    - service: cast.show_lovelace_view
-      data:
-        entity_id: media_player.bedroom_display
-        dashboard_path: lovelace
-        view_path: cam3
-cam_4_view:
-  alias: Camera 4 view
-  sequence:
-    - service: cast.show_lovelace_view
-      data:
-        entity_id: media_player.bedroom_display
-        dashboard_path: lovelace
-        view_path: cam4
+#dev_view:
+#  alias: Test View
+#  sequence:
+#    - service: cast.show_lovelace_view
+#      data:
+#        entity_id: media_player.bedroom_display
+#        dashboard_path: lovelace
+#        view_path: test
+#
+#all_camera_view:
+#  alias: All cameras view
+#  sequence:
+#    - service: cast.show_lovelace_view
+#      data:
+#        entity_id: media_player.bedroom_display
+#        dashboard_path: lovelace
+#        view_path: cameras
+#
+#cam_1_view:
+#  alias: Camera 1 view
+#  sequence:
+#    - service: cast.show_lovelace_view
+#      data:
+#        entity_id: media_player.bedroom_display
+#        dashboard_path: lovelace
+#        view_path: cam1
+#cam_2_view:
+#  alias: Camera 2 view
+#  sequence:
+#    - service: cast.show_lovelace_view
+#      data:
+#        entity_id: media_player.bedroom_display
+#        dashboard_path: lovelace
+#        view_path: cam2
+#cam_3_view:
+#  alias: Camera 3 view
+#  sequence:
+#    - service: cast.show_lovelace_view
+#      data:
+#        entity_id: media_player.bedroom_display
+#        dashboard_path: lovelace
+#        view_path: cam3
+#cam_4_view:
+#  alias: Camera 4 view
+#  sequence:
+#    - service: cast.show_lovelace_view
+#      data:
+#        entity_id: media_player.bedroom_display
+#        dashboard_path: lovelace
+#        view_path: cam4

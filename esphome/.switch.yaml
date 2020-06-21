@@ -28,9 +28,7 @@ logger:
 web_server:
 
 remote_transmitter:
-  pin:
-    number: 1
-    inverted: true
+  pin: 1
   carrier_duty_percent: 100%
 
 status_led:

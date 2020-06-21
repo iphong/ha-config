@@ -2,6 +2,14 @@
 
 default_config:
 
+#http:
+#  base_url: https://www.phong.live
+#  ip_ban_enabled: false
+#  cors_allowed_origins:
+#    - "https://cast.home-assistant.io"
+#    - "https://www.home-assistant.io"
+#
+
 homeassistant:
   name: Home
   latitude: 21.0197167
@@ -9,8 +17,11 @@ homeassistant:
   elevation: 10
   unit_system: metric
   time_zone: Asia/Ho_Chi_Minh
-  customize: !include_dir_merge_named customizes
   
+  customize: !include customizes/customizes.yaml
+  customize_glob: !include customizes/customize_globs.yaml
+  customize_domain: !include customizes/customize_domains.yaml
+
 frontend:
   themes: !include_dir_merge_named themes
   
