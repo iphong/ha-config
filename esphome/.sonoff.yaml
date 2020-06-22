@@ -1,3 +1,8 @@
+<<: !include .common.yaml
+
+wifi:
+  <<: !include .wifi.yaml
+  
 esphome:
   name: $name
   board: esp8285
@@ -6,38 +11,7 @@ esphome:
   esp8266_restore_from_flash: true
   platformio_options:
     upload_speed: 921600
-
-wifi:
-  ssid: !secret wifi_ssid
-  password: !secret wifi_password
-  fast_connect: true
-  reboot_timeout: 0s
-  ap:
-    ssid: $name
-    password: !secret wifi_password
-#    ap_timeout: 0s
-
-ota:
-  password: !secret wifi_password
-
-api:
-  reboot_timeout: 0s
-
-logger:
-  baud_rate: 0
-
-web_server:
-
-remote_receiver:
-  pin:
-    number: 3
-    mode: INPUT_PULLUP
-  dump:
-    - rc_switch
-  tolerance: 100%
-  filter: 250us
-  idle: 4ms
-  buffer_size: 2kb
+    board_build.f_cpu: 160000000L
 
 status_led:
   pin:

@@ -3,7 +3,7 @@
 substitutions:
   name: switch_4
   area: Switch 4
-  code: '00000100'
+  code: '0100'
 
   button_pin_1: "14"
   button_pin_2: "05"

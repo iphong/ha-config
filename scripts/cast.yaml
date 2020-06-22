@@ -1,17 +1,17 @@
-#
-## CAST MONITORING VIEWS
-#
-#system_status_view:
-#  alias: System Status View
-#  sequence:
-#    - service: cast.show_lovelace_view
-#      data:
-#        entity_id: media_player.bedroom_display
-#        dashboard_path: lovelace
-#        view_path: sys
-#
-## CAST CAMERA VIEWS
-#
+
+# CAST MONITORING VIEWS
+
+system_status_view:
+  alias: System Status View
+  sequence:
+    - service: cast.show_lovelace_view
+      data:
+        entity_id: media_player.bedroom_display
+        dashboard_path: lovelace-cast
+        view_path: sys
+
+# CAST CAMERA VIEWS
+
 home_view:
   alias: Home View
   sequence:

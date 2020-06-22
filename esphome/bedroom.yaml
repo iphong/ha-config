@@ -111,13 +111,13 @@ output:
     id: output_1
     pin: 1 # tx pin
     power_supply: psu_1
-    frequency: 100hz
+    frequency: 500hz
   
   - platform: esp8266_pwm
     id: output_2
     pin: 3 # rx pin
     power_supply: psu_1
-    frequency: 100hz
+    frequency: 500hz
 
 light:
   
@@ -128,5 +128,6 @@ light:
     warm_white: output_2
     cold_white_color_temperature: 6000 K
     warm_white_color_temperature: 3000 K
+    default_transition_length: 2s
 
 

@@ -1,28 +1,49 @@
 <<: !include .sonoff.yaml
 
+remote_receiver:
+  pin: 2
+  dump:
+    - rc_switch
+    - raw
+  tolerance: 50%
+  filter: 10us
+  idle: 10ms
+  buffer_size: 2kb
+
 binary_sensor:
   - platform: remote_receiver
-    id: rf_1
+    id: input_1
+    internal: true
     rc_switch_raw:
-      code: '000001000000101100000001'
+      code: '${code}0000101000000001' # 0x040A01
       protocol: 2
     on_press:
-      then:
-        - light.toggle: light_1
+      - light.toggle: light_1
+  - platform: remote_receiver
+    id: input_2
+    internal: true
+    rc_switch_raw:
+      code: '${code}0000101000000010' # 0x040A02
+      protocol: 2
+    on_press:
+      - light.turn_on: light_1
+  - platform: remote_receiver
+    id: input_3
+    internal: true
+    rc_switch_raw:
+      code: '${code}0000101000000011' # 0x040A03
+      protocol: 2
+    on_press:
+      - light.turn_off: light_1
 
   - platform: gpio
     pin:
       number: 0
       inverted: true
     name: ${area} Button
+    internal: true
     on_press:
       - light.toggle: light_1
-
-  - platform: gpio
-    pin:
-      number: 2
-      inverted: true
-    name: ${area} RC
 
 output:
   - platform: gpio

@@ -1,0 +1,19 @@
+<<: !include .sonoff.yaml
+
+# 1000 - ON
+# 0001 - OFF
+# 0110 - TOGGLE
+# 1100 - UP
+# 0011 - DOWN
+
+# 4A - 1111 0100 1010 1000
+
+remote_receiver:
+  pin: 2
+  dump:
+    - rc_switch
+  tolerance: 50%
+  filter: 250us
+  idle: 4ms
+  buffer_size: 4kb
+  

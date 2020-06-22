@@ -2,13 +2,7 @@
 
 default_config:
 
-#http:
-#  base_url: https://www.phong.live
-#  ip_ban_enabled: false
-#  cors_allowed_origins:
-#    - "https://cast.home-assistant.io"
-#    - "https://www.home-assistant.io"
-#
+alarm_control_panel: !include_dir_merge_list alarms
 
 homeassistant:
   name: Home
@@ -33,3 +27,4 @@ automation: !include_dir_merge_list automations
 media_player: !include_dir_merge_list media_players
 binary_sensor: !include_dir_merge_list binary_sensors
 sensor: !include_dir_merge_list sensors
+lock: !include_dir_merge_list locks

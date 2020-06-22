@@ -1,15 +1,7 @@
-ota:
-  password: !secret wifi_password
-api:
-  reboot_timeout: 0s
-  
-logger:
-  baud_rate: 0
-  
-web_server:
+<<: !include .common.yaml
 
 wifi:
-  <<: !include share/wifi.yaml
+  <<: !include .wifi.yaml
 
 esphome:
   name: $host

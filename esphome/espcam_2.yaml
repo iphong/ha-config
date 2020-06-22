@@ -6,16 +6,13 @@ substitutions:
 
 remote_receiver:
   pin: 2
-  dump:
-    - rc_switch
-  tolerance: 50 %
-  filter: 250us
+  dump: all
+  tolerance: 100%
+  filter: 300us
   idle: 4ms
   buffer_size: 2kb
 
 binary_sensor:
-  - platform: remote_receiver
-    name: ${name} Input
-    rc_switch_raw:
-      code: '000001000000101000000001'
-      protocol: 2
+#  - platform: remote_receiver
+#    id: rc_input_1
+#    raw: []

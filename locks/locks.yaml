@@ -1,0 +1,12 @@
+- platform: template
+  name: Front Door Lock
+  value_template: "{{ is_state('binary_sensor.wyzesense_778cabc6', 'closed') }}"
+  lock:
+    homeassistant.service: notify.notify
+    - service_data:
+        title: Your door is looked
+  unlock:
+    homeassistant.service: notify.notify
+    - service_data:
+        title: Your door is unlooked
+  

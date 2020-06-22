@@ -1,5 +1,6 @@
-<<: !include .sonoff.yaml
+<<: !include .sonoff_light.yaml
 
 substitutions:
   name: sonoff_1
   area: Sonoff 1
+  code: '00000100'
