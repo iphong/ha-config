@@ -1,8 +1,5 @@
 <<: !include .common.yaml
 
-wifi:
-  <<: !include .wifi.yaml
-
 esphome:
   name: $host
   platform: ESP32

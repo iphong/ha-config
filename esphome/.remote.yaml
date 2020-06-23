@@ -1,8 +1,11 @@
-<<: !include share/common.yaml
+<<: !include .common.yaml
 
-wifi: !include share/wifi.yaml
-
-esphome: !include share/esp_modwifi.yaml
+esphome:
+  name: $host
+  board: modwifi
+  platform: ESP8266
+  build_path: build/$host
+  esp8266_restore_from_flash: true
 
 sensor:
   - platform: dht

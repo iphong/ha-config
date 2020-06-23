@@ -1,4 +1,8 @@
 # Customize individual entity
+group.light_automations:
+  hidden: true
+binary_sensor.wyzesense_778cabc6:
+  device_class: lock
 binary_sensor.wyzesense_778305f1:
   device_class: motion
 #binary_sensor.wyzesense_778c0ea5:

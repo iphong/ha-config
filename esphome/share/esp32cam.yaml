@@ -1,8 +1,0 @@
-name: ${name}
-platform: ESP32
-board: esp32cam
-build_path: build/${name}
-platformio_options:
-  upload_speed: 921600
-  board_build.f_cpu: 240000000L
-  board_build.f_flash: 80000000L

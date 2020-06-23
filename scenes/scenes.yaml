@@ -1,0 +1,18 @@
+
+- id: 'morning'
+  name: Morning
+  entities:
+    group.light_automations:
+      state: 'off'
+
+- id: 'evening'
+  name: Evening
+  entities:
+    group.light_automations:
+      state: 'on'
+
+- id: 'night'
+  name: Night
+  entities:
+    group.light_automations:
+      state: 'off'

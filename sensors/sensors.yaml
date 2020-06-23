@@ -14,9 +14,9 @@
     - type: swap_use_percent
     - type: swap_use
     - type: swap_free
-    - type: load_1m
-    - type: load_5m
-    - type: load_15m
+#    - type: load_1m
+#    - type: load_5m
+#    - type: load_15m
 
     - type: ipv4_address
       arg: eth0

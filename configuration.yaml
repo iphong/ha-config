@@ -20,7 +20,7 @@ frontend:
   themes: !include_dir_merge_named themes
   
 script: !include_dir_merge_named scripts
-scene: !include_dir_merge_named scenes
+scene: !include_dir_merge_list scenes
 group: !include_dir_merge_named groups
 camera: !include_dir_merge_list cameras
 automation: !include_dir_merge_list automations

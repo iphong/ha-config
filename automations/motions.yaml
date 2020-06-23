@@ -1,172 +1,89 @@
-- alias: BEDROOM LIGHT ON WHEN OCCUPIED
+
+- alias: Turn living room light ON when occupied
   trigger:
-    - platform: state
-      entity_id: binary_sensor.bedroom_occupancy
-      from: 'off'
-      to: 'on'
-    - platform: state
-      entity_id: binary_sensor.bedroom_door
-      from: 'off'
-      to: 'on'
-  condition:
-    - condition: sun
-      after: sunset
-    - condition: time
-      before: '23:00:00'
+  - platform: state
+    to: 'on'
+    entity_id:
+    - binary_sensor.living_room_motion
   action:
-    - service: light.turn_on
-      entity_id: light.bedroom_light
+  - service: light.turn_on
+    entity_id: light.living_room_light
 
-- alias: BEDROOM LIGHT OFF WHEN CLEARED
+- alias: Turn living_room light OFF when cleared
   trigger:
-    - platform: state
-      entity_id: binary_sensor.bedroom_occupancy
-      from: 'on'
-      to: 'off'
-      for: '00:05:00'
-  condition:
-    - condition: sun
-      after: sunset
-    - condition: time
-      before: '23:00:00'
+  - platform: state
+    entity_id: binary_sensor.living_room_motion
+    to: 'off'
+    for: 00:01:00
   action:
-    - service: light.turn_off
-      entity_id: light.bedroom_light
-      data:
-        transition: 20
+  - service: light.turn_off
+    entity_id: light.living_room_light
+    data:
+      transition: 60
 
-#--------------------------------------------------#
-
-- alias: BATHROOM LIGHT ON WHEN MOTION DETECTED
+- alias: Turn bedroom light ON when occupied
   trigger:
-    - platform: state
-      entity_id: binary_sensor.bathroom_motion
-      from: 'off'
-      to: 'on'
-    - platform: state
-      entity_id: binary_sensor.bathroom_door
-      from: 'off'
-      to: 'on'
+  - platform: state
+    to: 'on'
+    entity_id:
+    - binary_sensor.bedroom_motion
+    - binary_sensor.bedroom_door
   action:
-    - service: light.turn_on
-      entity_id: light.bathroom_light
+  - service: light.turn_on
+    entity_id: light.bedroom_light
 
-- alias: BATHROOM LIGHT OFF WHEN MOTION CLEARED
+- alias: Turn bedroom light OFF when cleared
   trigger:
-    - platform: state
-      entity_id: binary_sensor.bathroom_motion
-      from: 'on'
-      to: 'off'
-      for: '00:15:00'
+  - platform: state
+    entity_id: binary_sensor.bedroom_motion
+    to: 'off'
+    for: 00:01:00
   action:
-    - service: light.turn_off
-      entity_id: light.bathroom_light
-      data:
-        transition: 60
+  - service: light.turn_off
+    entity_id: light.bedroom_light
+    data:
+      transition: 60
 
-#--------------------------------------------------#
-
-# - alias: LIGHT ON BEDROOM IF COVERED
-#   trigger:
-#     - platform: state
-#       entity_id: binary_sensor.bedroom_motion
-#       to: 'on'
-#   condition:
-#     - condition: state
-#       entity_id: cover.bedroom_curtain
-#       state: closed
-#     - condition: sun
-#       before: sunset
-#       after: sunrise
-#   action:
-#     - service: light.turn_on
-#       entity_id: light.bedroom_light
-
-# LIVING ROOM LIGHT
-# ---------------------------------------------------------
-#- alias: LIVING ROOM LIGHT ON
-#  trigger:
-#    - platform: state
-#      entity_id: binary_sensor.living_room_motion
-#      to: 'on'
-#  condition:
-#    - condition: sun
-#      before: sunrise
-#      after: sunset
-#  action:
-#    - service: light.turn_on
-#      entity_id: light.living_room_light
-#- alias: LIVING ROOM LIGHT OFF
-#  trigger:
-#    - platform: state
-#      entity_id: binary_sensor.living_room_motion
-#      to: 'off'
-#      for: 00:05:00
-#  condition:
-#    - condition: sun
-#      before: sunrise
-#      after: sunset
-#  action:
-#    - service: light.turn_off
-#      entity_id: light.living_room_light
-#      data:
-#        transition: 20
-
-#--------------------------------------------------#
-- alias: KITCHEN LIGHT ON  WHEN MOTION DETECTED
+- alias: Turn bathroom light ON when occupied
   trigger:
-    - platform: state
-      entity_id: binary_sensor.kitchen_motion
-      from: 'off'
-      to: 'on'
-  condition:
-    - condition: sun
-      after: sunset
-    - condition: time
-      before: '23:00:00'
+  - platform: state
+    to: 'on'
+    entity_id:
+    - binary_sensor.bathroom_motion
+    - binary_sensor.bathroom_door
   action:
-    - service: light.turn_on
-      entity_id: light.kitchen_light
-- alias: KITCHEN LIGHT OFF WHEN MOTION CLEARED
+  - service: light.turn_on
+    entity_id: light.bathroom_light
+
+- alias: Turn bathroom light OFF when cleared
   trigger:
-    - platform: state
-      entity_id: binary_sensor.kitchen_motion
-      from: 'on'
-      to: 'off'
-      for: 00:30:00
-  condition:
-    - condition: sun
-      after: sunset
-    - condition: time
-      before: '23:00:00'
+  - platform: state
+    entity_id: binary_sensor.bathroom_motion
+    to: 'off'
+    for: 00:01:00
   action:
-    - service: light.turn_off
-      entity_id: light.kitchen_light
+  - service: light.turn_off
+    entity_id: light.bathroom_light
+    data:
+      transition: 120
 
-# DINING ROOM LIGHT
-# ---------------------------------------------------------
-#- alias: DINING ROOM LIGHT ON
-#  trigger:
-#    - platform: state
-#      entity_id: binary_sensor.dining_room_motion
-#      to: 'on'
-#  condition:
-#    - condition: sun
-#      after: sunset
-#  action:
-#    - service: light.turn_on
-#      entity_id: light.dining_room_light
-#- alias: DINING ROOM LIGHT OFF
-#  trigger:
-#    - platform: state
-#      entity_id: binary_sensor.dining_room_motion
-#      to: 'off'
-#      for: 00:05:00
-#  condition:
-#    - condition: sun
-#      after: sunset
-#  action:
-#    - service: light.turn_off
-#      entity_id: light.dining_room_light
-#
+- alias: Turn kitchen light ON when occupied
+  trigger:
+  - platform: state
+    to: 'on'
+    entity_id:
+    - binary_sensor.kitchen_motion
+    - binary_sensor.wyzesense_778cabc6 # front_door
+  action:
+  - service: light.turn_on
+    entity_id: light.kitchen_light
 
+- alias: Turn kitchen light OFF when cleared
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.kitchen_motion
+    to: 'off'
+    for: 00:15:00
+  action:
+  - service: light.turn_off
+    entity_id: light.kitchen_light

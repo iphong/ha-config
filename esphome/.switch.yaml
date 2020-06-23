@@ -8,7 +8,8 @@ esphome:
   esp8266_restore_from_flash: true
 
 http_request:
-  useragent: esphome/$name
+  useragent: esphome/$host
+  timeout: 1s
 
 status_led:
   pin:

@@ -1,5 +1,8 @@
 # Customize all domain entities
 
-light: {}
+#light:
+#  assumed_state: true
+#switch:
+#  assumed_state: true
 automation:
   initial_state: on

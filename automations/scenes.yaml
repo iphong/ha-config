@@ -1,0 +1,36 @@
+
+- alias: Activate morning scene
+  trigger:
+  - platform: sun
+    event: sunrise
+  action:
+  - scene: scene.morning
+  - service: frontend.set_theme
+    data:
+      name: Google Light Theme
+  - service: notify.notify
+    data:
+      message: Morning scene is activated
+
+- alias: Activate evening scene
+  trigger:
+  - platform: sun
+    event: sunset
+  action:
+  - scene: scene.evening
+  - service: frontend.set_theme
+    data:
+      name: Google Dark Theme
+  - service: notify.notify
+    data:
+      message: Evening scene is activated
+
+- alias: Activate night scene
+  trigger:
+  - platform: time
+    at: '23:00:00'
+  action:
+  - scene: scene.night
+  - service: notify.notify
+    data:
+      message: Night scene is activated

@@ -5,5 +5,5 @@ api:
 logger:
   baud_rate: 0
 web_server:
-
+captive_portal:
 wifi: !include .wifi.yaml

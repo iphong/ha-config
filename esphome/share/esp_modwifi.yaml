@@ -1,9 +1,0 @@
-name: ${name}
-board: modwifi
-platform: ESP8266
-build_path: build/${name}
-esp8266_restore_from_flash: true
-platformio_options:
-  upload_speed: 921600
-#  board_build.f_cpu: 160000000L
-#  board_build.f_flash: 80000000L

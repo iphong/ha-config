@@ -1,9 +1,0 @@
-power_save_mode: none
-fast_connect: true
-ssid: !secret wifi_ssid
-password: !secret wifi_password
-#reboot_timeout: 0s
-ap:
-  ssid: ${name} wifi
-  password: !secret wifi_password
-  ap_timeout: 0s
