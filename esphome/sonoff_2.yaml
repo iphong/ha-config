@@ -1,6 +1,6 @@
 <<: !include .sonoff_rf.yaml
 
 substitutions:
-  name: sonoff_2
-  area: Sonoff 2
-  code: '00000100'
+  host: sonoff_2
+  name: Sonoff 2
+  ipv4: 10.0.0.11

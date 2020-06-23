@@ -19,7 +19,7 @@ status_led:
 binary_sensor:
   
   - platform: homeassistant
-    name: ${area} Motion
+    name: $name Motion
     entity_id: binary_sensor.wyzesense_779241f5
     device_class: motion
   
@@ -27,7 +27,7 @@ binary_sensor:
     pin:
       number: 0 # button pin
       inverted: true
-    name: ${area} Button
+    name: $name Button
     internal: true
     on_press: {}
 
@@ -58,12 +58,12 @@ light:
   
   - platform: binary
     id: light_1
-    name: ${area} Light
+    name: $name Light
     output: psu_1
 
 #  - platform: cwww
 #    id: light_1
-#    name: ${area} Light
+#    name: $name Light
 #    warm_white: output_1
 #    cold_white: output_2
 #    cold_white_color_temperature: 6000 K

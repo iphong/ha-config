@@ -8,9 +8,9 @@ boot_pin: "0"
 uart0_tx_pin: "01"
 uart0_rx_pin: "03"
 
-button_pin_1: "14"
-button_pin_2: "05"
-button_pin_3: "12"
+input_pin_1: "14"
+input_pin_2: "05"
+input_pin_3: "12"
 
 output_pin_1: "04"
 output_pin_2: "15"

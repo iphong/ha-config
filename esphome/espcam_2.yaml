@@ -3,16 +3,3 @@
 substitutions:
   host: espcam_2
   name: Camera 2
-
-remote_receiver:
-  pin: 2
-  dump: all
-  tolerance: 100%
-  filter: 300us
-  idle: 4ms
-  buffer_size: 2kb
-
-binary_sensor:
-#  - platform: remote_receiver
-#    id: rc_input_1
-#    raw: []

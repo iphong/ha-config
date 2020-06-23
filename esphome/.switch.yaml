@@ -1,136 +1,94 @@
+<<: !include .common.yaml
+
 esphome:
-  name: $name
+  name: $host
   board: modwifi
   platform: ESP8266
-  build_path: build/$name
+  build_path: build/$host
   esp8266_restore_from_flash: true
-  platformio_options:
-    upload_speed: 921600
 
-wifi:
-  ssid: !secret wifi_ssid
-  password: !secret wifi_password
-  reboot_timeout: 0s
-  ap:
-    ssid: $name
-    password: !secret wifi_password
-    ap_timeout: 0s
-
-ota:
-  password: !secret wifi_password
-
-api:
-  reboot_timeout: 0s
-
-logger:
-  baud_rate: 0
-
-web_server:
-
-remote_transmitter:
-  pin: 1
-  carrier_duty_percent: 100%
+http_request:
+  useragent: esphome/$name
 
 status_led:
   pin:
     number: 16
     inverted: true
 
-output:
-  
-  - platform: esp8266_pwm
-    id: output_1
-    frequency: 100hz
-    pin: 4
-  
-  - platform: esp8266_pwm
-    id: output_2
-    frequency: 100hz
-    pin: 15
-  
-  - platform: esp8266_pwm
-    id: output_3
-    frequency: 100hz
-    pin: 13
-    
-light:
-  
-  - platform: monochromatic
-    id: light_1
-    output: output_1
-    default_transition_length: 0s
+script:
+- id: toggle_switch_1
+  then:
+  - if:
+      condition:
+        switch.is_on: switch_1
+      then:
+      - http_request.post:
+          url: http://${link_1}/turn_on
+      else:
+      - http_request.post:
+          url: http://${link_1}/turn_off
+- id: toggle_switch_2
+  then:
+  - if:
+      condition:
+        switch.is_on: switch_2
+      then:
+      - http_request.post:
+          url: http://${link_2}/turn_on
+      else:
+      - http_request.post:
+          url: http://${link_2}/turn_off
+- id: toggle_switch_3
+  then:
+  - if:
+      condition:
+        switch.is_on: switch_3
+      then:
+      - http_request.post:
+          url: http://${link_3}/turn_on
+      else:
+      - http_request.post:
+          url: http://${link_3}/turn_off
 
-  - platform: monochromatic
-    id: light_2
-    output: output_2
-    default_transition_length: 0s
+switch:
+- platform: gpio
+  id: switch_1
+  pin: $output_pin_1
+  name: ${name}A
+- platform: gpio
+  id: switch_2
+  pin: $output_pin_2
+  name: ${name}B
+- platform: gpio
+  id: switch_3
+  pin: $output_pin_3
+  name: ${name}C
 
-  - platform: monochromatic
-    id: light_3
-    output: output_3
-    default_transition_length: 0s
-    
 binary_sensor:
-  
-  - platform: gpio
-    id: input_1
-    pin:
-      number: 14
-      inverted: true
-    on_release:
-      - light.turn_off: light_1
-    on_press:
-      then:
-        - light.turn_on:
-            id: light_1
-            transition_length: 0s
-        - remote_transmitter.transmit_panasonic:
-            address: 0x1FEF
-            command: 0x1F3E065F
-
-  - platform: gpio
-    id: input_2
-    pin:
-      number: 5
-      inverted: true
-    on_release:
-      - light.turn_off: light_2
-    on_press:
-      then:
-        - light.turn_on:
-            id: light_2
-            transition_length: 0s
-        - if:
-            condition:
-              api.connected:
-            then:
-              - homeassistant.service:
-                  service: homeassistant.toggle
-                  data:
-                    entity_id: $button2_entity
-            else:
-              - remote_transmitter.transmit_rc_switch_raw:
-                  code: $button2_code
-                  protocol: 2
-                  repeat:
-                    times: 3
-                    wait_time: 200ms
-
-  - platform: gpio
-    id: input_3
-    pin:
-      number: 12
-      inverted: true
-    on_release:
-      - light.turn_off: light_3
-    on_press:
-      then:
-        - light.turn_on:
-            id: light_3
-            transition_length: 0s
-        - remote_transmitter.transmit_rc_switch_type_c:
-            family: 'C'
-            group: 3
-            device: 1
-            state: off
-            protocol: 1
+- platform: gpio
+  id: input_1
+  pin:
+    number: $input_pin_1
+    inverted: true
+  on_press:
+  - then:
+    - switch.toggle: switch_1
+    - script.execute: toggle_switch_1
+- platform: gpio
+  id: input_2
+  pin:
+    number: $input_pin_2
+    inverted: true
+  on_press:
+  - then:
+    - switch.toggle: switch_2
+    - script.execute: toggle_switch_2
+- platform: gpio
+  id: input_3
+  pin:
+    number: $input_pin_3
+    inverted: true
+  on_press:
+  - then:
+    - switch.toggle: switch_3
+    - script.execute: toggle_switch_3

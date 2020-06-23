@@ -1,14 +1,11 @@
-<<: !include .dimmer.yaml
+<<: !include .switch.yaml
 
 substitutions:
-  name: switch_5
-  area: Switch 5
-  code: '0101'
-  
-  button_pin_1: "14"
-  button_pin_2: "05"
-  button_pin_3: "12"
+  <<: !include .pinout_tuya_switch.yaml
+  host: switch_5
+  name: Switch 5
+  ipv4: 10.0.0.55
 
-  output_pin_1: "04"
-  output_pin_2: "15"
-  output_pin_3: "13"
+  link_1: 10.0.0.10/light/bedroom_light
+  link_2: 10.0.0.55/switch/switch_2
+  link_3: 10.0.0.11/light/balcony_light

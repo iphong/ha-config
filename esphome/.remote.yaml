@@ -12,10 +12,10 @@ sensor:
     model: DHT11
     temperature:
       id: temperature
-      name: ${area} Temperature
+      name: $name Temperature
     humidity:
       id: humidity
-      name: ${area} Humidity
+      name: $name Humidity
 
 remote_transmitter:
   id: transmitter
@@ -24,7 +24,7 @@ remote_transmitter:
   
 climate:
   - platform: daikin
-    name: ${area} AC
+    name: $name AC
     sensor: temperature
     transmitter_id: transmitter
     visual:
@@ -36,4 +36,4 @@ binary_sensor:
   
   - platform: gpio
     pin: 1
-    name: ${area} Input
+    name: $name Input

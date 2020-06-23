@@ -1,0 +1,45 @@
+substitutions:
+  host: bathroom
+  name: Bathroom
+  ipv4: 10.0.0.12
+
+<<: !include .sonoff_light_cw.yaml
+
+binary_sensor:
+
+  - platform: homeassistant
+    name: $name Motion
+    entity_id: binary_sensor.wyzesense_777c5cdc
+    device_class: motion
+    
+  - platform: homeassistant
+    name: $name Door
+    entity_id: binary_sensor.wyzesense_778cc063
+    device_class: door
+
+power_supply: []
+
+output:
+- platform: esp8266_pwm
+  id: output_1
+  pin: 1 # tx pin
+  frequency: 100hz
+
+- platform: esp8266_pwm
+  id: output_2
+  pin: 3 # rx pin
+  frequency: 100hz
+
+- platform: gpio
+  id: output_3
+  pin: 12
+
+fan:
+  - platform: binary
+    output: output_3
+    id: fan_1
+    name: $name Fan
+
+switch:
+- platform: template
+  id: water_heater

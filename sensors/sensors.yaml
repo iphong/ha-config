@@ -17,6 +17,7 @@
     - type: load_1m
     - type: load_5m
     - type: load_15m
+
     - type: ipv4_address
       arg: eth0
     - type: network_in
@@ -31,17 +32,18 @@
       arg: eth0
     - type: throughput_network_out
       arg: eth0
-    - type: ipv4_address
-      arg: wlan0
-    - type: network_in
-      arg: wlan0
-    - type: network_out
-      arg: wlan0
-    - type: packets_in
-      arg: wlan0
-    - type: packets_out
-      arg: wlan0
-    - type: throughput_network_in
-      arg: wlan0
-    - type: throughput_network_out
-      arg: wlan0
+
+#    - type: ipv4_address
+#      arg: wlan0
+#    - type: network_in
+#      arg: wlan0
+#    - type: network_out
+#      arg: wlan0
+#    - type: packets_in
+#      arg: wlan0
+#    - type: packets_out
+#      arg: wlan0
+#    - type: throughput_network_in
+#      arg: wlan0
+#    - type: throughput_network_out
+#      arg: wlan0

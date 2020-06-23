@@ -1,0 +1,12 @@
+substitutions:
+  host: kitchen
+  name: Kitchen
+  ipv4: 10.0.0.15
+
+<<: !include .sonoff_light.yaml
+
+binary_sensor:
+- platform: homeassistant
+  name: $name Motion
+  entity_id: binary_sensor.wyzesense_779241f5
+  device_class: motion

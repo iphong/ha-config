@@ -5,3 +5,5 @@ api:
 logger:
   baud_rate: 0
 web_server:
+
+wifi: !include .wifi.yaml

@@ -1,22 +1,11 @@
-- platform: template
-  panels:
-    safe_alarm_panel:
-    value_template: "{{ states.alarm_control_panel.real_alarm }}"
-    arm_away:
-      service: alarm_control_panel.alarm_arm_away
-      data:
-        entity_id: alarm_control_panel.real_alarm
-        code: !secret alarm_code
-    arm_home:
-      service: alarm_control_panel.alarm_arm_home
-      data:
-        entity_id: alarm_control_panel.real_alarm
-        code: !secret alarm_code
-    disarm:
-      - condition: state
-        entity_id: person.phong
-        state: 'home'
-      - service: alarm_control_panel.alarm_arm_home
-        data:
-          entity_id: alarm_control_panel.real_alarm
-          code: !secret alarm_code
+- platform: manual
+  name: Home Alarm
+  code: '1234'
+  arming_time: 30
+  delay_time: 20
+  trigger_time: 4
+  disarmed:
+    trigger_time: 0
+  armed_home:
+    arming_time: 0
+    delay_time: 0

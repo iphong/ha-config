@@ -19,18 +19,18 @@ binary_sensor:
   #   pin:
   #     number: 13
   #     inverted: false
-  #   name: ${area} Motion
+  #   name: $name Motion
   #   device_class: motion
   #   filters:
   #     - delayed_on_off: 300ms
 
   - platform: homeassistant
-    name: ${area} Motion
+    name: $name Motion
     entity_id: binary_sensor.wyzesense_777c5cdc
     device_class: motion
     
   - platform: homeassistant
-    name: ${area} Door
+    name: $name Door
     entity_id: binary_sensor.wyzesense_778cc063
     device_class: door
     
@@ -38,7 +38,7 @@ binary_sensor:
     pin:
       number: 0
       inverted: true
-    name: ${area} Button
+    name: $name Button
     internal: true
     on_press: {}
 
@@ -58,7 +58,7 @@ output:
   
 light:
   - platform: cwww
-    name: ${area} Light
+    name: $name Light
     id: light_1
     cold_white: output_2
     warm_white: output_3
@@ -71,5 +71,5 @@ fan:
   - platform: binary
     output: output_1
     id: fan_1
-    name: ${area} Fan
+    name: $name Fan
 

@@ -19,23 +19,23 @@ sensor:
     update_interval: 15s
     temperature:
       id: temperature
-      name: ${area} Temperature
+      name: $name Temperature
     humidity:
       id: humidity
-      name: ${area} Humidity
+      name: $name Humidity
 
 binary_sensor:
 
   - platform: gpio
     pin: 3
-    name: ${area} Motion
+    name: $name Motion
     device_class: motion
     filters:
       - invert:
       - delayed_on_off: 300ms
 
   - platform: homeassistant
-    name: ${area} Door
+    name: $name Door
     entity_id: binary_sensor.wyzesense_777eacaf
     device_class: door
     
@@ -43,7 +43,7 @@ binary_sensor:
     pin:
       number: 0
       inverted: true
-    name: ${area} Button
+    name: $name Button
     internal: true
     on_press: {}
 
@@ -58,4 +58,4 @@ light:
   - platform: binary
     output: output_1
     id: light_1
-    name: ${area} Light
+    name: $name Light

@@ -1,0 +1,23 @@
+substitutions:
+  host: balcony
+  name: Balcony
+  ipv4: 10.0.0.11
+
+<<: !include .sonoff_light.yaml
+
+sensor:
+- platform: dht
+  pin: 2
+  update_interval: 1s
+  temperature:
+    id: temperature
+    name: $name Temperature
+  humidity:
+    id: humidity
+    name: $name Humidity
+
+binary_sensor:
+- platform: homeassistant
+  name: $name Door
+  entity_id: binary_sensor.wyzesense_777eacaf
+  device_class: door

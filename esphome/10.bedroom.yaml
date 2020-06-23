@@ -1,0 +1,16 @@
+substitutions:
+  host: bedroom
+  name: Bedroom
+  ipv4: 10.0.0.10
+
+<<: !include .sonoff_light_cw.yaml
+
+binary_sensor:
+- platform: homeassistant
+  name: $name Motion
+  entity_id: binary_sensor.wyzesense_778c0ea5
+  device_class: motion
+- platform: homeassistant
+  name: $name Door
+  entity_id: binary_sensor.wyzesense_777ef4c8
+  device_class: door

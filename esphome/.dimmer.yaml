@@ -36,19 +36,19 @@ globals:
 sensor:
   - platform: custom
     lambda: >-
-      int pins[] = { ${button_pin_3}, ${button_pin_2}, ${button_pin_1} };
+      int pins[] = { ${input_pin_3}, ${input_pin_2}, ${input_pin_1} };
       auto dimmer = new TouchDimmer(3, pins);
       App.register_component(dimmer);
       return { dimmer->value };
     sensors:
-      - name: ${area}
+      - name: Dimmer ${name}
 
 binary_sensor:
   
   - platform: gpio
     id: input_1
     pin:
-      number: ${button_pin_1}
+      number: ${input_pin_1}
       inverted: true
     on_press:
       - light.turn_on: light_1
@@ -97,7 +97,7 @@ binary_sensor:
   - platform: gpio
     id: input_2
     pin:
-      number: ${button_pin_2}
+      number: ${input_pin_2}
       inverted: true
     on_press:
       - light.turn_on: light_2
@@ -148,7 +148,7 @@ binary_sensor:
   - platform: gpio
     id: input_3
     pin:
-      number: ${button_pin_3}
+      number: ${input_pin_3}
       inverted: true
     on_press:
       - light.turn_on: light_3

@@ -1,5 +1,11 @@
-<<: !include .tuya_switch.yaml
+<<: !include .switch.yaml
 
 substitutions:
-  name: switch_3
-  area: Switch 3
+  <<: !include .pinout_tuya_switch.yaml
+  host: switch_3
+  name: Switch 3
+  ipv4: 10.0.0.53
+
+  link_1: 10.0.0.13/light/dining_room_light
+  link_2: 10.0.0.14/light/alter_light
+  link_3: 10.0.0.15/light/kitchen_light

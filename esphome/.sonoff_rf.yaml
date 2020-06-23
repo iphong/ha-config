@@ -11,9 +11,78 @@
 remote_receiver:
   pin: 2
   dump:
-    - rc_switch
+  - rc_switch
+  - raw
   tolerance: 50%
-  filter: 250us
-  idle: 4ms
-  buffer_size: 4kb
-  
+  filter: 10us
+  idle: 10ms
+  buffer_size: 2kb
+
+binary_sensor:
+- platform: remote_receiver
+  id: input_1
+  internal: true
+  rc_switch_raw:
+    code: '${code}0000101000000001' # 0x040A01
+    protocol: 2
+  on_press:
+  - light.toggle: light_1
+- platform: remote_receiver
+  id: input_2
+  internal: true
+  rc_switch_raw:
+    code: '${code}0000101000000010' # 0x040A02
+    protocol: 2
+  on_press:
+  - light.turn_on: light_1
+- platform: remote_receiver
+  id: input_3
+  internal: true
+  rc_switch_raw:
+    code: '${code}0000101000000011' # 0x040A03
+    protocol: 2
+  on_press:
+  - light.turn_off: light_1
+
+- platform: gpio
+  pin:
+    number: 0
+    inverted: true
+  name: $name Button
+  internal: true
+  on_press:
+  - light.toggle: light_1
+
+api:
+  reboot_timeout: 0s
+  services:
+  - service: send_rf_code
+    variables:
+      sync: int
+      low: int
+      high: int
+      code: int
+    then:
+    - rf_bridge.send_code:
+        sync: !lambda 'return sync;'
+        low: !lambda 'return low;'
+        high: !lambda 'return high;'
+        code: !lambda 'return code;'
+  - service: learn
+    then:
+    - rf_bridge.learn
+uart:
+  tx_pin: 1
+  rx_pin: 3
+  baud_rate: 19200
+
+rf_bridge:
+  on_code_received:
+    then:
+    - homeassistant.event:
+        event: esphome.rf_code_received
+        data:
+          sync: !lambda 'char buffer [10];return itoa(data.sync,buffer,16);'
+          low: !lambda 'char buffer [10];return itoa(data.low,buffer,16);'
+          high: !lambda 'char buffer [10];return itoa(data.high,buffer,16);'
+          code: !lambda 'char buffer [10];return itoa(data.code,buffer,16);'

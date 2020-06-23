@@ -4,14 +4,14 @@
   hidden: true
 'switch.switch_*':
   hidden: true
-'switch.wyzecam_*':
-  hidden: true
+#'switch.wyzecam_*':
+#  hidden: true
 'cover.wyzecam_*':
   hidden: true
 'binary_sensor.wyzecam_*':
   hidden: true
-'switch.xiaofang_*':
-  hidden: true
+#'switch.xiaofang_*':
+#  hidden: true
 'cover.xiaofang_*':
   hidden: true
 'binary_sensor.xiaofang_*':

@@ -4,22 +4,6 @@ people:
     - person.phong
     - person.sumi
     - person.tram
-#living_room:
-#  name: Living Room
-#  entities:
-#    camera.living_room_camera
-#kitchen:
-#  name: Kitchen
-#  entities:
-#    camera.kitchen_camera
-all_lights:
-  name: All Lights
-  entities:
-    - light.balcony_light
-    - light.bedroom_light
-    - light.kitchen_light
-    - light.dining_room_light
-    - light.living_room_light
 wyzesense:
   all: true
   name: Wyze Sensors
@@ -71,14 +55,14 @@ if_stats_eth0:
     - sensor.packets_out_eth0
     - sensor.network_throughput_in_eth0
     - sensor.network_throughput_out_eth0
-if_stats_wlan0:
-  all: true
-  name: "Interface (wlan0)"
-  entities:
-    - sensor.ipv4_address_wlan0
-    - sensor.network_in_wlan0
-    - sensor.network_out_wlan0
-    - sensor.packets_in_wlan0
-    - sensor.packets_out_wlan0
-    - sensor.network_throughput_in_wlan0
-    - sensor.network_throughput_out_wlan0
+#if_stats_wlan0:
+#  all: true
+#  name: "Interface (wlan0)"
+#  entities:
+#    - sensor.ipv4_address_wlan0
+#    - sensor.network_in_wlan0
+#    - sensor.network_out_wlan0
+#    - sensor.packets_in_wlan0
+#    - sensor.packets_out_wlan0
+#    - sensor.network_throughput_in_wlan0
+#    - sensor.network_throughput_out_wlan0

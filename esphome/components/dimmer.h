@@ -20,7 +20,9 @@ public:
 		}
 	}
 	void setup() {
-		value->publish_state(id(last_value));
+		if (!value->has_state()) {
+			value->publish_state(5);
+		}
 	}
 	void loop() {
 		read_state();

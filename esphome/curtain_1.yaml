@@ -49,5 +49,5 @@ cover:
       return {curtain};
     covers:
       - id: cover_1
-        name: ${area} Curtain
+        name: $name Curtain
         device_class: blind

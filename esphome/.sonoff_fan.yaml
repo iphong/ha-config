@@ -5,7 +5,7 @@ binary_sensor:
     pin:
       number: 0 # button pin
       inverted: true
-    name: ${area} Button
+    name: $name Button
     internal: true
     on_press: {}
 
@@ -13,4 +13,4 @@ fan:
   - platform: binary
     output: output_1
     id: fan_1
-    name: ${area} Fan
+    name: $name Fan

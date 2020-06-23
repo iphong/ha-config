@@ -44,14 +44,14 @@ switch:
   - platform: gpio
     id: switch_1
     pin: 4
-    name: ${area}A
+    name: $nameA
   
   - platform: gpio
     id: switch_2
     pin: 15
-    name: ${area}B
+    name: $nameB
   
   - platform: gpio
     id: switch_3
     pin: 13
-    name: ${area}C
+    name: $nameC

@@ -1,0 +1,8 @@
+
+input_pin_1: GPIO14
+input_pin_2: GPIO05
+input_pin_3: GPIO12
+
+output_pin_1: GPIO04
+output_pin_2: GPIO15
+output_pin_3: GPIO13
