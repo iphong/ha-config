@@ -1,0 +1,7 @@
+<<: !include .remote.yaml
+
+substitutions:
+  host: remote_1
+  name: Living Room
+  ipv4: 10.0.0.41
+  

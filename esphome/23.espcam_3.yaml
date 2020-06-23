@@ -1,0 +1,6 @@
+<<: !include .espcam.yaml
+
+substitutions:
+  host: espcam_3
+  name: Camera 3
+  ipv4: 10.0.0.23

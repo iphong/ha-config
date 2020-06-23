@@ -3,4 +3,4 @@
 substitutions:
   host: espcam_1
   name: Camera 1
-  ipv4: 10.0.0.20
+  ipv4: 10.0.0.21

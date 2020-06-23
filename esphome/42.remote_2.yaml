@@ -1,0 +1,7 @@
+<<: !include .remote.yaml
+
+substitutions:
+  host: remote_2
+  name: Bedroom
+  ipv4: 10.0.0.42
+  
