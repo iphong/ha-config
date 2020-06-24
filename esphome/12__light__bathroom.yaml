@@ -29,7 +29,3 @@ fan:
     output: output_3
     id: fan_1
     name: $name Fan
-
-switch:
-- platform: template
-  id: water_heater

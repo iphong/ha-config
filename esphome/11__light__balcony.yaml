@@ -8,12 +8,9 @@ substitutions:
 sensor:
 - platform: dht
   pin: 2
-  update_interval: 10s
   temperature:
     id: temperature
     name: $name Temperature
   humidity:
     id: humidity
     name: $name Humidity
-
-binary_sensor:

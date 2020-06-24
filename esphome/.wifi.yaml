@@ -1,4 +1,5 @@
-use_address: ${host}.local
+#use_address: ${host}.local
+use_address: $ipv4
 networks:
 - ssid: !secret wifi_ssid
   password: !secret wifi_password
@@ -9,7 +10,7 @@ manual_ip:
   dns1: 1.1.1.1
   dns2: 1.0.0.1
 ap:
-  ssid: ${name}
+  ssid: ESPHOME $name WiFi
   password: !secret wifi_password
   manual_ip:
     static_ip: 10.0.0.1

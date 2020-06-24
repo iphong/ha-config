@@ -1,14 +1,5 @@
 <<: !include .sonoff.yaml
 
-binary_sensor:
-  - platform: gpio
-    pin:
-      number: 0 # button pin
-      inverted: true
-    name: $name Button
-    internal: true
-    on_press: {}
-
 power_supply:
   - id: psu_1
     enable_time: 20ms
@@ -36,7 +27,7 @@ output:
 
 light:
   - platform: rgb
-    name: Sonoff RGB Light 1
+    name: $name Light
     blue: output_1
     green: output_2
     red: output_3

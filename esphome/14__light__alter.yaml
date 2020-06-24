@@ -1,6 +1,7 @@
+<<: !include .sonoff_light.yaml
+
 substitutions:
   host: alter
   name: Alter
   ipv4: 10.0.0.14
-
-<<: !include .sonoff_light.yaml
+  

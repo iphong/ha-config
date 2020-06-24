@@ -1,7 +1,6 @@
 <<: !include .switch.yaml
 
 substitutions:
-  <<: !include .pinout_tuya_switch.yaml
   host: switch_1
   name: Bathroom
   ipv4: 10.0.0.51

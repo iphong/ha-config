@@ -41,7 +41,7 @@ sensor:
       App.register_component(dimmer);
       return { dimmer->value };
     sensors:
-      - name: Dimmer ${name}
+      - name: Dimmer $name
 
 binary_sensor:
   

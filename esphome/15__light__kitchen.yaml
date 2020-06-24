@@ -4,5 +4,3 @@ substitutions:
   ipv4: 10.0.0.15
 
 <<: !include .sonoff_light.yaml
-
-binary_sensor:

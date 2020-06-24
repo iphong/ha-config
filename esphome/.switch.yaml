@@ -42,79 +42,71 @@ api:
          }
         }
 
-
 switch:
 - platform: gpio
   id: output_1
-  pin: $output_pin_1
+  pin: GPIO04
+  
 - platform: gpio
   id: output_2
-  pin: $output_pin_2
+  pin: GPIO15
+  
 - platform: gpio
   id: output_3
-  pin: $output_pin_3
+  pin: GPIO13
+
+globals:
+  - id: var1
+    type: String
+  - id: var2
+    type: String
 
 script:
-- id: toggle_switch_1
+- id: sync_state
   then:
   - if:
       condition:
-        switch.is_on: output_1
+        lambda: 'id(id(var1));'
       then:
-      - http_request.post:
-          url: http://${link_1}/turn_on
+        - http_request.post: 'http://{{ var2 }}/turn_on'
       else:
-      - http_request.post:
-          url: http://${link_1}/turn_off
-- id: toggle_switch_2
-  then:
-  - if:
-      condition:
-        switch.is_on: output_2
-      then:
-      - http_request.post:
-          url: http://${link_2}/turn_on
-      else:
-      - http_request.post:
-          url: http://${link_2}/turn_off
-- id: toggle_switch_3
-  then:
-  - if:
-      condition:
-        switch.is_on: output_3
-      then:
-      - http_request.post:
-          url: http://${link_3}/turn_on
-      else:
-      - http_request.post:
-          url: http://${link_3}/turn_off
-
+        - http_request.post: 'http://{{ var2 }}/turn_off'
+    
 binary_sensor:
 - platform: gpio
   id: input_1
   pin:
-    number: $input_pin_1
+    number: GPIO14
     inverted: true
   on_press:
   - then:
+    - lambda: >-
+        id(var1) = "output_1";
+        id(var2) = "$link_1";
     - switch.toggle: output_1
-    - script.execute: toggle_switch_1
+    - script.execute: sync_state
 - platform: gpio
   id: input_2
   pin:
-    number: $input_pin_2
+    number: GPIO05
     inverted: true
   on_press:
   - then:
+    - lambda: >-
+        id(var1) = "output_2";
+        id(var2) = "$link_2";
     - switch.toggle: output_2
-    - script.execute: toggle_switch_2
+    - script.execute: sync_state
 - platform: gpio
   id: input_3
   pin:
-    number: $input_pin_3
+    number: GPIO12
     inverted: true
   on_press:
   - then:
+    - lambda: >-
+        id(var1) = "output_3";
+        id(var2) = "$link_3";
     - switch.toggle: output_3
-    - script.execute: toggle_switch_3
+    - script.execute: sync_state
 

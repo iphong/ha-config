@@ -1,14 +1,13 @@
 <<: !include .switch.yaml
 
 substitutions:
-  <<: !include .pinout_tuya_switch.yaml
   host: switch_4
   name: Bedroom
   ipv4: 10.0.0.54
 
   link_1: 10.0.0.10/light/bedroom_light
-  link_2: 10.0.0.10/light/bedroom_light
-  link_3: 10.0.0.11/light/balcony_light
+  link_2: 10.0.0.11/light/balcony_light
+  link_3: 10.0.0.11/cover/bedroom_curtain
 
 i2c:
   sda: 3
@@ -37,4 +36,3 @@ climate:
   visual:
     min_temperature: 18 °C
     max_temperature: 30 °C
-#    temperature_step: 1 °C

@@ -1,7 +1,6 @@
 <<: !include .switch.yaml
 
 substitutions:
-  <<: !include .pinout_tuya_switch.yaml
   host: switch_2
   name: Living Room
   ipv4: 10.0.0.52
@@ -9,3 +8,11 @@ substitutions:
   link_1: 10.0.0.16
   link_2: 10.0.0.16/light/living_room_light
   link_3: 10.0.0.16
+
+sensor:
+  - platform: dht12
+    temperature:
+      name: $name Temperature
+    humidity:
+      name: $name Humidity
+    update_interval: 15s

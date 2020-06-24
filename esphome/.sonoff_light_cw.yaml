@@ -25,7 +25,6 @@ output:
 
 light:
   - platform: cwww
-    id: light_1
     name: $name Light
     cold_white: output_1
     warm_white: output_2

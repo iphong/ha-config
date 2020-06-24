@@ -1,11 +1,10 @@
 <<: !include .switch.yaml
 
 substitutions:
-  <<: !include .pinout_tuya_switch.yaml
   host: switch_6
   name: Switch 6
   ipv4: 10.0.0.56
 
-  link_1: 10.0.0.10/light/bedroom_light
-  link_2: 10.0.0.56/switch/switch_2
+  link_1: 10.0.0.31/cover/bedroom_curtain
+  link_2: none
   link_3: 10.0.0.11/light/balcony_light
