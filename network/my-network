@@ -1,0 +1,13 @@
+[connection]
+id=my-network
+uuid=0a7a254a-f937-4dee-914d-9965e990a9c3
+type=802-3-ethernet
+
+[ipv4]
+method=manual
+address=10.0.0.0/24,10.0.0.5
+dns=1.1.1.1,1.0.0.1
+
+[ipv6]
+addr-gen-mode=stable-privacy
+method=auto

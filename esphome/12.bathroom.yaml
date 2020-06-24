@@ -7,16 +7,6 @@ substitutions:
 
 binary_sensor:
 
-  - platform: homeassistant
-    name: $name Motion
-    entity_id: binary_sensor.wyzesense_777c5cdc
-    device_class: motion
-    
-  - platform: homeassistant
-    name: $name Door
-    entity_id: binary_sensor.wyzesense_778cc063
-    device_class: door
-
 power_supply: []
 
 output:

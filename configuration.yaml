@@ -2,25 +2,10 @@
 
 default_config:
 
-http:
-  server_port: 443
-  base_url: https://www.phong.live
-  ssl_certificate: /ssl/phong_live.crt
-  ssl_key: /ssl/phong_live.key
-  cors_allowed_origins:
-  - https://google.com
-  - https://www.home-assistant.io
-  - https://cast.home-assistant.io
-  use_x_forwarded_for: true
-  trusted_proxies:
-  - 10.0.0.0/16
-  - 192.168.0.0/16
-  - 172.30.33.0/24
-  ip_ban_enabled: true
-  login_attempts_threshold: 10
-
 homeassistant:
   name: Home
+  internal_url: "http://homeassistant.local:8123"
+  external_url: "https://www.phong.live"
   latitude: 21.0197167
   longitude: 105.8228603
   elevation: 10

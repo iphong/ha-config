@@ -4,5 +4,5 @@
 #  assumed_state: true
 #switch:
 #  assumed_state: true
-automation:
-  initial_state: on
+#automation:
+#  initial_state: on

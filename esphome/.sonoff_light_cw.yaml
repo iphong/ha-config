@@ -11,13 +11,17 @@ output:
     id: output_1
     pin: 1 # tx pin
     power_supply: psu_1
-    frequency: 100hz
+    min_power: 0.00
+    max_power: 0.98
+    frequency: 500hz
   
   - platform: esp8266_pwm
     id: output_2
     pin: 3 # rx pin
     power_supply: psu_1
-    frequency: 100hz
+    min_power: 0.00
+    max_power: 0.98
+    frequency: 500hz
 
 light:
   - platform: cwww

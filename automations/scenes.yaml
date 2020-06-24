@@ -1,5 +1,24 @@
 
-- alias: Activate morning scene
+
+- alias: Startup routine
+  trigger:
+  - platform: event
+    event_type: homeassistant_start
+  action:
+  - service: notify.notify
+    data:
+      message: Home Assistant starting up
+
+- alias: Shutdown routine
+  trigger:
+  - platform: event
+    event_type: homeassistant_stop
+  action:
+  - service: notify.notify
+    data:
+      message: Home Assistant shutting down
+
+- alias: Morning scene
   trigger:
   - platform: sun
     event: sunrise
@@ -10,9 +29,9 @@
       name: Google Light Theme
   - service: notify.notify
     data:
-      message: Morning scene is activated
+      message: Morning scene activated
 
-- alias: Activate evening scene
+- alias: Evening scene
   trigger:
   - platform: sun
     event: sunset
@@ -23,9 +42,9 @@
       name: Google Dark Theme
   - service: notify.notify
     data:
-      message: Evening scene is activated
+      message: Evening scene activated
 
-- alias: Activate night scene
+- alias: Night scene
   trigger:
   - platform: time
     at: '23:00:00'
@@ -33,4 +52,4 @@
   - scene: scene.night
   - service: notify.notify
     data:
-      message: Night scene is activated
+      message: Night scene activated

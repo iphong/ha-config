@@ -1,0 +1,6 @@
+<<: !include .sonoff_light.yaml
+
+substitutions:
+  host: sonoff_2
+  name: Sonoff 2
+  ipv4: 10.0.0.17

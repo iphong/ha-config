@@ -6,6 +6,9 @@ esphome:
   platform: ESP8266
   build_path: build/$host
   esp8266_restore_from_flash: true
+  platformio_options:
+    upload_speed: 921600
+    board_build.f_cpu: 160000000L
 
 http_request:
   useragent: esphome/$host
@@ -16,12 +19,47 @@ status_led:
     number: 16
     inverted: true
 
+api:
+  reboot_timeout: 0s
+  services:
+  - service: sync_button_state
+    variables:
+      button: int
+      state: bool
+    then:
+    - lambda: >-
+        if (state) {
+          switch (button) {
+            case 1: id(output_1).turn_on(); break;
+            case 2: id(output_2).turn_on(); break;
+            case 3: id(output_3).turn_on(); break;
+          }
+        } else {
+         switch (button) {
+           case 1: id(output_1).turn_off(); break;
+           case 2: id(output_2).turn_off(); break;
+           case 3: id(output_3).turn_off(); break;
+         }
+        }
+
+
+switch:
+- platform: gpio
+  id: output_1
+  pin: $output_pin_1
+- platform: gpio
+  id: output_2
+  pin: $output_pin_2
+- platform: gpio
+  id: output_3
+  pin: $output_pin_3
+
 script:
 - id: toggle_switch_1
   then:
   - if:
       condition:
-        switch.is_on: switch_1
+        switch.is_on: output_1
       then:
       - http_request.post:
           url: http://${link_1}/turn_on
@@ -32,7 +70,7 @@ script:
   then:
   - if:
       condition:
-        switch.is_on: switch_2
+        switch.is_on: output_2
       then:
       - http_request.post:
           url: http://${link_2}/turn_on
@@ -43,27 +81,13 @@ script:
   then:
   - if:
       condition:
-        switch.is_on: switch_3
+        switch.is_on: output_3
       then:
       - http_request.post:
           url: http://${link_3}/turn_on
       else:
       - http_request.post:
           url: http://${link_3}/turn_off
-
-switch:
-- platform: gpio
-  id: switch_1
-  pin: $output_pin_1
-  name: ${name}A
-- platform: gpio
-  id: switch_2
-  pin: $output_pin_2
-  name: ${name}B
-- platform: gpio
-  id: switch_3
-  pin: $output_pin_3
-  name: ${name}C
 
 binary_sensor:
 - platform: gpio
@@ -73,7 +97,7 @@ binary_sensor:
     inverted: true
   on_press:
   - then:
-    - switch.toggle: switch_1
+    - switch.toggle: output_1
     - script.execute: toggle_switch_1
 - platform: gpio
   id: input_2
@@ -82,7 +106,7 @@ binary_sensor:
     inverted: true
   on_press:
   - then:
-    - switch.toggle: switch_2
+    - switch.toggle: output_2
     - script.execute: toggle_switch_2
 - platform: gpio
   id: input_3
@@ -91,5 +115,6 @@ binary_sensor:
     inverted: true
   on_press:
   - then:
-    - switch.toggle: switch_3
+    - switch.toggle: output_3
     - script.execute: toggle_switch_3
+

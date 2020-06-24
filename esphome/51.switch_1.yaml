@@ -3,7 +3,7 @@
 substitutions:
   <<: !include .pinout_tuya_switch.yaml
   host: switch_1
-  name: Switch 1
+  name: Bathroom
   ipv4: 10.0.0.51
 
   link_1: 10.0.0.12/light/bathroom_light

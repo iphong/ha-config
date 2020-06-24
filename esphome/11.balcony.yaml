@@ -17,7 +17,3 @@ sensor:
     name: $name Humidity
 
 binary_sensor:
-- platform: homeassistant
-  name: $name Door
-  entity_id: binary_sensor.wyzesense_777eacaf
-  device_class: door

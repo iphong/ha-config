@@ -1,7 +1,4 @@
 <<: !include .common.yaml
-
-wifi:
-  <<: !include .wifi.yaml
   
 esphome:
   name: $host
@@ -11,7 +8,7 @@ esphome:
   esp8266_restore_from_flash: true
   platformio_options:
     upload_speed: 921600
-    board_build.f_cpu: 160000000L
+#    board_build.f_cpu: 160000000L
 
 status_led:
   pin:

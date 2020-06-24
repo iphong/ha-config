@@ -7,6 +7,6 @@ output:
 
 light:
   - platform: binary
-    output: output_1
     id: light_1
+    output: output_1
     name: $name Light

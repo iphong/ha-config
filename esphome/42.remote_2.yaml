@@ -4,4 +4,8 @@ substitutions:
   host: remote_2
   name: Bedroom
   ipv4: 10.0.0.42
-  
+
+sensor:
+- platform: homeassistant
+  entity_id: sensor.bedroom_temperature
+  id: temp

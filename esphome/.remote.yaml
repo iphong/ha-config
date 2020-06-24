@@ -7,20 +7,6 @@ esphome:
   build_path: build/$host
   esp8266_restore_from_flash: true
 
-sensor:
-  - platform: dht
-    pin:
-      number: 5
-      inverted: true
-      mode: INPUT_PULLUP
-    model: DHT11
-    temperature:
-      id: temperature
-      name: $name Temperature
-    humidity:
-      id: humidity
-      name: $name Humidity
-
 remote_transmitter:
   id: transmitter
   pin: 14
@@ -29,7 +15,7 @@ remote_transmitter:
 climate:
   - platform: daikin
     name: $name AC
-    sensor: temperature
+    sensor: temp
     transmitter_id: transmitter
     visual:
       min_temperature: 18 °C

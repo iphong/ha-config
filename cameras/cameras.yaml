@@ -1,18 +1,3 @@
-#- platform: mjpeg
-#  name: ESP Camera 1
-#  mjpeg_url: http://10.0.0.114:81/stream
-#  still_image_url: http://10.0.0.114/capture
-
-#- platform: mjpeg
-#  name: ESP Camera 2
-#  mjpeg_url: http://10.0.0.119:81/stream
-#  still_image_url: http://10.0.0.119/capture
-
-#- platform: mjpeg
-#  name: ESP Camera 3
-#  mjpeg_url: http://10.0.0.191:81/stream
-#  still_image_url: http://10.0.0.191/capture
-
 - name: Living Room Camera
   platform: ffmpeg
   input: -rtsp_transport tcp -i rtsp://user:123@10.0.0.70:8554/unicast
@@ -21,20 +6,20 @@
   platform: ffmpeg
   input: -rtsp_transport tcp -i rtsp://user:123@10.0.0.71:8554/unicast
 
-#- platform: generic
-#  name: Kitchen Camera
-#  username: root
-#  password: 123
-#  authentication: basic
-#  still_image_url: https://10.0.0.71/cgi-bin/currentpic.cgi
-#  verify_ssl: false
-#  scan_interval: 1
-#
-#- platform: generic
-#  name: Living Room Camera
-#  username: root
-#  password: 123
-#  authentication: basic
-#  still_image_url: https://10.0.0.70/cgi-bin/currentpic.cgi
-#  verify_ssl: false
-#  scan_interval: 1
+- platform: generic
+  name: Kitchen Snapshot
+  username: root
+  password: 123
+  authentication: basic
+  still_image_url: https://10.0.0.71/cgi-bin/currentpic.cgi
+  verify_ssl: false
+  scan_interval: 1
+
+- platform: generic
+  name: Living Room Snapshot
+  username: root
+  password: 123
+  authentication: basic
+  still_image_url: https://10.0.0.70/cgi-bin/currentpic.cgi
+  verify_ssl: false
+  scan_interval: 1

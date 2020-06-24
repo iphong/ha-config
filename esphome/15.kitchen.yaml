@@ -6,7 +6,3 @@ substitutions:
 <<: !include .sonoff_light.yaml
 
 binary_sensor:
-- platform: homeassistant
-  name: $name Motion
-  entity_id: binary_sensor.wyzesense_779241f5
-  device_class: motion

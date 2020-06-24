@@ -1,15 +1,39 @@
-# Customize individual entity
-group.light_automations:
-  hidden: true
+
+binary_sensor.front_door:
+  device_class: lock
 binary_sensor.wyzesense_778cabc6:
   device_class: lock
-binary_sensor.wyzesense_778305f1:
+  friendly_name: Front Door
+
+#binary_sensor.wyzesense_778305f1:
+#  device_class: garage_door
+#binary_sensor.wyzesense_778cc063:
+#  device_class: connectivity
+#binary_sensor.wyzesense_777ef4c8:
+#  device_class: heat
+#binary_sensor.wyzesense_777eacaf:
+#  device_class: moisture
+#binary_sensor.wyzesense_77834fbf:
+#  device_class: presence
+#binary_sensor.wyzesense_7792df03:
+#  device_class: problem
+#binary_sensor.wyzesense_777ef42b:
+#  device_class: sound
+#binary_sensor.wyzesense_777eaf2e:
+#  device_class: vibration
+#binary_sensor.wyzesense_7792dfc0:
+#  device_class: window
+
+binary_sensor.wyzesense_7793fdd5:
   device_class: motion
-#binary_sensor.wyzesense_778c0ea5:
-#  friendly_name: Bedroom Motion Sensor
-#binary_sensor.wyzesense_777c5cdc:
-#  friendly_name: Bathroom Motion Sensor
-#binary_sensor.wyzesense_779241f5:
-#  friendly_name: Kitchen Motion Sensor
-#binary_sensor.wyzesense_7793fdd5:
-#  friendly_name: Living Room Motion Sensor
+
+binary_sensor.wyzesense_777c5cdc:
+  device_class: motion
+
+binary_sensor.wyzesense_779241f5:
+  device_class: motion
+
+binary_sensor.bedroom_motion:
+  device_class: motion
+binary_sensor.wyzesense_778c0ea5:
+  device_class: motion

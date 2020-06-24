@@ -3,9 +3,38 @@
 substitutions:
   <<: !include .pinout_tuya_switch.yaml
   host: switch_5
-  name: Switch 5
+  name: Kitchen
   ipv4: 10.0.0.55
 
   link_1: 10.0.0.10/light/bedroom_light
   link_2: 10.0.0.55/switch/switch_2
   link_3: 10.0.0.11/light/balcony_light
+
+i2c:
+  sda: 3
+  scl: 1
+  scan: yes
+
+sensor:
+- platform: dht12
+  temperature:
+    id: temp
+    name: $name Temperature
+  humidity:
+    name: $name Humidity
+  update_interval: 15s
+
+#remote_transmitter:
+#  id: transmitter
+#  pin: 0
+#  carrier_duty_percent: 50%
+#
+#climate:
+#- platform: daikin
+#  name: $name AC
+#  sensor: temp
+#  transmitter_id: transmitter
+#  visual:
+#    min_temperature: 18 °C
+#    max_temperature: 30 °C
+#    temperature_step: 1 °C

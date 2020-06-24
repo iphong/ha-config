@@ -1,6 +1,18 @@
 - platform: template
   name: Front Door
-  value_template: "{{ is_state('binary_sensor.wyzesense_778cabc6', 'off') }}"
+  value_template: "{{ is_state('binary_sensor.front_door', 'off') }}"
+  lock:
+  - service: system_log.write
+    data:
+      message: send lock door command
+  unlock:
+  - service: system_log.write
+    data:
+      message: send unlock door command
+
+- platform: template
+  name: Bedroom
+  value_template: "{{ is_state('binary_sensor.bedroom_door', 'off') }}"
   lock:
   - service: system_log.write
     data:
