@@ -26,7 +26,9 @@ esp32_camera:
   href_pin: 23
   pixel_clock_pin: 22
   power_down_pin: 32
+
+  max_framerate: 60fps
   
-  resolution: 1024x768
-  vertical_flip: false
-  horizontal_mirror: false
+#  resolution: 1024x768
+#  vertical_flip: false
+#  horizontal_mirror: false

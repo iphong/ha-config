@@ -1,14 +1,14 @@
 # THEMES
 
 dark_theme:
-  alias: Dark Theme
+  alias: Set dark Theme
   sequence:
     - service: frontend.set_theme
       data:
         name: Google Dark Theme
 
 light_theme:
-  alias: Light Theme
+  alias: Set light Theme
   sequence:
     - service: frontend.set_theme
       data:

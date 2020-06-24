@@ -1,6 +1,6 @@
 # CONFIGS
 reload_all_config:
-  alias: Reload configurations
+  alias: Reconfig
   sequence:
     - service: input_text.reload
     - service: input_datetime.reload

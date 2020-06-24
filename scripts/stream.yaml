@@ -1,13 +1,13 @@
 ## STREAM CAMERAS
-stream_living_room_camera:
-  alias: Stream Living Room Camera
-  sequence:
-    - data:
-        entity_id: camera.living_room_camera
-        media_player: media_player.bedroom_display
-        format: hls
-      entity_id: camera.living_room_camera
-      service: camera.play_stream
+#stream_living_room_camera:
+#  alias: Stream Living Room Camera
+#  sequence:
+#    - data:
+#        entity_id: camera.living_room_camera
+#        media_player: media_player.bedroom_display
+#        format: hls
+#      entity_id: camera.living_room_camera
+#      service: camera.play_stream
 
 #stream_cam_1:
 #  alias: camera 1 stream
