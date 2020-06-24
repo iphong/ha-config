@@ -22,10 +22,11 @@ frontend:
 script: !include_dir_merge_named scripts
 scene: !include_dir_merge_list scenes
 group: !include_dir_merge_named groups
-camera: !include_dir_merge_list cameras
 automation: !include_dir_merge_list automations
+
+lock: !include_dir_merge_list locks
+sensor: !include_dir_merge_list sensors
+camera: !include_dir_merge_list cameras
 media_player: !include_dir_merge_list media_players
 binary_sensor: !include_dir_merge_list binary_sensors
-sensor: !include_dir_merge_list sensors
-lock: !include_dir_merge_list locks
 alarm_control_panel: !include_dir_merge_list alarms

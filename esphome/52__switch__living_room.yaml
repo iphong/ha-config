@@ -9,10 +9,15 @@ substitutions:
   link_2: 10.0.0.16/light/living_room_light
   link_3: 10.0.0.16
 
+i2c:
+  sda: 3
+  scl: 1
+  scan: yes
+
 sensor:
-  - platform: dht12
-    temperature:
-      name: $name Temperature
-    humidity:
-      name: $name Humidity
-    update_interval: 15s
+- platform: dht12
+  temperature:
+    name: $name Temperature
+  humidity:
+    name: $name Humidity
+  update_interval: 15s
