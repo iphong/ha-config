@@ -20,4 +20,4 @@ climate:
     visual:
       min_temperature: 18 °C
       max_temperature: 30 °C
-      temperature_step: 1 °C
+#      temperature_step: 1 °C
