@@ -55,23 +55,42 @@ switch:
   id: output_3
   pin: GPIO13
 
-globals:
-  - id: var1
-    type: String
-  - id: var2
-    type: String
-
 script:
-- id: sync_state
+- id: sync_state_1
   then:
   - if:
       condition:
-        lambda: 'id(id(var1));'
+        switch.is_on: output_1
       then:
-        - http_request.post: 'http://{{ var2 }}/turn_on'
+      - http_request.post:
+          url: http://${link_1}/turn_on
       else:
-        - http_request.post: 'http://{{ var2 }}/turn_off'
-    
+      - http_request.post:
+          url: http://${link_1}/turn_off
+
+- id: sync_state_2
+  then:
+  - if:
+      condition:
+        switch.is_on: output_2
+      then:
+      - http_request.post:
+          url: http://${link_2}/turn_on
+      else:
+      - http_request.post:
+          url: http://${link_2}/turn_off
+- id: sync_state_3
+  then:
+  - if:
+      condition:
+        switch.is_on: output_3
+      then:
+      - http_request.post:
+          url: http://${link_3}/turn_on
+      else:
+      - http_request.post:
+          url: http://${link_3}/turn_off
+
 binary_sensor:
 - platform: gpio
   id: input_1
@@ -80,11 +99,8 @@ binary_sensor:
     inverted: true
   on_press:
   - then:
-    - lambda: >-
-        id(var1) = "output_1";
-        id(var2) = "$link_1";
     - switch.toggle: output_1
-    - script.execute: sync_state
+    - script.execute: sync_state_1
 - platform: gpio
   id: input_2
   pin:
@@ -92,11 +108,8 @@ binary_sensor:
     inverted: true
   on_press:
   - then:
-    - lambda: >-
-        id(var1) = "output_2";
-        id(var2) = "$link_2";
     - switch.toggle: output_2
-    - script.execute: sync_state
+    - script.execute: sync_state_2
 - platform: gpio
   id: input_3
   pin:
@@ -104,9 +117,6 @@ binary_sensor:
     inverted: true
   on_press:
   - then:
-    - lambda: >-
-        id(var1) = "output_3";
-        id(var2) = "$link_3";
     - switch.toggle: output_3
-    - script.execute: sync_state
+    - script.execute: sync_state_3
 
