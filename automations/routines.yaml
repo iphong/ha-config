@@ -4,6 +4,7 @@
   - platform: event
     event_type: homeassistant_start
   action:
+  - delay: 60s
   - service: notify.notify
     data:
       message: Home Assistant starting up
