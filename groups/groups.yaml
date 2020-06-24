@@ -1,6 +1,5 @@
 light_automations:
-  name: Lights Automations
-  all: false
+  name: Lights automation
   entities:
   - automation.turn_bathroom_light_off_when_cleared
   - automation.turn_bathroom_light_on_when_occupied
@@ -13,7 +12,6 @@ light_automations:
 
 people:
   name: People
-  all: false
   entities:
   - person.phong
   - person.sumi
@@ -41,7 +39,7 @@ sys_stats:
   - sensor.load_15m
 
 if_stats_eth0:
-  name: "Interface (eth0)"
+  name: Network
   entities:
   - sensor.ipv4_address_eth0
   - sensor.network_in_eth0
@@ -51,13 +49,13 @@ if_stats_eth0:
   - sensor.network_throughput_in_eth0
   - sensor.network_throughput_out_eth0
 
-if_stats_wlan0:
-  name: "Interface (wlan0)"
-  entities:
-  - sensor.ipv4_address_wlan0
-  - sensor.network_in_wlan0
-  - sensor.network_out_wlan0
-  - sensor.packets_in_wlan0
-  - sensor.packets_out_wlan0
-  - sensor.network_throughput_in_wlan0
-  - sensor.network_throughput_out_wlan0
+#if_stats_wlan0:
+#  name: "Interface (wlan0)"
+#  entities:
+#  - sensor.ipv4_address_wlan0
+#  - sensor.network_in_wlan0
+#  - sensor.network_out_wlan0
+#  - sensor.packets_in_wlan0
+#  - sensor.packets_out_wlan0
+#  - sensor.network_throughput_in_wlan0
+#  - sensor.network_throughput_out_wlan0

@@ -1,5 +1,4 @@
 
-
 - alias: Startup routine
   trigger:
   - platform: event
@@ -18,7 +17,7 @@
     data:
       message: Home Assistant shutting down
 
-- alias: Morning scene
+- alias: Morning routine
   trigger:
   - platform: sun
     event: sunrise
@@ -31,7 +30,7 @@
     data:
       message: Morning scene activated
 
-- alias: Evening scene
+- alias: Evening routine
   trigger:
   - platform: sun
     event: sunset
@@ -44,7 +43,7 @@
     data:
       message: Evening scene activated
 
-- alias: Night scene
+- alias: Night routine
   trigger:
   - platform: time
     at: '23:00:00'

@@ -1,3 +1,8 @@
+'camera.bedroom_camera':
+  hidden: true
+'camera.living_room_camera':
+  hidden: true
+
 
 binary_sensor.front_door:
   device_class: lock

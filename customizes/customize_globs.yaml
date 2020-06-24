@@ -1,7 +1,7 @@
 # Customize similar entities
 
-'switch.switch_*':
-  icon: mdi:circle-outline
+#'switch.switch_*':
+#  icon: mdi:circle-outline
 
 #'camera.*_motion_snapshot':
 #  hidden: true

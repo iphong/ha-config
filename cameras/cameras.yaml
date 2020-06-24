@@ -13,7 +13,7 @@
   authentication: basic
   still_image_url: https://10.0.0.71/cgi-bin/currentpic.cgi
   verify_ssl: false
-  scan_interval: 1
+  scan_interval: 5
 
 - platform: generic
   name: Living Room Snapshot
@@ -22,4 +22,4 @@
   authentication: basic
   still_image_url: https://10.0.0.70/cgi-bin/currentpic.cgi
   verify_ssl: false
-  scan_interval: 1
+  scan_interval: 5
