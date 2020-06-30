@@ -1,6 +1,6 @@
-substitutions:
-  host: dining_room
-  name: Dining Room
-  ipv4: 10.0.0.13
-
 <<: !include .sonoff_light.yaml
+
+substitutions:
+  host: light_dining_room
+  area: Dining Room
+  ipv4: 10.0.0.13

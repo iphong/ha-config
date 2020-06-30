@@ -2,5 +2,5 @@
 
 substitutions:
   host: espcam_2
-  name: Camera 2
+  area: Camera 2
   ipv4: 10.0.0.22

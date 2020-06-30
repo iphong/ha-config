@@ -1,8 +1,8 @@
 <<: !include .switch.yaml
 
 substitutions:
-  host: switch_2
-  name: Living Room
+  host: switch_living_room
+  area: Living Room
   ipv4: 10.0.0.52
 
   link_1: 10.0.0.16
@@ -14,10 +14,8 @@ i2c:
   scl: 1
   scan: yes
 
+
 sensor:
-- platform: dht12
-  temperature:
-    name: $name Temperature
-  humidity:
-    name: $name Humidity
-  update_interval: 15s
+- <<: !include sensors/rssi.yaml
+- <<: !include sensors/uptime.yaml
+- <<: !include sensors/dht12.yaml

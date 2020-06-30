@@ -1,8 +1,8 @@
 <<: !include .switch.yaml
 
 substitutions:
-  host: switch_1
-  name: Bathroom
+  host: switch_bathroom
+  area: Bathroom
   ipv4: 10.0.0.51
 
   link_1: 10.0.0.12/light/bathroom_light

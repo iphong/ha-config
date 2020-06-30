@@ -2,7 +2,7 @@
 
 substitutions:
   host: switch_6
-  name: Switch 6
+  area: Switch 6
   ipv4: 10.0.0.56
 
   link_1: 10.0.0.31/cover/bedroom_curtain

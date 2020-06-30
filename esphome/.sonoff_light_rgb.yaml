@@ -1,5 +1,9 @@
 <<: !include .sonoff.yaml
 
+sensor:
+- <<: !include sensors/rssi.yaml
+- <<: !include sensors/uptime.yaml
+
 power_supply:
   - id: psu_1
     enable_time: 20ms
@@ -27,7 +31,7 @@ output:
 
 light:
   - platform: rgb
-    name: $name Light
+    name: $area Light
     blue: output_1
     green: output_2
     red: output_3

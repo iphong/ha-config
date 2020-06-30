@@ -1,0 +1,8 @@
+- platform: dht
+  pin: 2
+  temperature:
+    id: temperature
+    name: $area Temperature
+  humidity:
+    id: humidity
+    name: $area Humidity

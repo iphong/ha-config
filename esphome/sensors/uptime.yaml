@@ -1,0 +1,2 @@
+- platform: uptime
+  name: $host uptime

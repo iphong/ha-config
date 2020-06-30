@@ -8,10 +8,10 @@ wifi:
   <<: !include .wifi.yaml
   
 esphome:
-  name: $name
+  name: $area
   board: modwifi
   platform: ESP8266
-  build_path: build/$name
+  build_path: build/$area
   esp8266_restore_from_flash: true
   platformio_options:
     upload_speed: 921600
@@ -41,7 +41,7 @@ sensor:
       App.register_component(dimmer);
       return { dimmer->value };
     sensors:
-      - name: Dimmer $name
+      - name: Dimmer $area
 
 binary_sensor:
   

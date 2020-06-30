@@ -1,16 +1,11 @@
-substitutions:
-  host: balcony
-  name: Balcony
-  ipv4: 10.0.0.11
-
 <<: !include .sonoff_light.yaml
 
+substitutions:
+  host: light_balcony
+  area: Balcony
+  ipv4: 10.0.0.11
+
 sensor:
-- platform: dht
-  pin: 2
-  temperature:
-    id: temperature
-    name: $name Temperature
-  humidity:
-    id: humidity
-    name: $name Humidity
+- <<: !include sensors/rssi.yaml
+- <<: !include sensors/uptime.yaml
+- <<: !include sensors/dht11.yaml

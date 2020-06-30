@@ -42,6 +42,10 @@ api:
          }
         }
 
+sensor:
+- <<: !include sensors/rssi.yaml
+- <<: !include sensors/uptime.yaml
+
 switch:
 - platform: gpio
   id: output_1

@@ -1,9 +1,14 @@
 ota:
   password: !secret wifi_password
+
 api:
   reboot_timeout: 0s
+
 logger:
   baud_rate: 0
+
 web_server:
+
 captive_portal:
+
 wifi: !include .wifi.yaml

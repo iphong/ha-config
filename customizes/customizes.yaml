@@ -1,7 +1,7 @@
-'camera.kitchen_camera':
-  hidden: true
-'camera.living_room_camera':
-  hidden: true
+#'camera.kitchen_camera':
+#  hidden: true
+#'camera.living_room_camera':
+#  hidden: true
 
 
 binary_sensor.front_door:

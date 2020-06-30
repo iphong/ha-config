@@ -1,5 +1,9 @@
 <<: !include .sonoff.yaml
 
+sensor:
+  - <<: !include sensors/rssi.yaml
+  - <<: !include sensors/uptime.yaml
+
 power_supply:
   - id: psu_1
     enable_time: 20ms
@@ -25,7 +29,7 @@ output:
 
 light:
   - platform: cwww
-    name: $name Light
+    name: $area Light
     cold_white: output_1
     warm_white: output_2
     cold_white_color_temperature: 6000 K

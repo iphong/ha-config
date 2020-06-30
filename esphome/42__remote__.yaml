@@ -2,7 +2,7 @@
 
 substitutions:
   host: remote_2
-  name: Bedroom
+  area: Bedroom
   ipv4: 10.0.0.42
 
 sensor:

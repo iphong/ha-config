@@ -1,11 +1,9 @@
-substitutions:
-  host: bathroom
-  name: Bathroom
-  ipv4: 10.0.0.12
-
 <<: !include .sonoff_light_cw.yaml
 
-binary_sensor:
+substitutions:
+  host: light_bathroom
+  area: Bathroom
+  ipv4: 10.0.0.12
 
 power_supply: []
 
@@ -28,4 +26,4 @@ fan:
   - platform: binary
     output: output_3
     id: fan_1
-    name: $name Fan
+    name: $area Fan

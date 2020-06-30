@@ -20,7 +20,7 @@
   action:
   - service: esphome.switch_1_sync_button_state
     data_template:
-      button: 1
+      button: 2
       state: "{{ is_state('fan.bathroom_fan', 'on') }}"
 
 # dining_room light -> switch 3a
@@ -42,7 +42,7 @@
   - entity_id: light.alter_light
     platform: state
   action:
-  - service: esphome.switch_4_sync_button_state
+  - service: esphome.switch_3_sync_button_state
     data_template:
       button: 2
       state: "{{ is_state('light.alter_light', 'on') }}"

@@ -1,0 +1,6 @@
+- platform: wifi_signal
+  name: $host rssi
+  unit_of_measurement: '%'
+  accuracy_decimals: 0
+  filters:
+  - lambda: return map(x, -100, -20, 0, 100);

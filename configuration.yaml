@@ -8,7 +8,7 @@ homeassistant:
   external_url: "https://www.phong.live"
   latitude: 21.0197167
   longitude: 105.8228603
-  elevation: 10
+  elevation: 98
   unit_system: metric
   time_zone: Asia/Ho_Chi_Minh
 

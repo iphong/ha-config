@@ -1,0 +1,48 @@
+<<: !include ../.common.yaml
+
+esphome:
+  name: $host
+  board: modwifi
+  platform: ESP8266
+  build_path: build/$host
+  esp8266_restore_from_flash: true
+  includes:
+  - components/curtain.h
+
+globals:
+- id: cover_open
+  type: bool
+  restore_value: yes
+  initial_value: "false"
+- id: cover_reversed
+  type: bool
+  restore_value: yes
+  initial_value: "false"
+#- id: cover_position
+#  type: float
+#  restore_value: yes
+#  initial_value: "0.5"
+
+sensor:
+- <<: !include ../sensors/rssi.yaml
+- <<: !include ../sensors/uptime.yaml
+
+uart:
+  tx_pin: 1
+  rx_pin: 3
+  baud_rate: 9600
+
+custom_component:
+- lambda: |-
+    return { new CustomAPI() };
+
+cover:
+- platform: custom
+  lambda: |-
+    auto curtain = new CustomCover();
+    App.register_component(curtain);
+    return {curtain};
+  covers:
+  - id: cover_1
+    name: $area Curtain
+    device_class: curtain

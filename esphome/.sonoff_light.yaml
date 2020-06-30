@@ -1,5 +1,9 @@
 <<: !include .sonoff.yaml
 
+sensor:
+- <<: !include sensors/rssi.yaml
+- <<: !include sensors/uptime.yaml
+
 output:
   - platform: gpio
     pin: 12
@@ -9,4 +13,4 @@ light:
   - platform: binary
     id: light_1
     output: output_1
-    name: $name Light
+    name: $area Light

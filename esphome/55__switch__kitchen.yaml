@@ -2,7 +2,7 @@
 
 substitutions:
   host: switch_5
-  name: Kitchen
+  area: Kitchen
   ipv4: 10.0.0.55
 
   link_1: 10.0.0.10/light/bedroom_light
@@ -17,7 +17,7 @@ i2c:
 sensor:
 - platform: dht12
   temperature:
-    name: $name Temperature
+    name: $area Temperature
   humidity:
-    name: $name Humidity
+    name: $area Humidity
   update_interval: 15s

@@ -10,6 +10,9 @@ esphome:
     upload_speed: 921600
 #    board_build.f_cpu: 160000000L
 
+api:
+  reboot_timeout: 0s
+
 status_led:
   pin:
     number: 13

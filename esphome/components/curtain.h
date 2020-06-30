@@ -22,10 +22,7 @@ public:
 		return traits;
 	}
 
-	void setup() override {
-		position = id(cover_position);
-		publish_state();
-	}
+	void setup() override {}
 
 	void loop() override {
 		while (Serial.available()) {

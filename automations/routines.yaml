@@ -7,6 +7,7 @@
   - delay: 60s
   - service: notify.notify
     data:
+      title: Home Alert
       message: Home Assistant starting up
 
 - alias: Shutdown routine
@@ -16,6 +17,7 @@
   action:
   - service: notify.notify
     data:
+      title: Home Alert
       message: Home Assistant shutting down
 
 - alias: Morning routine
@@ -29,6 +31,7 @@
       name: Google Light Theme
   - service: notify.notify
     data:
+      title: Home Alert
       message: Morning scene activated
 
 - alias: Evening routine
@@ -42,6 +45,7 @@
       name: Google Dark Theme
   - service: notify.notify
     data:
+      title: Home Alert
       message: Evening scene activated
 
 - alias: Night routine
@@ -52,4 +56,5 @@
   - scene: scene.night
   - service: notify.notify
     data:
+      title: Home Alert
       message: Night scene activated
