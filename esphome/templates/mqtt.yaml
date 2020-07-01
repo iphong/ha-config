@@ -1,0 +1,8 @@
+broker: !secret mqtt_broker
+username: !secret mqtt_username
+password: !secret mqtt_password
+discovery: false
+log_topic:
+  topic: debug
+  level: none
+reboot_timeout: 0s

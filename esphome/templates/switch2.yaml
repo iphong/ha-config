@@ -1,0 +1,75 @@
+<<: !include common.yaml
+
+esphome:
+  name: $host
+  board: modwifi
+  platform: ESP8266
+  build_path: build/$host
+  esp8266_restore_from_flash: true
+  platformio_options:
+    upload_speed: 921600
+    board_build.f_cpu: 160000000L
+
+status_led:
+  pin:
+    number: 16
+    inverted: true
+
+api:
+  reboot_timeout: 0s
+
+switch:
+
+- platform: gpio
+  id: switch_1
+  pin: GPIO04
+  state_topic: light/bedroom/state
+  command_topic: light/bedroom/set
+
+- platform: gpio
+  id: switch_2
+  pin: GPIO15
+  state_topic: light/balcony
+  command_topic: light/balcony
+  
+- platform: gpio
+  id: switch_3
+  pin: GPIO13
+  state_topic: light/bedroom/state
+  command_topic: light/bedroom/set
+  on_turn_on:
+  - mqtt.publish:
+      topic: light/bedroom/state
+      payload: 'on'
+  on_turn_off:
+  - mqtt.publish:
+      topic: light/bedroom/state
+      payload: 'off'
+
+
+binary_sensor:
+
+- platform: gpio
+  id: input_1
+  pin:
+    number: GPIO14
+    inverted: true
+  on_press:
+  - switch.toggle: switch_1
+
+- platform: gpio
+  id: input_2
+  pin:
+    number: GPIO05
+    inverted: true
+  on_press:
+  - switch.toggle: switch_2
+
+- platform: gpio
+  id: input_3
+  pin:
+    number: GPIO12
+    inverted: true
+  on_press:
+  - switch.toggle: switch_3
+

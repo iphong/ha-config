@@ -4,6 +4,8 @@ ota:
 api:
   reboot_timeout: 0s
 
+#mqtt: !include mqtt.yaml
+
 logger:
   baud_rate: 0
 

@@ -1,10 +1,10 @@
-#- name: Living Room Camera
-#  platform: ffmpeg
-#  input: -rtsp_transport tcp -i rtsp://phong:123qwe@10.0.0.70:8554/unicast
+- name: Living Room Camera
+  platform: ffmpeg
+  input: -rtsp_transport tcp -i rtsp://phong:123qwe@10.0.0.70:8554/unicast
 #
 #- name: Kitchen Camera
 #  platform: ffmpeg
-#  input: -rtsp_transport tcp -i rtsp://user:123@10.0.0.71:8554/unicast
+#  input: -rtsp_transport tcp -i rtsp://phong:123qwe@10.0.0.71:8554/unicast
 #
 #- platform: generic
 #  name: Kitchen Snapshot

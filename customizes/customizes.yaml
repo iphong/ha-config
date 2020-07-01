@@ -4,9 +4,6 @@
 #  hidden: true
 
 
-binary_sensor.front_door:
-  device_class: lock
-  friendly_name: Front Door
 binary_sensor.wyzesense_778cabc6:
   device_class: lock
   friendly_name: Front Door

@@ -13,22 +13,22 @@ esphome:
 status_led:
   pin: 33
 
-esp32_camera:
-  name: $area
-  external_clock:
-    pin: 0
-    frequency: 20MHz
-  i2c_pins:
-    sda: 26
-    scl: 27
-  data_pins: [5, 18, 19, 21, 36, 39, 34, 35]
-  vsync_pin: 25
-  href_pin: 23
-  pixel_clock_pin: 22
-  power_down_pin: 32
-
-  max_framerate: 60fps
-  
+#esp32_camera:
+#  name: $area
+#  external_clock:
+#    pin: 0
+#    frequency: 20MHz
+#  i2c_pins:
+#    sda: 26
+#    scl: 27
+#  data_pins: [5, 18, 19, 21, 36, 39, 34, 35]
+#  vsync_pin: 25
+#  href_pin: 23
+#  pixel_clock_pin: 22
+#  power_down_pin: 32
+#
+#  max_framerate: 60fps
+#
 #  resolution: 1024x768
 #  vertical_flip: false
 #  horizontal_mirror: false

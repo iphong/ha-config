@@ -28,10 +28,18 @@ api:
       state: bool
     then:
     - lambda: >-
-        switch (button) {
-          case 1: id(output_1).publish_state(state); break;
-          case 2: id(output_2).publish_state(state); break;
-          case 3: id(output_3).publish_state(state); break;
+        if (state) {
+          switch (button) {
+            case 1: id(output_1).turn_on(); break;
+            case 2: id(output_2).turn_on(); break;
+            case 3: id(output_3).turn_on(); break;
+          }
+        } else {
+         switch (button) {
+           case 1: id(output_1).turn_off(); break;
+           case 2: id(output_2).turn_off(); break;
+           case 3: id(output_3).turn_off(); break;
+         }
         }
 
 sensor:
