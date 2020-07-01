@@ -32,17 +32,9 @@ binary_sensor.wyzesense_7792dfc0:
 
 binary_sensor.wyzesense_7793fdd5:
   device_class: motion
-  friendly_name: Bathroom Motion
-
 binary_sensor.wyzesense_777c5cdc:
   device_class: motion
-  friendly_name: Kitchen Motion
-
 binary_sensor.wyzesense_779241f5:
   device_class: motion
-  friendly_name: Living Room Motion
-
 binary_sensor.wyzesense_778c0ea5:
   device_class: motion
-  friendly_name: Bedroom Motion
-  alias: bedroom_motion
