@@ -13,10 +13,8 @@ ap:
   ssid: ESPHOME $host WiFi
   password: !secret wifi_password
   manual_ip:
-    static_ip: 10.0.0.1
-    gateway: 10.0.0.1
+    static_ip: 10.0.1.1
+    gateway: 10.0.1.1
     subnet: 255.255.255.0
     dns1: 1.1.1.1
     dns2: 1.0.0.1
-#output_power: 10
-#reboot_timeout: 60s

@@ -1,4 +1,4 @@
-<<: !include .common.yaml
+<<: !include common.yaml
 
 esphome:
   name: $host
@@ -6,6 +6,8 @@ esphome:
   platform: ESP8266
   build_path: build/$host
   esp8266_restore_from_flash: true
+  platformio_options:
+    upload_speed: 921600
 
 remote_transmitter:
   id: transmitter

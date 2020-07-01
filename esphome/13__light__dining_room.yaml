@@ -1,4 +1,4 @@
-<<: !include .sonoff_light.yaml
+<<: !include templates/sonoff_light.yaml
 
 substitutions:
   host: light_dining_room

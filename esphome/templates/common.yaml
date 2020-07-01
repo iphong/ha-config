@@ -11,4 +11,4 @@ web_server:
 
 captive_portal:
 
-wifi: !include .wifi.yaml
+wifi: !include wifi.yaml

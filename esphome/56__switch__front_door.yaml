@@ -1,8 +1,8 @@
-<<: !include .switch.yaml
+<<: !include templates/switch.yaml
 
 substitutions:
-  host: switch_6
-  area: Switch 6
+  host: switch_front_door
+  area: Front Door
   ipv4: 10.0.0.56
 
   link_1: 10.0.0.31/cover/bedroom_curtain

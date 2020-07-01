@@ -1,8 +1,8 @@
-<<: !include .sonoff.yaml
+<<: !include sonoff.yaml
 
 sensor:
-  - <<: !include sensors/rssi.yaml
-  - <<: !include sensors/uptime.yaml
+#  - <<: !include sensors/rssi.yaml
+#  - <<: !include sensors/uptime.yaml
 
 power_supply:
   - id: psu_1

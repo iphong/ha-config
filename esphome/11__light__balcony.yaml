@@ -1,4 +1,4 @@
-<<: !include .sonoff_light.yaml
+<<: !include templates/sonoff_light.yaml
 
 substitutions:
   host: light_balcony
@@ -6,6 +6,6 @@ substitutions:
   ipv4: 10.0.0.11
 
 sensor:
-- <<: !include sensors/rssi.yaml
-- <<: !include sensors/uptime.yaml
+#- <<: !include sensors/rssi.yaml
+#- <<: !include sensors/uptime.yaml
 - <<: !include sensors/dht11.yaml

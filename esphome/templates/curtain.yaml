@@ -1,4 +1,4 @@
-<<: !include ../.common.yaml
+<<: !include common.yaml
 
 esphome:
   name: $host
@@ -6,38 +6,38 @@ esphome:
   platform: ESP8266
   build_path: build/$host
   esp8266_restore_from_flash: true
+  platformio_options:
+    upload_speed: 921600
   includes:
   - components/curtain.h
 
-globals:
-- id: cover_open
-  type: bool
-  restore_value: yes
-  initial_value: "false"
-- id: cover_reversed
-  type: bool
-  restore_value: yes
-  initial_value: "false"
+#globals:
+#- id: cover_open
+#  type: bool
+#  restore_value: yes
+#  initial_value: "false"
+#- id: cover_reversed
+#  type: bool
+#  restore_value: yes
+#  initial_value: "false"
 #- id: cover_position
 #  type: float
 #  restore_value: yes
 #  initial_value: "0.5"
 
-sensor:
-- <<: !include ../sensors/rssi.yaml
-- <<: !include ../sensors/uptime.yaml
+#custom_component:
+#  lambda: |-
+#    return { new CustomAPI() };
 
 uart:
+  id: uart0
   tx_pin: 1
   rx_pin: 3
   baud_rate: 9600
 
-custom_component:
-- lambda: |-
-    return { new CustomAPI() };
-
 cover:
-- platform: custom
+  platform: custom
+  id: custom_1
   lambda: |-
     auto curtain = new CustomCover();
     App.register_component(curtain);

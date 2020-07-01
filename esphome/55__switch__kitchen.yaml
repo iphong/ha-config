@@ -1,7 +1,7 @@
-<<: !include .switch.yaml
+<<: !include templates/switch.yaml
 
 substitutions:
-  host: switch_5
+  host: switch_kitchen
   area: Kitchen
   ipv4: 10.0.0.55
 

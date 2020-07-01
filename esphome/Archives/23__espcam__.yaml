@@ -1,4 +1,4 @@
-<<: !include .espcam.yaml
+<<: !include templates/espcam.yaml
 
 substitutions:
   host: espcam_3

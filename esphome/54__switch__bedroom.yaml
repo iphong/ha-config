@@ -1,7 +1,7 @@
-<<: !include .switch.yaml
+<<: !include templates/switch.yaml
 
 substitutions:
-  host: switch_4
+  host: switch_bedroom
   area: Bedroom
   ipv4: 10.0.0.54
 
@@ -25,7 +25,9 @@ sensor:
 
 remote_transmitter:
   id: transmitter
-  pin: 0
+  pin:
+    number: 0
+    inverted: true
   carrier_duty_percent: 50%
 
 climate:

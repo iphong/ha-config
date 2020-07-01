@@ -1,4 +1,4 @@
-<<: !include .common.yaml
+<<: !include common.yaml
 
 esphome:
   name: $host
@@ -7,8 +7,8 @@ esphome:
   build_path: build/$host
   platformio_options:
     upload_speed: 921600
-    board_build.f_cpu: 240000000L
-    board_build.f_flash: 80000000L
+#    board_build.f_cpu: 240000000L
+#    board_build.f_flash: 80000000L
 
 status_led:
   pin: 33

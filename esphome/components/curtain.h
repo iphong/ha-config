@@ -14,6 +14,7 @@
 
 class CustomCover : public Component, public Cover {
 public:
+
 	CoverTraits get_traits() override {
 		auto traits = CoverTraits();
 		traits.set_is_assumed_state(false);
@@ -25,8 +26,8 @@ public:
 	void setup() override {}
 
 	void loop() override {
-		while (Serial.available()) {
-			readByte(Serial.read());
+		while (id(uart0).available()) {
+			parse(id(uart0).read());
 		}
 	}
 
@@ -49,10 +50,9 @@ public:
 			}
 			writeByte(crc);
 		}
-		publish_state();
 	}
 
-	void readByte(uint8_t data) {
+	void parse(uint8_t data) {
 		if ((offset == 0 && data == 0x55) || (offset == 1 && data == 0xAA) || offset) {
 			buffer[offset++] = data;
 			if (offset > 6) {
@@ -70,7 +70,12 @@ public:
 								switch (data_id) {
 									// Motor reversing state
 									case 0x67: {
-										id(cover_reversed) = !!buffer[10];
+//										bool is_reversed = !!buffer[10];
+										if (!buffer[10]) {
+											crc = 0;
+											writeHex(TUYA_ENABLE_REVERSING);
+											writeByte(crc);
+										}
 										break;
 									}
 									// Operation mode state
@@ -92,7 +97,6 @@ public:
 									// Max value is 0x64 so the last byte is good enough
 									case 0x66: {
 										position = buffer[13] / 100.0f;
-										id(cover_open) = !!position;
 										break;
 									}
 									// Position report after operation
@@ -100,7 +104,6 @@ public:
 										position = buffer[13] / 100.0f;
 										if (position > 0.95) position = 1;
 										if (position < 0.05) position = 0;
-										id(cover_open) = !!position;
 										current_operation = COVER_OPERATION_IDLE;
 										break;
 									}
@@ -119,7 +122,7 @@ public:
 	uint8_t crc;
 
 	void writeByte(uint8_t data) {
-		Serial.write(data);
+		id(uart0).write(data);
 		crc += data;
 	}
 
@@ -166,6 +169,6 @@ public:
 	}
 
 	void writeByte(uint8_t data) {
-		Serial.write(data);
+		id(uart0).write(data);
 	}
 };

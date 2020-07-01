@@ -1,4 +1,4 @@
-<<: !include .sonoff_light_cw.yaml
+<<: !include templates/sonoff_light_cw.yaml
 
 substitutions:
   host: light_bathroom
@@ -23,7 +23,32 @@ output:
   pin: 12
 
 fan:
-  - platform: binary
-    output: output_3
-    id: fan_1
-    name: $area Fan
+- platform: binary
+  output: output_3
+  id: fan_1
+  name: $area Fan
+
+switch:
+- platform: template
+  id: radiator
+  icon: mdi:radiator
+  name: $area Radiator
+- platform: template
+  id: water_boiler
+  icon: mdi:water-boiler
+  name: $area Boiler
+  turn_on_action:
+  - script.execute: delay_boiler
+
+script:
+- id: delay_boiler
+  then:
+  - if:
+      condition:
+        script.is_running: delay_boiler
+      then:
+        script.stop: delay_boiler
+  - lambda: id(water_boiler).publish_state(true);
+  - delay: '00:60:00'
+  - lambda: id(water_boiler).publish_state(false);
+

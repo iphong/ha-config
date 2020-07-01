@@ -1,4 +1,4 @@
-<<: !include .switch.yaml
+<<: !include templates/switch.yaml
 
 substitutions:
   host: switch_living_room
@@ -14,8 +14,7 @@ i2c:
   scl: 1
   scan: yes
 
-
 sensor:
-- <<: !include sensors/rssi.yaml
-- <<: !include sensors/uptime.yaml
+#- <<: !include sensors/rssi.yaml
+#- <<: !include sensors/uptime.yaml
 - <<: !include sensors/dht12.yaml

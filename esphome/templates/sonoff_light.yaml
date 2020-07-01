@@ -1,8 +1,8 @@
-<<: !include .sonoff.yaml
+<<: !include sonoff.yaml
 
 sensor:
-- <<: !include sensors/rssi.yaml
-- <<: !include sensors/uptime.yaml
+#- <<: !include sensors/rssi.yaml
+#- <<: !include sensors/uptime.yaml
 
 output:
   - platform: gpio
@@ -11,6 +11,5 @@ output:
 
 light:
   - platform: binary
-    id: light_1
     output: output_1
     name: $area Light

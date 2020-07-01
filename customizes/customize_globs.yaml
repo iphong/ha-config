@@ -3,8 +3,13 @@
 #'switch.switch_*':
 #  icon: mdi:circle-outline
 
-#'camera.*_motion_snapshot':
-#  hidden: true
+'sensor.*_rssi':
+  hidden: true
+'sensor.*_uptime':
+  hidden: true
+'camera.*_motion_snapshot':
+  hidden: true
+
 #'switch.wyzecam_*':
 #  hidden: true
 #'cover.wyzecam_*':

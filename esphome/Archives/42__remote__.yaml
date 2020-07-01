@@ -1,4 +1,4 @@
-<<: !include .remote.yaml
+<<: !include templates/remote.yaml
 
 substitutions:
   host: remote_2

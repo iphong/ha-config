@@ -6,7 +6,7 @@
   - entity_id: light.bathroom_light
     platform: state
   action:
-  - service: esphome.switch_1_sync_button_state
+  - service: esphome.switch_bathroom_sync_button_state
     data_template:
       button: 1
       state: "{{ is_state('light.bathroom_light', 'on') }}"
@@ -18,10 +18,22 @@
   - entity_id: fan.bathroom_fan
     platform: state
   action:
-  - service: esphome.switch_1_sync_button_state
+  - service: esphome.switch_bathroom_sync_button_state
     data_template:
       button: 2
       state: "{{ is_state('fan.bathroom_fan', 'on') }}"
+
+# bathroom boiler -> switch 1c
+
+- alias: Sync bathroom boiler state
+  trigger:
+  - entity_id: switch.bathroom_boiler
+    platform: state
+  action:
+  - service: esphome.switch_bathroom_sync_button_state
+    data_template:
+      button: 3
+      state: "{{ is_state('switch.bathroom_boiler', 'on') }}"
 
 # dining_room light -> switch 3a
 
@@ -30,7 +42,7 @@
   - entity_id: light.dining_room_light
     platform: state
   action:
-  - service: esphome.switch_4_sync_button_state
+  - service: esphome.switch_dining_room_sync_button_state
     data_template:
       button: 1
       state: "{{ is_state('light.dining_room_light', 'on') }}"
@@ -42,7 +54,7 @@
   - entity_id: light.alter_light
     platform: state
   action:
-  - service: esphome.switch_3_sync_button_state
+  - service: esphome.switch_dining_room_sync_button_state
     data_template:
       button: 2
       state: "{{ is_state('light.alter_light', 'on') }}"
@@ -54,7 +66,7 @@
   - entity_id: light.kitchen_light
     platform: state
   action:
-  - service: esphome.switch_3_sync_button_state
+  - service: esphome.switch_dining_room_sync_button_state
     data_template:
       button: 3
       state: "{{ is_state('light.kitchen_light', 'on') }}"
@@ -66,7 +78,7 @@
   - entity_id: light.living_room_light
     platform: state
   action:
-  - service: esphome.switch_2_sync_button_state
+  - service: esphome.switch_living_room_sync_button_state
     data_template:
       button: 2
       state: "{{ is_state('light.living_room_light', 'on') }}"
@@ -78,7 +90,7 @@
   - entity_id: light.bedroom_light
     platform: state
   action:
-  - service: esphome.switch_4_sync_button_state
+  - service: esphome.switch_bedroom_sync_button_state
     data_template:
       button: 1
       state: "{{ is_state('light.bedroom_light', 'on') }}"
@@ -90,7 +102,7 @@
   - entity_id: light.balcony_light
     platform: state
   action:
-  - service: esphome.switch_4_sync_button_state
+  - service: esphome.switch_bedroom_sync_button_state
     data_template:
       button: 3
       state: "{{ is_state('light.balcony_light', 'on') }}"

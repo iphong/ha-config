@@ -2,10 +2,7 @@
 # B: 00001011
 # C: 00001100
 
-<<: !include .common.yaml
-
-wifi:
-  <<: !include .wifi.yaml
+<<: !include common.yaml
   
 esphome:
   name: $area

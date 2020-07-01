@@ -1,4 +1,4 @@
-<<: !include .switch.yaml
+<<: !include templates/switch.yaml
 
 substitutions:
   host: switch_dining_room
