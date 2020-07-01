@@ -1,11 +1,11 @@
 <<: !include sonoff.yaml
 
 output:
-  - platform: gpio
-    pin: 12
-    id: output_1
+- platform: gpio
+  pin: 12
+  id: output_1
 
 light:
-  - platform: binary
-    output: output_1
-    name: $area Light
+- platform: binary
+  output: output_1
+  name: $area Light

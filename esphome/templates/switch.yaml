@@ -98,6 +98,9 @@ script:
           url: http://${link_3}/turn_off
 
 binary_sensor:
+#- platform: homeassistant
+#  entity_id: light.bedroom_light
+#  id: state_1
 - platform: gpio
   id: input_1
   pin:

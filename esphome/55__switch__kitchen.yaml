@@ -15,9 +15,4 @@ i2c:
   scan: yes
 
 sensor:
-- platform: dht12
-  temperature:
-    name: $area Temperature
-  humidity:
-    name: $area Humidity
-  update_interval: 15s
+- <<: !include sensors/dht12.yaml

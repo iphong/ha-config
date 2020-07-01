@@ -1,6 +1,10 @@
 platform: dht12
 temperature:
+  id: temperature
   name: $area Temperature
+  filters:
+  - offset: -2.0
 humidity:
+  id: humidity
   name: $area Humidity
 update_interval: 15s

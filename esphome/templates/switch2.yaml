@@ -9,120 +9,36 @@ esphome:
   platformio_options:
     upload_speed: 921600
     board_build.f_cpu: 160000000L
-
-http_request:
-  useragent: esphome/$host
-  timeout: 1s
+    board_build.f_flash: 80000000L
 
 status_led:
   pin:
     number: 16
     inverted: true
 
-api:
-  reboot_timeout: 0s
-  services:
-  - service: sync_button_state
-    variables:
-      button: int
-      state: bool
-    then:
-    - lambda: >-
-        if (state) {
-          switch (button) {
-            case 1: id(output_1).turn_on(); break;
-            case 2: id(output_2).turn_on(); break;
-            case 3: id(output_3).turn_on(); break;
-          }
-        } else {
-         switch (button) {
-           case 1: id(output_1).turn_off(); break;
-           case 2: id(output_2).turn_off(); break;
-           case 3: id(output_3).turn_off(); break;
-         }
-        }
-
-switch:
-- platform: gpio
-  id: output_1
-  icon: mdi:circle-double
-  name: $area Switch 1
-  pin: GPIO04
-
-- platform: gpio
-  id: output_2
-  icon: mdi:circle-double
-  name: $area Switch 2
-  pin: GPIO15
-
-- platform: gpio
-  id: output_3
-  icon: mdi:circle-double
-  name: $area Switch 3
-  pin: GPIO13
-
 script:
-- id: sync_state_1
-  then:
-  - if:
-      condition:
-        switch.is_on: output_1
-      then:
-      - http_request.post:
-          url: http://${link_1}/turn_on
-      else:
-      - http_request.post:
-          url: http://${link_1}/turn_off
+- id: on_single_tap_button_1
+  then: []
+- id: on_double_tap_button_1
+  then: []
+- id: on_long_press_button_1
+  then: []
 
-- id: sync_state_2
-  then:
-  - if:
-      condition:
-        switch.is_on: output_2
-      then:
-      - http_request.post:
-          url: http://${link_2}/turn_on
-      else:
-      - http_request.post:
-          url: http://${link_2}/turn_off
-- id: sync_state_3
-  then:
-  - if:
-      condition:
-        switch.is_on: output_3
-      then:
-      - http_request.post:
-          url: http://${link_3}/turn_on
-      else:
-      - http_request.post:
-          url: http://${link_3}/turn_off
+- id: on_single_tap_button_2
+  then: []
+- id: on_double_tap_button_2
+  then: []
+- id: on_long_press_button_2
+  then: []
 
-binary_sensor:
-- platform: gpio
-  id: input_1
-  pin:
-    number: GPIO14
-    inverted: true
-  on_press:
-  - then:
-    - switch.toggle: output_1
-    - script.execute: sync_state_1
-- platform: gpio
-  id: input_2
-  pin:
-    number: GPIO05
-    inverted: true
-  on_press:
-  - then:
-    - switch.toggle: output_2
-    - script.execute: sync_state_2
-- platform: gpio
-  id: input_3
-  pin:
-    number: GPIO12
-    inverted: true
-  on_press:
-  - then:
-    - switch.toggle: output_3
-    - script.execute: sync_state_3
+- id: on_single_tap_button_3
+  then: []
+- id: on_double_tap_button_3
+  then: []
+- id: on_long_press_button_3
+  then: []
 
+- id: on_swipe_up
+  then: []
+- id: on_swipe_down
+  then: []

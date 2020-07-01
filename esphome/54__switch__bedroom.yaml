@@ -15,13 +15,7 @@ i2c:
   scan: yes
 
 sensor:
-- platform: dht12
-  temperature:
-    id: temp
-    name: $area Temperature
-  humidity:
-    name: $area Humidity
-  update_interval: 5s
+- <<: !include sensors/dht12.yaml
 
 remote_transmitter:
   id: transmitter
@@ -33,7 +27,7 @@ remote_transmitter:
 climate:
 - platform: daikin
   name: $area AC
-  sensor: temp
+  sensor: temperature
   transmitter_id: transmitter
   visual:
     min_temperature: 18 °C
