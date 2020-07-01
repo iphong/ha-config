@@ -17,7 +17,7 @@ remote_transmitter:
 climate:
   - platform: daikin
     name: $area AC
-    sensor: temp
+    sensor: temperature
     transmitter_id: transmitter
     visual:
       min_temperature: 18 °C

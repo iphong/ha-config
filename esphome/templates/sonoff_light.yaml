@@ -1,9 +1,5 @@
 <<: !include sonoff.yaml
 
-sensor:
-#- <<: !include sensors/rssi.yaml
-#- <<: !include sensors/uptime.yaml
-
 output:
   - platform: gpio
     pin: 12

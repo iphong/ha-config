@@ -6,6 +6,4 @@ substitutions:
   ipv4: 10.0.0.41
 
 sensor:
-- platform: homeassistant
-  entity_id: sensor.bedroom_temperature
-  id: temp
+- <<: !include sensors/dht11.yaml

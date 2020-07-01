@@ -1,26 +1,17 @@
-# Customize similar entities
 
-#'switch.switch_*':
-#  icon: mdi:circle-outline
-
-#'sensor.*_rssi':
-#  hidden: true
-#'sensor.*_uptime':
-#  hidden: true
 #'camera.*_motion_snapshot':
 #  hidden: true
-
-'switch.wyzecam_*':
-  hidden: true
-'cover.wyzecam_*':
-  hidden: true
-'binary_sensor.wyzecam_*':
-  hidden: true
-'switch.xiaofang_*':
-  hidden: true
-'cover.xiaofang_*':
-  hidden: true
-'binary_sensor.xiaofang_*':
-  hidden: true
-'binary_sensor.wyzesense_*':
-  hidden: true
+#'switch.wyzecam_*':
+#  hidden: true
+#'cover.wyzecam_*':
+#  hidden: true
+#'binary_sensor.wyzecam_*':
+#  hidden: true
+#'switch.xiaofang_*':
+#  hidden: true
+#'cover.xiaofang_*':
+#  hidden: true
+#'binary_sensor.xiaofang_*':
+#  hidden: true
+#'binary_sensor.wyzesense_*':
+#  hidden: true

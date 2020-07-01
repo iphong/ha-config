@@ -21,7 +21,7 @@ sensor:
     name: $area Temperature
   humidity:
     name: $area Humidity
-  update_interval: 15s
+  update_interval: 5s
 
 remote_transmitter:
   id: transmitter

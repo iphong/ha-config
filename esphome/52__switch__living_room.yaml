@@ -8,13 +8,3 @@ substitutions:
   link_1: 10.0.0.16
   link_2: 10.0.0.16/light/living_room_light
   link_3: 10.0.0.16
-
-i2c:
-  sda: 3
-  scl: 1
-  scan: yes
-
-sensor:
-#- <<: !include sensors/rssi.yaml
-#- <<: !include sensors/uptime.yaml
-- <<: !include sensors/dht12.yaml

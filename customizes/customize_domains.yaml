@@ -1,7 +1,7 @@
 # Customize all domain entities
 
-light:
-  icon: mdi:lightbulb-multiple
+#light:
+#  icon: mdi:lightbulb-multiple
 #  assumed_state: true
 #switch:
 #  assumed_state: true

@@ -1,6 +1,0 @@
-<<: !include templates/espcam.yaml
-
-substitutions:
-  host: espcam_3
-  area: Camera 3
-  ipv4: 10.0.0.23

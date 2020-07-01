@@ -1,6 +1,6 @@
 - platform: dht
   pin: 2
-  model: DHT11
+  model: DHT22
   update_interval: 15s
   temperature:
     id: temperature

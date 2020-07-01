@@ -10,6 +10,10 @@ esphome:
     upload_speed: 921600
     board_build.f_cpu: 160000000L
 
+http_request:
+  useragent: esphome/$host
+  timeout: 1s
+
 status_led:
   pin:
     number: 16
@@ -17,59 +21,108 @@ status_led:
 
 api:
   reboot_timeout: 0s
+  services:
+  - service: sync_button_state
+    variables:
+      button: int
+      state: bool
+    then:
+    - lambda: >-
+        if (state) {
+          switch (button) {
+            case 1: id(output_1).turn_on(); break;
+            case 2: id(output_2).turn_on(); break;
+            case 3: id(output_3).turn_on(); break;
+          }
+        } else {
+         switch (button) {
+           case 1: id(output_1).turn_off(); break;
+           case 2: id(output_2).turn_off(); break;
+           case 3: id(output_3).turn_off(); break;
+         }
+        }
 
 switch:
-
 - platform: gpio
-  id: switch_1
+  id: output_1
+  icon: mdi:circle-double
+  name: $area Switch 1
   pin: GPIO04
-  state_topic: light/bedroom/state
-  command_topic: light/bedroom/set
 
 - platform: gpio
-  id: switch_2
+  id: output_2
+  icon: mdi:circle-double
+  name: $area Switch 2
   pin: GPIO15
-  state_topic: light/balcony
-  command_topic: light/balcony
-  
-- platform: gpio
-  id: switch_3
-  pin: GPIO13
-  state_topic: light/bedroom/state
-  command_topic: light/bedroom/set
-  on_turn_on:
-  - mqtt.publish:
-      topic: light/bedroom/state
-      payload: 'on'
-  on_turn_off:
-  - mqtt.publish:
-      topic: light/bedroom/state
-      payload: 'off'
 
+- platform: gpio
+  id: output_3
+  icon: mdi:circle-double
+  name: $area Switch 3
+  pin: GPIO13
+
+script:
+- id: sync_state_1
+  then:
+  - if:
+      condition:
+        switch.is_on: output_1
+      then:
+      - http_request.post:
+          url: http://${link_1}/turn_on
+      else:
+      - http_request.post:
+          url: http://${link_1}/turn_off
+
+- id: sync_state_2
+  then:
+  - if:
+      condition:
+        switch.is_on: output_2
+      then:
+      - http_request.post:
+          url: http://${link_2}/turn_on
+      else:
+      - http_request.post:
+          url: http://${link_2}/turn_off
+- id: sync_state_3
+  then:
+  - if:
+      condition:
+        switch.is_on: output_3
+      then:
+      - http_request.post:
+          url: http://${link_3}/turn_on
+      else:
+      - http_request.post:
+          url: http://${link_3}/turn_off
 
 binary_sensor:
-
 - platform: gpio
   id: input_1
   pin:
     number: GPIO14
     inverted: true
   on_press:
-  - switch.toggle: switch_1
-
+  - then:
+    - switch.toggle: output_1
+    - script.execute: sync_state_1
 - platform: gpio
   id: input_2
   pin:
     number: GPIO05
     inverted: true
   on_press:
-  - switch.toggle: switch_2
-
+  - then:
+    - switch.toggle: output_2
+    - script.execute: sync_state_2
 - platform: gpio
   id: input_3
   pin:
     number: GPIO12
     inverted: true
   on_press:
-  - switch.toggle: switch_3
+  - then:
+    - switch.toggle: output_3
+    - script.execute: sync_state_3
 
