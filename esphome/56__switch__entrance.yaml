@@ -1,8 +1,8 @@
 <<: !include templates/switch.yaml
 
 substitutions:
-  host: switch_front_door
-  area: Front Door
+  host: switch_entrance
+  area: Entrance
   ipv4: 10.0.0.56
 
   link_1: 10.0.0.11/light/balcony_light

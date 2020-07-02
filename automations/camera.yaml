@@ -1,0 +1,40 @@
+
+- alias: Kitchen Camera Motion Capture Start
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.kitchen_motion
+    to: 'on'
+    from: 'off'
+  action:
+  - service: switch.turn_on
+    entity_id: switch.kitchen_recording
+
+- alias: Kitchen Camera Motion Capture Stop
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.kitchen_motion
+    to: 'off'
+    for: '00:00:10'
+  action:
+  - service: switch.turn_off
+    entity_id: switch.kitchen_recording
+
+- alias: Living Room Camera Motion Capture Start
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.living_room_motion
+    to: 'on'
+    from: 'off'
+  action:
+  - service: switch.turn_on
+    entity_id: switch.living_room_recording
+
+- alias: Living Room Camera Motion Capture Stop
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.living_room_motion
+    to: 'off'
+    for: '00:00:10'
+  action:
+  - service: switch.turn_off
+    entity_id: switch.living_room_recording

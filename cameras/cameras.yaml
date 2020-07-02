@@ -6,20 +6,20 @@
 #  platform: ffmpeg
 #  input: -rtsp_transport tcp -i rtsp://phong:123qwe@10.0.0.71:8554/unicast
 #
-#- platform: generic
-#  name: Kitchen Snapshot
-#  username: root
-#  password: 123
-#  authentication: basic
-#  still_image_url: https://10.0.0.71/cgi-bin/currentpic.cgi
-#  verify_ssl: false
-#  scan_interval: 5
-#
-#- platform: generic
-#  name: Living Room Snapshot
-#  username: root
-#  password: 123
-#  authentication: basic
-#  still_image_url: https://10.0.0.70/cgi-bin/currentpic.cgi
-#  verify_ssl: false
-#  scan_interval: 5
+- platform: generic
+  name: Kitchen Camera
+  username: root
+  password: 123qwe
+  authentication: basic
+  still_image_url: https://10.0.0.71/cgi-bin/currentpic.cgi
+  verify_ssl: false
+  scan_interval: 5
+
+- platform: generic
+  name: Living Room Camera
+  username: root
+  password: 123qwe
+  authentication: basic
+  still_image_url: https://10.0.0.70/cgi-bin/currentpic.cgi
+  verify_ssl: false
+  scan_interval: 5

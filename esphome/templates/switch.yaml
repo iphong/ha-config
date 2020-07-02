@@ -46,19 +46,19 @@ switch:
 - platform: gpio
   id: output_1
   icon: mdi:circle-double
-  name: $area Switch 1
+#  name: $area Switch 1
   pin: GPIO04
   
 - platform: gpio
   id: output_2
   icon: mdi:circle-double
-  name: $area Switch 2
+#  name: $area Switch 2
   pin: GPIO15
   
 - platform: gpio
   id: output_3
   icon: mdi:circle-double
-  name: $area Switch 3
+#  name: $area Switch 3
   pin: GPIO13
 
 script:
