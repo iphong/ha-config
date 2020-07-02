@@ -48,17 +48,27 @@ sys_stats:
   - sensor.load_5m
   - sensor.load_15m
 
-if_stats_eth0:
+network:
   name: Network
   entities:
   - sensor.ipv4_address_eth0
-  - sensor.network_in_eth0
-  - sensor.network_out_eth0
-  - sensor.packets_in_eth0
-  - sensor.packets_out_eth0
+  - sensor.ipv4_address_wlan0
   - sensor.network_throughput_in_eth0
   - sensor.network_throughput_out_eth0
+  - sensor.network_throughput_in_wlan0
+  - sensor.network_throughput_out_wlan0
 
+#if_stats_eth0:
+#  name: "Interface (eth0)"
+#  entities:
+#  - sensor.ipv4_address_eth0
+#  - sensor.network_in_eth0
+#  - sensor.network_out_eth0
+#  - sensor.packets_in_eth0
+#  - sensor.packets_out_eth0
+#  - sensor.network_throughput_in_eth0
+#  - sensor.network_throughput_out_eth0
+#
 #if_stats_wlan0:
 #  name: "Interface (wlan0)"
 #  entities:

@@ -12,7 +12,9 @@
 #define TUYA_DISABLE_REVERSING  "55aa000600056700000100"
 #define TUYA_ENABLE_REVERSING  "55aa000600056700000101"
 
-class CustomCover : public Component, public Cover {
+#define REVERSE_MOTOR_DIRECTION
+
+class CustomCurtain : public Component, public Cover {
 public:
 
 	CoverTraits get_traits() override {
@@ -70,12 +72,20 @@ public:
 								switch (data_id) {
 									// Motor reversing state
 									case 0x67: {
-//										bool is_reversed = !!buffer[10];
+										// bool is_reversed = !!buffer[10];
+#ifdef REVERSE_MOTOR_DIRECTION
 										if (!buffer[10]) {
 											crc = 0;
 											writeHex(TUYA_ENABLE_REVERSING);
 											writeByte(crc);
 										}
+#else
+										if (!!buffer[10]) {
+											crc = 0;
+											writeHex(TUYA_DISABLE_REVERSING);
+											writeByte(crc);
+										}
+#endif
 										break;
 									}
 									// Operation mode state
@@ -138,37 +148,4 @@ public:
 protected:
 	uint16_t offset = 0;
 	uint8_t buffer[1024];
-};
-
-class CustomAPI : public Component, public CustomAPIDevice {
-public:
-	void setup() override {
-		register_service(&CustomAPI::setMotorNormal, "set_motor_normal");
-		register_service(&CustomAPI::setMotorReversed, "set_motor_reversed");
-		register_service(&CustomAPI::sendMessage, "send_command", {"data"});
-	}
-
-	void setMotorNormal() {
-		sendMessage(TUYA_DISABLE_REVERSING);
-	}
-
-	void setMotorReversed() {
-		sendMessage(TUYA_ENABLE_REVERSING);
-	}
-
-	void sendMessage(std::string data) {
-		int i = 0;
-		uint8_t sum = 0;
-		while (i < data.length()) {
-			const char hex[2] = {data[i++], data[i++]};
-			uint8_t d = strtoul(hex, NULL, 16);
-			sum += d;
-			writeByte(d);
-		}
-		writeByte(sum);
-	}
-
-	void writeByte(uint8_t data) {
-		id(uart0).write(data);
-	}
 };

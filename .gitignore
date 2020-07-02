@@ -2,3 +2,4 @@
 /.cloud/
 /.storage/
 secrets.yaml
+!/esphome/build/

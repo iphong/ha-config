@@ -1,19 +1,4 @@
-#<<: !include templates/espcam.yaml
-
-ota:
-  password: !secret wifi_password
-
-api:
-  reboot_timeout: 0s
-
-logger:
-  baud_rate: 9600
-
-web_server:
-
-captive_portal:
-
-wifi: !include templates/wifi.yaml
+<<: !include templates/common.yaml
 
 substitutions:
   host: espcam_3
@@ -30,5 +15,16 @@ esphome:
     board_build.f_cpu: 240000000L
     board_build.f_flash: 80000000L
 
-status_led:
-  pin: 33
+spi:
+  miso_pin: 12
+  mosi_pin: 13
+  clk_pin: 14
+
+pn532:
+  cs_pin: 15
+  update_interval: 1s
+
+binary_sensor:
+- platform: pn532
+  uid: 2A-56-8E-16
+  name: "PN532 NFC Tag"
