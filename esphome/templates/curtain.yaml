@@ -9,7 +9,7 @@ esphome:
   platformio_options:
     upload_speed: 921600
   includes:
-  - components/curtain.h
+  - ../components/curtain.h
 
 uart:
   id: uart0

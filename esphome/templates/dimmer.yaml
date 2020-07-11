@@ -13,7 +13,7 @@ esphome:
   platformio_options:
     upload_speed: 921600
   includes:
-    - components/dimmer.h
+    - ../components/dimmer.h
 
 remote_transmitter:
   pin: 1

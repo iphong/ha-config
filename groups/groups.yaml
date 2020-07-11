@@ -1,25 +1,3 @@
-#rssi:
-#  name: WiFi Signals
-#  entities:
-#  - sensor.light_bedroom_rssi
-#
-#uptime:
-#  name: Device Uptimes
-#  entities:
-#  - sensor.light_bedroom_uptime
-
-#light_automations:
-#  name: Lights automation
-#  entities:
-#  - automation.turn_bathroom_light_off_when_cleared
-#  - automation.turn_bathroom_light_on_when_occupied
-#  - automation.turn_bedroom_light_off_when_cleared
-#  - automation.turn_bedroom_light_on_when_occupied
-#  - automation.turn_kitchen_light_off_when_cleared
-#  - automation.turn_kitchen_light_on_when_occupied
-#  - automation.turn_living_room_light_off_when_cleared
-#  - automation.turn_living_room_light_on_when_occupied
-
 people:
   name: People
   entities:

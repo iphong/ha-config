@@ -1,5 +1,5 @@
 
-- alias: Turn living room light ON when occupied
+- alias: living room motion light ON
   trigger:
   - platform: state
     to: 'on'
@@ -9,7 +9,7 @@
   - service: light.turn_on
     entity_id: light.living_room_light
 
-- alias: Turn living_room light OFF when cleared
+- alias: living room motion light OFF
   trigger:
   - platform: state
     entity_id: binary_sensor.living_room_motion
@@ -21,7 +21,7 @@
     data:
       transition: 60
 
-- alias: Turn bedroom light ON when occupied
+- alias: bedroom motion light ON
   trigger:
   - platform: state
     to: 'on'
@@ -32,7 +32,7 @@
   - service: light.turn_on
     entity_id: light.bedroom_light
 
-- alias: Turn bedroom light OFF when cleared
+- alias: bedroom motion light OFF
   trigger:
   - platform: state
     entity_id: binary_sensor.bedroom_motion
@@ -44,7 +44,7 @@
     data:
       transition: 60
 
-- alias: Turn bathroom light ON when occupied
+- alias: bathroom motion light ON
   trigger:
   - platform: state
     to: 'on'
@@ -55,7 +55,7 @@
   - service: light.turn_on
     entity_id: light.bathroom_light
 
-- alias: Turn bathroom light OFF when cleared
+- alias: bathroom motion light OFF
   trigger:
   - platform: state
     entity_id: binary_sensor.bathroom_motion
@@ -67,18 +67,18 @@
     data:
       transition: 120
 
-- alias: Turn kitchen light ON when occupied
+- alias: kitchen motion light ON
   trigger:
   - platform: state
     to: 'on'
     entity_id:
     - binary_sensor.kitchen_motion
-    - binary_sensor.wyzesense_778cabc6 # front_door
+    - binary_sensor.entrance_door
   action:
   - service: light.turn_on
     entity_id: light.kitchen_light
 
-- alias: Turn kitchen light OFF when cleared
+- alias: kitchen motion light OFF
   trigger:
   - platform: state
     entity_id: binary_sensor.kitchen_motion

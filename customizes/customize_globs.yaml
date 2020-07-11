@@ -1,6 +1,6 @@
 
-#'camera.*_motion_snapshot':
-#  hidden: true
+'switch.*_recording':
+  assumed_state: true
 #'switch.wyzecam_*':
 #  hidden: true
 #'cover.wyzecam_*':

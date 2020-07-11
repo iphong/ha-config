@@ -1,16 +1,12 @@
 
-- alias: Startup routine
+- alias: startup routine
   trigger:
   - platform: event
     event_type: homeassistant_start
   action:
-  - delay: 60s
-  - service: notify.notify
-    data:
-      title: Home Alert
-      message: Home Assistant starting up
+  - delay: 1s
 
-- alias: Shutdown routine
+- alias: shutdown routine
   trigger:
   - platform: event
     event_type: homeassistant_stop
@@ -20,41 +16,38 @@
       title: Home Alert
       message: Home Assistant shutting down
 
-- alias: Morning routine
+- alias: morning routine
   trigger:
   - platform: sun
     event: sunrise
   action:
-  - scene: scene.morning
+  # - scene: scene.morning
   - service: frontend.set_theme
     data:
       name: Google Light Theme
   - service: notify.notify
     data:
-      title: Home Alert
       message: Morning scene activated
 
-- alias: Evening routine
+- alias: evening routine
   trigger:
   - platform: sun
     event: sunset
   action:
-  - scene: scene.evening
+  # - scene: scene.evening
   - service: frontend.set_theme
     data:
       name: Google Dark Theme
   - service: notify.notify
     data:
-      title: Home Alert
       message: Evening scene activated
 
-- alias: Night routine
+- alias: night routine
   trigger:
   - platform: time
     at: '23:00:00'
   action:
-  - scene: scene.night
+  # - scene: scene.night
   - service: notify.notify
     data:
-      title: Home Alert
       message: Night scene activated

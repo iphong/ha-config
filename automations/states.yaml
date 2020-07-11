@@ -1,7 +1,7 @@
 
 # bathroom light -> switch 1a
 
-- alias: Sync bathroom light state
+- alias: bathroom light state change
   trigger:
   - entity_id: light.bathroom_light
     platform: state
@@ -13,7 +13,7 @@
 
 # bathroom fan -> switch 1b
 
-- alias: Sync bathroom fan state
+- alias: bathroom fan state change
   trigger:
   - entity_id: fan.bathroom_fan
     platform: state
@@ -25,7 +25,7 @@
 
 # bathroom boiler -> switch 1c
 
-- alias: Sync bathroom boiler state
+- alias: bathroom boiler state change
   trigger:
   - entity_id: switch.bathroom_boiler
     platform: state
@@ -37,7 +37,7 @@
 
 # dining_room light -> switch 3a
 
-- alias: Sync dining_room light state
+- alias: dining_room light state change
   trigger:
   - entity_id: light.dining_room_light
     platform: state
@@ -49,7 +49,7 @@
 
 # alter light -> switch 3b
 
-- alias: Sync alter light state
+- alias: alter light state change
   trigger:
   - entity_id: light.alter_light
     platform: state
@@ -61,7 +61,7 @@
 
 # kitchen light -> switch 3c
 
-- alias: Sync kitchen light state
+- alias: kitchen light state change
   trigger:
   - entity_id: light.kitchen_light
     platform: state
@@ -73,7 +73,7 @@
 
 # living_room light -> switch 2b
 
-- alias: Sync living_room light state
+- alias: living_room light state change
   trigger:
   - entity_id: light.living_room_light
     platform: state
@@ -85,7 +85,7 @@
 
 # bedroom light -> switch 4a
 
-- alias: Sync bedroom light state
+- alias: bedroom light state change
   trigger:
   - entity_id: light.bedroom_light
     platform: state
@@ -97,7 +97,7 @@
 
 # balcony light -> switch 4c
 
-- alias: Sync balcony light state
+- alias: balcony light state change
   trigger:
   - entity_id: light.balcony_light
     platform: state
