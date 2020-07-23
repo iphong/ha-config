@@ -5,6 +5,67 @@ substitutions:
   area: Bathroom
   ipv4: 10.0.0.51
 
-  link_1: 10.0.0.12/light/bathroom_light
-  link_2: 10.0.0.12/fan/bathroom_fan
-  link_3: 10.0.0.12/switch/water_heater
+switch:
+- platform: gpio
+  id: switch_1
+  pin: GPIO04
+
+- platform: gpio
+  id: switch_2
+  pin: GPIO15
+
+- platform: gpio
+  id: switch_3
+  pin: GPIO13
+  name: $area Water Heater
+  on_turn_on:
+  - lambda: ESPNow.send("pub bathroom_water_heater on");
+  on_turn_off:
+  - lambda: ESPNow.send("pub bathroom_water_heater off");
+
+binary_sensor:
+
+- platform: gpio
+  id: touch_1
+  pin:
+    number: GPIO14
+    mode: INPUT_PULLUP
+    inverted: true
+  on_press:
+  - lambda: ESPNow.send("set bathroom_light toggle");
+
+- platform: gpio
+  id: touch_2
+  pin:
+    number: GPIO05
+    mode: INPUT_PULLUP
+    inverted: true
+  on_press:
+  - lambda: ESPNow.send("set bathroom_fan toggle");
+
+- platform: gpio
+  id: touch_3
+  pin:
+    number: GPIO12
+    mode: INPUT_PULLUP
+    inverted: true
+  on_press:
+  - switch.toggle: switch_1
+  
+custom_component:
+  lambda: |-
+    ESPNow.init();
+    ESPNow.on("pub bathroom_light on", []() {
+      id(switch_1)->turn_on();
+    });
+    ESPNow.on("pub bathroom_light off", []() {
+      id(switch_1)->turn_off();
+    });
+    ESPNow.on("pub bathroom_fan on", []() {
+      id(switch_2)->turn_on();
+    });
+    ESPNow.on("pub bathroom_fan off", []() {
+      id(switch_2)->turn_off();
+    });
+    return {};
+  

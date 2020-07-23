@@ -6,4 +6,16 @@ substitutions:
   ipv4: 10.0.0.11
 
 sensor:
-- <<: !include sensors/dht22.yaml
+- platform: dht
+  pin: 2
+  model: DHT22
+  temperature:
+    id: temperature
+    name: $area Temperature
+    on_value:
+    - lambda: ESPNow.send("pub balcony temp " + id(temperature).state);
+  humidity:
+    id: humidity
+    name: $area Humidity
+    on_value:
+    - lambda: ESPNow.send("pub balcony humidity " + id(temperature).state);

@@ -1,108 +1,108 @@
 
-# bathroom light -> switch 1a
+# # bathroom light -> switch 1a
 
-- alias: bathroom light state change
-  trigger:
-  - entity_id: light.bathroom_light
-    platform: state
-  action:
-  - service: esphome.switch_bathroom_sync_button_state
-    data_template:
-      button: 1
-      state: "{{ is_state('light.bathroom_light', 'on') }}"
+# - alias: bathroom light state change
+#   trigger:
+#   - entity_id: light.bathroom_light
+#     platform: state
+#   action:
+#   - service: esphome.switch_bathroom_sync_button_state
+#     data_template:
+#       button: 1
+#       state: "{{ is_state('light.bathroom_light', 'on') }}"
 
-# bathroom fan -> switch 1b
+# # bathroom fan -> switch 1b
 
-- alias: bathroom fan state change
-  trigger:
-  - entity_id: fan.bathroom_fan
-    platform: state
-  action:
-  - service: esphome.switch_bathroom_sync_button_state
-    data_template:
-      button: 2
-      state: "{{ is_state('fan.bathroom_fan', 'on') }}"
+# - alias: bathroom fan state change
+#   trigger:
+#   - entity_id: fan.bathroom_fan
+#     platform: state
+#   action:
+#   - service: esphome.switch_bathroom_sync_button_state
+#     data_template:
+#       button: 2
+#       state: "{{ is_state('fan.bathroom_fan', 'on') }}"
 
-# bathroom boiler -> switch 1c
+# # bathroom boiler -> switch 1c
 
-- alias: bathroom boiler state change
-  trigger:
-  - entity_id: switch.bathroom_boiler
-    platform: state
-  action:
-  - service: esphome.switch_bathroom_sync_button_state
-    data_template:
-      button: 3
-      state: "{{ is_state('switch.bathroom_boiler', 'on') }}"
+# - alias: bathroom boiler state change
+#   trigger:
+#   - entity_id: switch.bathroom_boiler
+#     platform: state
+#   action:
+#   - service: esphome.switch_bathroom_sync_button_state
+#     data_template:
+#       button: 3
+#       state: "{{ is_state('switch.bathroom_boiler', 'on') }}"
 
-# dining_room light -> switch 3a
+# # dining_room light -> switch 3a
 
-- alias: dining_room light state change
-  trigger:
-  - entity_id: light.dining_room_light
-    platform: state
-  action:
-  - service: esphome.switch_dining_room_sync_button_state
-    data_template:
-      button: 1
-      state: "{{ is_state('light.dining_room_light', 'on') }}"
+# - alias: dining_room light state change
+#   trigger:
+#   - entity_id: light.dining_room_light
+#     platform: state
+#   action:
+#   - service: esphome.switch_dining_room_sync_button_state
+#     data_template:
+#       button: 1
+#       state: "{{ is_state('light.dining_room_light', 'on') }}"
 
-# alter light -> switch 3b
+# # alter light -> switch 3b
 
-- alias: alter light state change
-  trigger:
-  - entity_id: light.alter_light
-    platform: state
-  action:
-  - service: esphome.switch_dining_room_sync_button_state
-    data_template:
-      button: 2
-      state: "{{ is_state('light.alter_light', 'on') }}"
+# - alias: alter light state change
+#   trigger:
+#   - entity_id: light.alter_light
+#     platform: state
+#   action:
+#   - service: esphome.switch_dining_room_sync_button_state
+#     data_template:
+#       button: 2
+#       state: "{{ is_state('light.alter_light', 'on') }}"
 
-# kitchen light -> switch 3c
+# # kitchen light -> switch 3c
 
-- alias: kitchen light state change
-  trigger:
-  - entity_id: light.kitchen_light
-    platform: state
-  action:
-  - service: esphome.switch_dining_room_sync_button_state
-    data_template:
-      button: 3
-      state: "{{ is_state('light.kitchen_light', 'on') }}"
+# - alias: kitchen light state change
+#   trigger:
+#   - entity_id: light.kitchen_light
+#     platform: state
+#   action:
+#   - service: esphome.switch_dining_room_sync_button_state
+#     data_template:
+#       button: 3
+#       state: "{{ is_state('light.kitchen_light', 'on') }}"
 
-# living_room light -> switch 2b
+# # living_room light -> switch 2b
 
-- alias: living_room light state change
-  trigger:
-  - entity_id: light.living_room_light
-    platform: state
-  action:
-  - service: esphome.switch_living_room_sync_button_state
-    data_template:
-      button: 2
-      state: "{{ is_state('light.living_room_light', 'on') }}"
+# - alias: living_room light state change
+#   trigger:
+#   - entity_id: light.living_room_light
+#     platform: state
+#   action:
+#   - service: esphome.switch_living_room_sync_button_state
+#     data_template:
+#       button: 2
+#       state: "{{ is_state('light.living_room_light', 'on') }}"
 
-# bedroom light -> switch 4a
+# # bedroom light -> switch 4a
 
-- alias: bedroom light state change
-  trigger:
-  - entity_id: light.bedroom_light
-    platform: state
-  action:
-  - service: esphome.switch_bedroom_sync_button_state
-    data_template:
-      button: 1
-      state: "{{ is_state('light.bedroom_light', 'on') }}"
+# - alias: bedroom light state change
+#   trigger:
+#   - entity_id: light.bedroom_light
+#     platform: state
+#   action:
+#   - service: esphome.switch_bedroom_sync_button_state
+#     data_template:
+#       button: 1
+#       state: "{{ is_state('light.bedroom_light', 'on') }}"
 
-# balcony light -> switch 4c
+# # balcony light -> switch 4c
 
-- alias: balcony light state change
-  trigger:
-  - entity_id: light.balcony_light
-    platform: state
-  action:
-  - service: esphome.switch_bedroom_sync_button_state
-    data_template:
-      button: 3
-      state: "{{ is_state('light.balcony_light', 'on') }}"
+# - alias: balcony light state change
+#   trigger:
+#   - entity_id: light.balcony_light
+#     platform: state
+#   action:
+#   - service: esphome.switch_bedroom_sync_button_state
+#     data_template:
+#       button: 3
+#       state: "{{ is_state('light.balcony_light', 'on') }}"

@@ -1,6 +1,0 @@
-<<: !include templates/sonoff_light_cw.yaml
-
-substitutions:
-  host: sonoff_1
-  area: Sonoff
-  ipv4: 10.0.0.17

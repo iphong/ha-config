@@ -1,7 +1,34 @@
-<<: !include templates/sonoff_light.yaml
+<<: !include templates/sonoff.yaml
 
 substitutions:
   host: light_alter
   area: Alter
   ipv4: 10.0.0.14
   
+output:
+- platform: gpio
+  pin: 12
+  id: output_1
+
+light:
+- platform: binary
+  output: output_1
+  id: light_1
+  name: $area Light
+
+switch:
+- platform: template
+  id: switch_1
+  lambda: return digitalRead(12);
+  on_turn_on:
+  - lambda: ESPNow.send("pub bedroom_light on");
+  on_turn_off:
+  - lambda: ESPNow.send("pub bedroom_light off");
+  
+custom_component:
+  lambda: |-
+    ESPNow.init();
+    ESPNow.on("set bedroom_light toggle", []() {
+      id(light_1)->toggle().perform();
+    });
+    return {};

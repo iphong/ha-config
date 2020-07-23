@@ -4,8 +4,8 @@ default_config:
 
 homeassistant:
   name: Home
-  # internal_url: "http://homeassistant.local:8123"
-  # base_url: "https://www.phong.live"
+  internal_url: "http://10.0.0.6:8123"
+  base_url: "https://www.phong.live"
   latitude: 21.0197167
   longitude: 105.8228603
   elevation: 98

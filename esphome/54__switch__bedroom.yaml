@@ -5,30 +5,7 @@ substitutions:
   area: Bedroom
   ipv4: 10.0.0.54
 
-  link_1: 10.0.0.10/light/bedroom_light
-  link_2: 10.0.0.11
-  link_3: 10.0.0.11/light/balcony_light
-
-i2c:
-  sda: 3
-  scl: 1
-  scan: yes
-
-sensor:
-- <<: !include sensors/dht12.yaml
-
-remote_transmitter:
-  id: transmitter
-  pin:
-    number: 0
-    inverted: true
-  carrier_duty_percent: 50%
-
-climate:
-- platform: daikin
-  name: $area AC
-  sensor: temperature
-  transmitter_id: transmitter
-  visual:
-    min_temperature: 18 °C
-    max_temperature: 30 °C
+  target_1: light_bedroom
+  target_2: light_bedroom
+  target_3: light_bedroom
+  

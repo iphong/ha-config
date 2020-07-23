@@ -72,20 +72,20 @@ public:
 								switch (data_id) {
 									// Motor reversing state
 									case 0x67: {
-										// bool is_reversed = !!buffer[10];
-#ifdef REVERSE_MOTOR_DIRECTION
-										if (!buffer[10]) {
-											crc = 0;
-											writeHex(TUYA_ENABLE_REVERSING);
-											writeByte(crc);
-										}
-#else
-										if (!!buffer[10]) {
-											crc = 0;
-											writeHex(TUYA_DISABLE_REVERSING);
-											writeByte(crc);
-										}
-#endif
+										 bool is_reversed = !!buffer[10];
+ #ifdef REVERSE_MOTOR_DIRECTION
+ 										if (!is_reversed) {
+ 											crc = 0;
+ 											writeHex(TUYA_ENABLE_REVERSING);
+ 											writeByte(crc);
+ 										}
+ #else
+ 										if (is_reversed) {
+ 											crc = 0;
+ 											writeHex(TUYA_DISABLE_REVERSING);
+ 											writeByte(crc);
+ 										}
+ #endif
 										break;
 									}
 									// Operation mode state

@@ -5,127 +5,128 @@ esphome:
   board: modwifi
   platform: ESP8266
   build_path: build/$host
-  esp8266_restore_from_flash: true
+  arduino_version: LATEST
+  esp8266_restore_from_flash: false
+  includes:
+  - components/now.h
   platformio_options:
     upload_speed: 921600
     board_build.f_cpu: 160000000L
+    board_build.f_flash: 80000000L
 
-http_request:
-  useragent: esphome/$host
-  timeout: 1s
+interval:
+  interval: 10min
+  then:
+  - lambda: |-
+      WiFi.mode(WIFI_AP_STA);
+      WiFi.disconnect();
+      WiFi.softAPdisconnect();
 
 status_led:
   pin:
     number: 16
     inverted: true
 
-api:
-  reboot_timeout: 0s
-  services:
-  - service: sync_button_state
-    variables:
-      button: int
-      state: bool
-    then:
-    - lambda: >-
-        if (state) {
-          switch (button) {
-            case 1: id(output_1).turn_on(); break;
-            case 2: id(output_2).turn_on(); break;
-            case 3: id(output_3).turn_on(); break;
-          }
-        } else {
-         switch (button) {
-           case 1: id(output_1).turn_off(); break;
-           case 2: id(output_2).turn_off(); break;
-           case 3: id(output_3).turn_off(); break;
-         }
-        }
+output:
 
-switch:
-- platform: gpio
+- platform: esp8266_pwm
   id: output_1
-  icon: mdi:circle-double
-#  name: $area Switch 1
-  pin: GPIO04
-  
-- platform: gpio
+  pin: 4
+
+- platform: esp8266_pwm
   id: output_2
-  icon: mdi:circle-double
-#  name: $area Switch 2
-  pin: GPIO15
-  
-- platform: gpio
+  pin: 15
+
+- platform: esp8266_pwm
   id: output_3
-  icon: mdi:circle-double
-#  name: $area Switch 3
-  pin: GPIO13
+  pin: 13
 
-script:
-- id: sync_state_1
-  then:
-  - if:
-      condition:
-        switch.is_on: output_1
-      then:
-      - http_request.post:
-          url: http://${link_1}/turn_on
-      else:
-      - http_request.post:
-          url: http://${link_1}/turn_off
+light:
 
-- id: sync_state_2
-  then:
-  - if:
-      condition:
-        switch.is_on: output_2
-      then:
-      - http_request.post:
-          url: http://${link_2}/turn_on
-      else:
-      - http_request.post:
-          url: http://${link_2}/turn_off
-- id: sync_state_3
-  then:
-  - if:
-      condition:
-        switch.is_on: output_3
-      then:
-      - http_request.post:
-          url: http://${link_3}/turn_on
-      else:
-      - http_request.post:
-          url: http://${link_3}/turn_off
+- platform: monochromatic
+  id: light_1
+  output: output_1
+  default_transition_length: 0s
+
+- platform: monochromatic
+  id: light_2
+  output: output_2
+  default_transition_length: 0s
+
+- platform: monochromatic
+  id: light_3
+  output: output_3
+  default_transition_length: 0s
 
 binary_sensor:
-#- platform: homeassistant
-#  entity_id: light.bedroom_light
-#  id: state_1
+
 - platform: gpio
   id: input_1
   pin:
-    number: GPIO14
+    number: 14
+    mode: INPUT_PULLUP
     inverted: true
   on_press:
-  - then:
-    - switch.toggle: output_1
-    - script.execute: sync_state_1
+  - lambda: |-
+      if (digitalRead(4))
+        ESPNow.send("set $target_1 off");
+      else
+        ESPNow.send("set $target_1 on");
+
 - platform: gpio
   id: input_2
   pin:
-    number: GPIO05
+    number: 5
+    mode: INPUT_PULLUP
     inverted: true
   on_press:
-  - then:
-    - switch.toggle: output_2
-    - script.execute: sync_state_2
+  - lambda: |-
+      if (digitalRead(15))
+        ESPNow.send("set $target_2 off");
+      else
+        ESPNow.send("set $target_2 on");
+
 - platform: gpio
   id: input_3
   pin:
-    number: GPIO12
+    number: 12
+    mode: INPUT_PULLUP
     inverted: true
   on_press:
-  - then:
-    - switch.toggle: output_3
-    - script.execute: sync_state_3
+  - lambda: |-
+      if (digitalRead(13))
+        ESPNow.send("set $target_3 off");
+      else
+        ESPNow.send("set $target_3 on");
 
+custom_component:
+  lambda: |-
+    ESPNow.begin();
+    
+    ESPNow.on("pub $target_1 on", []() {
+      id(light_1)->turn_on().perform();
+    });
+    ESPNow.on("pub $target_1 off", []() {
+      id(light_1)->turn_off().perform();
+    });
+
+    ESPNow.on("pub $target_2 on", []() {
+      id(light_2)->turn_on().perform();
+    });
+    ESPNow.on("pub $target_2 off", []() {
+      id(light_2)->turn_off().perform();
+    });
+
+    ESPNow.on("pub $target_3 on", []() {
+      id(light_3)->turn_on().perform();
+    });
+    ESPNow.on("pub $target_3 off", []() {
+      id(light_3)->turn_off().perform();
+    });
+
+    ESPNow.send("req $target_1");
+    ESPNow.send("req $target_2");
+    ESPNow.send("req $target_3");
+
+    return {};
+  

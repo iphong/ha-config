@@ -1,26 +1,14 @@
-substitutions:
-  host: esphome
-  ipv4: 0.0.0.0
-  area: none
-
-esphome:
-  name: esphome
-  board: esp12e
-  platform: esp8266
-
 ota:
   password: !secret wifi_password
 
 api:
   reboot_timeout: 0s
 
-#mqtt: !include mqtt.yaml
-
 logger:
-  baud_rate: 0
+  # baud_rate: 0
 
-web_server:
+# web_server:
 
-captive_portal:
+# captive_portal:
 
 wifi: !include wifi.yaml

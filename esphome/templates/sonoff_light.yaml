@@ -8,4 +8,35 @@ output:
 light:
 - platform: binary
   output: output_1
+  id: light_1
   name: $area Light
+
+switch:
+- platform: template
+  id: switch_1
+  lambda: return digitalRead(12);
+  on_turn_on:
+  - lambda: ESPNow.send("pub $host on");
+  on_turn_off:
+  - lambda: ESPNow.send("pub $host off");
+  
+custom_component:
+  lambda: |-
+    ESPNow.begin();
+    ESPNow.on("set $host on", []() {
+      id(light_1)->turn_on().perform();
+    });
+    ESPNow.on("set $host off", []() {
+      id(light_1)->turn_off().perform();
+    });
+    ESPNow.on("set $host toggle", []() {
+      id(light_1)->toggle().perform();
+    });
+    ESPNow.on("req $host", []() {
+      if (digitalRead(12)) {
+        ESPNow.send("pub $host on");
+      } else {
+        ESPNow.send("pub $host off");
+      }
+    });
+    return {};

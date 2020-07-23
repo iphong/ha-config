@@ -1,40 +1,40 @@
 
-- alias: kitchen motion record ON
-  trigger:
-  - platform: state
-    entity_id: binary_sensor.kitchen_motion
-    to: 'on'
-  action:
-  - service: homeassistant.turn_on
-    entity_id: switch.kitchen_recording
+# - alias: kitchen motion record ON
+#   trigger:
+#   - platform: state
+#     entity_id: binary_sensor.kitchen_motion
+#     to: 'on'
+#   action:
+#   - service: homeassistant.turn_on
+#     entity_id: switch.kitchen_recording
 
-- alias: kitchen motion record OFF
-  trigger:
-  - platform: state
-    entity_id: binary_sensor.kitchen_motion
-    from: 'on'
-    to: 'off'
-    for: '00:00:15'
-  action:
-  - service: homeassistant.turn_off
-    entity_id: switch.kitchen_recording
+# - alias: kitchen motion record OFF
+#   trigger:
+#   - platform: state
+#     entity_id: binary_sensor.kitchen_motion
+#     from: 'on'
+#     to: 'off'
+#     for: '00:00:15'
+#   action:
+#   - service: homeassistant.turn_off
+#     entity_id: switch.kitchen_recording
 
-- alias: living room motion record ON
-  trigger:
-  - platform: state
-    entity_id: binary_sensor.living_room_motion
-    to: 'on'
-  action:
-  - service: homeassistant.turn_on
-    entity_id: switch.living_room_recording
+# - alias: living room motion record ON
+#   trigger:
+#   - platform: state
+#     entity_id: binary_sensor.living_room_motion
+#     to: 'on'
+#   action:
+#   - service: homeassistant.turn_on
+#     entity_id: switch.living_room_recording
 
-- alias: living room motion record OFF
-  trigger:
-  - platform: state
-    entity_id: binary_sensor.living_room_motion
-    from: 'on'
-    to: 'off'
-    for: '00:00:15'
-  action:
-  - service: homeassistant.turn_off
-    entity_id: switch.living_room_recording
+# - alias: living room motion record OFF
+#   trigger:
+#   - platform: state
+#     entity_id: binary_sensor.living_room_motion
+#     from: 'on'
+#     to: 'off'
+#     for: '00:00:15'
+#   action:
+#   - service: homeassistant.turn_off
+#     entity_id: switch.living_room_recording

@@ -5,23 +5,40 @@ esphome:
   board: modwifi
   platform: ESP8266
   build_path: build/$host
+  arduino_version: LATEST
   esp8266_restore_from_flash: true
   platformio_options:
     upload_speed: 921600
     board_build.f_cpu: 160000000L
     board_build.f_flash: 80000000L
 
+status_led:
+  pin: 4
+
 remote_transmitter:
   id: transmitter
   pin: 14
   carrier_duty_percent: 50%
+
+remote_receiver:
+  id: receiver
+  pin: 5
+  dump: all
+
+i2c:
+  sda: 3
+  scl: 1
+  scan: yes
+
+sensor: !include ../sensors/dht12.yaml
   
 climate:
   - platform: daikin
     name: $area AC
     sensor: temperature
     transmitter_id: transmitter
+    receiver_id: receiver
     visual:
-      min_temperature: 18 °C
+      min_temperature: 16 °C
       max_temperature: 30 °C
 #      temperature_step: 1 °C

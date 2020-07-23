@@ -1,243 +1,243 @@
-# A: 00001010
-# B: 00001011
-# C: 00001100
+# # A: 00001010
+# # B: 00001011
+# # C: 00001100
 
-<<: !include common.yaml
+# <<: !include common.yaml
   
-esphome:
-  name: $area
-  board: modwifi
-  platform: ESP8266
-  build_path: build/$area
-  esp8266_restore_from_flash: true
-  platformio_options:
-    upload_speed: 921600
-  includes:
-    - ../components/dimmer.h
+# esphome:
+#   name: $area
+#   board: modwifi
+#   platform: ESP8266
+#   build_path: build/$area
+#   esp8266_restore_from_flash: true
+#   platformio_options:
+#     upload_speed: 921600
+#   includes:
+#     - ../components/dimmer.h
 
-remote_transmitter:
-  pin: 1
-  carrier_duty_percent: 100%
+# remote_transmitter:
+#   pin: 1
+#   carrier_duty_percent: 100%
 
-status_led:
-  pin:
-    number: 16
-    inverted: true
+# status_led:
+#   pin:
+#     number: 16
+#     inverted: true
 
-globals:
-  - id: last_value
-    type: float
-    initial_value: '5'
-    restore_value: yes
+# globals:
+#   - id: last_value
+#     type: float
+#     initial_value: '5'
+#     restore_value: yes
 
-sensor:
-  - platform: custom
-    lambda: >-
-      int pins[] = { ${input_pin_3}, ${input_pin_2}, ${input_pin_1} };
-      auto dimmer = new TouchDimmer(3, pins);
-      App.register_component(dimmer);
-      return { dimmer->value };
-    sensors:
-      - name: Dimmer $area
+# sensor:
+#   - platform: custom
+#     lambda: >-
+#       int pins[] = { ${input_pin_3}, ${input_pin_2}, ${input_pin_1} };
+#       auto dimmer = new TouchDimmer(3, pins);
+#       App.register_component(dimmer);
+#       return { dimmer->value };
+#     sensors:
+#       - name: Dimmer $area
 
-binary_sensor:
+# binary_sensor:
   
-  - platform: gpio
-    id: input_1
-    pin:
-      number: ${input_pin_1}
-      inverted: true
-    on_press:
-      - light.turn_on: light_1
-    on_release:
-      - light.turn_off:
-          id: light_1
-          transition_length: 400ms
-    on_multi_click:
-      - timing:
-          - ON for at most 0.6s
-          - OFF for at least 0.2s
-        then:
-          - logger.log: "Single Short Clicked"
-          - remote_transmitter.transmit_rc_switch_raw:
-              code: '1111${code}10100001'
-              protocol: 1
-              repeat:
-                times: 3
-                wait_time: 200ms
-      - timing:
-          - ON for at most 0.6s
-          - OFF for at most 0.6s
-          - ON for at most 0.6s
-          - OFF for at least 0.2s
-        then:
-          - logger.log: "Double Clicked"
-          - remote_transmitter.transmit_rc_switch_raw:
-              code: '1111${code}10100010'
-              protocol: 1
-              repeat:
-                times: 3
-                wait_time: 200ms
-      - timing:
-          - ON for at least 0.6s
-#          - ON for 1s to 2s
-#          - OFF for at least 0.2s
-        then:
-          - logger.log: "Single Long Clicked"
-          - remote_transmitter.transmit_rc_switch_raw:
-              code: '1111${code}10100011'
-              protocol: 1
-              repeat:
-                times: 3
-                wait_time: 200ms
+#   - platform: gpio
+#     id: input_1
+#     pin:
+#       number: ${input_pin_1}
+#       inverted: true
+#     on_press:
+#       - light.turn_on: light_1
+#     on_release:
+#       - light.turn_off:
+#           id: light_1
+#           transition_length: 400ms
+#     on_multi_click:
+#       - timing:
+#           - ON for at most 0.6s
+#           - OFF for at least 0.2s
+#         then:
+#           - logger.log: "Single Short Clicked"
+#           - remote_transmitter.transmit_rc_switch_raw:
+#               code: '1111${code}10100001'
+#               protocol: 1
+#               repeat:
+#                 times: 3
+#                 wait_time: 200ms
+#       - timing:
+#           - ON for at most 0.6s
+#           - OFF for at most 0.6s
+#           - ON for at most 0.6s
+#           - OFF for at least 0.2s
+#         then:
+#           - logger.log: "Double Clicked"
+#           - remote_transmitter.transmit_rc_switch_raw:
+#               code: '1111${code}10100010'
+#               protocol: 1
+#               repeat:
+#                 times: 3
+#                 wait_time: 200ms
+#       - timing:
+#           - ON for at least 0.6s
+# #          - ON for 1s to 2s
+# #          - OFF for at least 0.2s
+#         then:
+#           - logger.log: "Single Long Clicked"
+#           - remote_transmitter.transmit_rc_switch_raw:
+#               code: '1111${code}10100011'
+#               protocol: 1
+#               repeat:
+#                 times: 3
+#                 wait_time: 200ms
 
-  - platform: gpio
-    id: input_2
-    pin:
-      number: ${input_pin_2}
-      inverted: true
-    on_press:
-      - light.turn_on: light_2
-    on_release:
-      - light.turn_off:
-          id: light_2
-          transition_length: 400ms
-    on_multi_click:
-      - timing:
-          - ON for at most 0.6s
-          - OFF for at least 0.2s
-        then:
-          - logger.log: "Single Short Clicked"
-          - remote_transmitter.transmit_rc_switch_raw:
-              code: '1111${code}10110001'
-              protocol: 1
-              repeat:
-                times: 3
-                wait_time: 200ms
-      - timing:
-          - ON for at most 0.6s
-          - OFF for at most 0.6s
-          - ON for at most 0.6s
-          - OFF for at least 0.2s
-        then:
-          - logger.log: "Double Clicked"
-          - remote_transmitter.transmit_rc_switch_raw:
-              code: '1111${code}10110010'
-              protocol: 1
-              repeat:
-                times: 3
-                wait_time: 200ms
-      - timing:
-          - ON for at least 0.6s
-#          - ON for 1s to 2s
-#          - OFF for at least 0.2s
-        then:
-          - logger.log: "Single Long Clicked"
-          - remote_transmitter.transmit_rc_switch_raw:
-              code: '1111${code}10110011'
-              protocol: 1
-              repeat:
-                times: 3
-                wait_time: 200ms
+#   - platform: gpio
+#     id: input_2
+#     pin:
+#       number: ${input_pin_2}
+#       inverted: true
+#     on_press:
+#       - light.turn_on: light_2
+#     on_release:
+#       - light.turn_off:
+#           id: light_2
+#           transition_length: 400ms
+#     on_multi_click:
+#       - timing:
+#           - ON for at most 0.6s
+#           - OFF for at least 0.2s
+#         then:
+#           - logger.log: "Single Short Clicked"
+#           - remote_transmitter.transmit_rc_switch_raw:
+#               code: '1111${code}10110001'
+#               protocol: 1
+#               repeat:
+#                 times: 3
+#                 wait_time: 200ms
+#       - timing:
+#           - ON for at most 0.6s
+#           - OFF for at most 0.6s
+#           - ON for at most 0.6s
+#           - OFF for at least 0.2s
+#         then:
+#           - logger.log: "Double Clicked"
+#           - remote_transmitter.transmit_rc_switch_raw:
+#               code: '1111${code}10110010'
+#               protocol: 1
+#               repeat:
+#                 times: 3
+#                 wait_time: 200ms
+#       - timing:
+#           - ON for at least 0.6s
+# #          - ON for 1s to 2s
+# #          - OFF for at least 0.2s
+#         then:
+#           - logger.log: "Single Long Clicked"
+#           - remote_transmitter.transmit_rc_switch_raw:
+#               code: '1111${code}10110011'
+#               protocol: 1
+#               repeat:
+#                 times: 3
+#                 wait_time: 200ms
 
     
 
-  - platform: gpio
-    id: input_3
-    pin:
-      number: ${input_pin_3}
-      inverted: true
-    on_press:
-      - light.turn_on: light_3
-    on_release:
-      - light.turn_off:
-          id: light_3
-          transition_length: 400ms
-    on_multi_click:
-      - timing:
-          - ON for at most 0.6s
-          - OFF for at least 0.2s
-        then:
-          - logger.log: "Single Short Clicked"
-          - remote_transmitter.transmit_rc_switch_raw:
-              code: '1111${code}11000001'
-              protocol: 1
-              repeat:
-                times: 3
-                wait_time: 200ms
-      - timing:
-          - ON for at most 0.6s
-          - OFF for at most 0.6s
-          - ON for at most 0.6s
-          - OFF for at least 0.2s
-        then:
-          - logger.log: "Double Clicked"
-          - remote_transmitter.transmit_rc_switch_raw:
-              code: '1111${code}11000010'
-              protocol: 1
-              repeat:
-                times: 3
-                wait_time: 200ms
-      - timing:
-          - ON for at least 0.6s
-#          - ON for 1s to 2s
-#          - OFF for at least 0.2s
-        then:
-          - logger.log: "Single Long Clicked"
-          - remote_transmitter.transmit_rc_switch_raw:
-              code: '1111${code}11000011'
-              protocol: 1
-              repeat:
-                times: 3
-                wait_time: 200ms
+#   - platform: gpio
+#     id: input_3
+#     pin:
+#       number: ${input_pin_3}
+#       inverted: true
+#     on_press:
+#       - light.turn_on: light_3
+#     on_release:
+#       - light.turn_off:
+#           id: light_3
+#           transition_length: 400ms
+#     on_multi_click:
+#       - timing:
+#           - ON for at most 0.6s
+#           - OFF for at least 0.2s
+#         then:
+#           - logger.log: "Single Short Clicked"
+#           - remote_transmitter.transmit_rc_switch_raw:
+#               code: '1111${code}11000001'
+#               protocol: 1
+#               repeat:
+#                 times: 3
+#                 wait_time: 200ms
+#       - timing:
+#           - ON for at most 0.6s
+#           - OFF for at most 0.6s
+#           - ON for at most 0.6s
+#           - OFF for at least 0.2s
+#         then:
+#           - logger.log: "Double Clicked"
+#           - remote_transmitter.transmit_rc_switch_raw:
+#               code: '1111${code}11000010'
+#               protocol: 1
+#               repeat:
+#                 times: 3
+#                 wait_time: 200ms
+#       - timing:
+#           - ON for at least 0.6s
+# #          - ON for 1s to 2s
+# #          - OFF for at least 0.2s
+#         then:
+#           - logger.log: "Single Long Clicked"
+#           - remote_transmitter.transmit_rc_switch_raw:
+#               code: '1111${code}11000011'
+#               protocol: 1
+#               repeat:
+#                 times: 3
+#                 wait_time: 200ms
 
 
-#output:
-#  - platform: gpio
-#    id: output_1
-#    pin: ${output_pin_1}
-#  - platform: gpio
-#    id: output_2
-#    pin: ${output_pin_2}
-#  - platform: gpio
-#    id: output_3
-#    pin: ${output_pin_3}
-#
-#light:
-#  - platform: binary
-#    id: light_1
-#    output: output_1
-#  - platform: binary
-#    id: light_2
-#    output: output_2
-#  - platform: binary
-#    id: light_3
-#    output: output_3
+# #output:
+# #  - platform: gpio
+# #    id: output_1
+# #    pin: ${output_pin_1}
+# #  - platform: gpio
+# #    id: output_2
+# #    pin: ${output_pin_2}
+# #  - platform: gpio
+# #    id: output_3
+# #    pin: ${output_pin_3}
+# #
+# #light:
+# #  - platform: binary
+# #    id: light_1
+# #    output: output_1
+# #  - platform: binary
+# #    id: light_2
+# #    output: output_2
+# #  - platform: binary
+# #    id: light_3
+# #    output: output_3
 
-output:
-  - platform: esp8266_pwm
-    id: output_1
-    pin: ${output_pin_1}
-    frequency: 200Hz
-  - platform: esp8266_pwm
-    id: output_2
-    pin: ${output_pin_2}
-    frequency: 200Hz
-  - platform: esp8266_pwm
-    id: output_3
-    pin: ${output_pin_3}
-    frequency: 200Hz
+# output:
+#   - platform: esp8266_pwm
+#     id: output_1
+#     pin: ${output_pin_1}
+#     frequency: 200Hz
+#   - platform: esp8266_pwm
+#     id: output_2
+#     pin: ${output_pin_2}
+#     frequency: 200Hz
+#   - platform: esp8266_pwm
+#     id: output_3
+#     pin: ${output_pin_3}
+#     frequency: 200Hz
 
-light:
-  - platform: monochromatic
-    id: light_1
-    output: output_1
-    default_transition_length: 0s
-  - platform: monochromatic
-    id: light_2
-    output: output_2
-    default_transition_length: 0s
-  - platform: monochromatic
-    id: light_3
-    output: output_3
-    default_transition_length: 0s
+# light:
+#   - platform: monochromatic
+#     id: light_1
+#     output: output_1
+#     default_transition_length: 0s
+#   - platform: monochromatic
+#     id: light_2
+#     output: output_2
+#     default_transition_length: 0s
+#   - platform: monochromatic
+#     id: light_3
+#     output: output_3
+#     default_transition_length: 0s
