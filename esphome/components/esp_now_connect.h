@@ -1,3 +1,8 @@
+//
+// Author: Phong Vu
+//
+#ifndef ESP_NOW_CONNECT_H
+#define ESP_NOW_CONNECT_H
 
 #include <esphome.h>
 #include <ESP8266WiFi.h>
@@ -12,7 +17,7 @@ struct cmd_cb_t {
     cmd_handler_cb_t handler;
 };
 
-cmd_cb_t handlers[] = {};
+cmd_cb_t handlers[20] = {};
 uint8_t handler_count = 0;
 String msg;
 
@@ -46,3 +51,5 @@ struct {
         handlers[handler_count++] = {command, handler};
     }
 } ESPNow;
+
+#endif //ESP_NOW_CONNECT_H

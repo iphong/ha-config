@@ -1,0 +1,11 @@
+<<: !include templates/switch.yaml
+
+substitutions:
+  host: switch_entrance
+  area: Entrance
+  ipv4: 10.0.0.56
+
+  target_1: light_bedroom
+  target_2: light_bedroom
+  target_3: light_bedroom
+  
