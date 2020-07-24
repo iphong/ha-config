@@ -6,6 +6,6 @@ substitutions:
   ipv4: 10.0.0.54
 
   target_1: light_bedroom
-  target_2: light_bedroom
+  target_2: light_balcony
   target_3: light_bedroom
   

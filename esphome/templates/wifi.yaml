@@ -11,8 +11,8 @@ manual_ip:
 ap:
   ssid: esphome__$host
   password: !secret wifi_password
-  ap_timeout: 10s
+  ap_timeout: 60s
   manual_ip:
-    static_ip: 10.0.1.1
-    gateway: 10.0.1.1
-    subnet: 255.255.0.0
+    static_ip: $ipv4
+    gateway: $ipv4
+    subnet: 255.255.255.0

@@ -8,7 +8,7 @@ esphome:
   arduino_version: LATEST
   esp8266_restore_from_flash: true
   includes:
-  - components/esp_now_connect.h
+  - components/esp-now/esp_now_connect.h
   platformio_options:
     upload_speed: 921600
     board_build.f_cpu: 160000000L

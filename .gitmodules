@@ -1,3 +1,6 @@
 [submodule "www/custom"]
 	path = www/custom
 	url = https://github.com/iphong/pure-web-components.git
+[submodule "esphome/components/esp-now"]
+	path = esphome/components/esp-now
+	url = https://github.com/iphong/esphome-espnow.git

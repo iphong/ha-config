@@ -12,10 +12,10 @@ sensor:
   temperature:
     id: temperature
     name: $area Temperature
-    on_value:
-    - lambda: ESPNow.send("pub balcony temp " + id(temperature).state);
+#    on_value:
+#    - lambda: ESPNow.send("pub balcony temp " + id(temperature).state);
   humidity:
     id: humidity
     name: $area Humidity
-    on_value:
-    - lambda: ESPNow.send("pub balcony humidity " + id(temperature).state);
+#    on_value:
+#    - lambda: ESPNow.send("pub balcony humidity " + id(temperature).state);

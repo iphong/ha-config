@@ -45,26 +45,26 @@ switch:
   id: switch_1
   lambda: return digitalRead(12);
   on_turn_on:
-  - lambda: ESPNow.send("pub bathroom_fan on");
+  - lambda: ESPNow.send("pub fan_bathroom on");
   on_turn_off:
-  - lambda: ESPNow.send("pub bathroom_fan off");
+  - lambda: ESPNow.send("pub fan_bathroom off");
 
 - platform: template
   id: switch_2
   lambda: |-
     return digitalRead(1) || digitalRead(3);
   on_turn_on:
-  - lambda: ESPNow.send("pub bathroom_light on");
+  - lambda: ESPNow.send("pub light_bathroom on");
   on_turn_off:
-  - lambda: ESPNow.send("pub bathroom_light off");
+  - lambda: ESPNow.send("pub light_bathroom off");
 
 custom_component:
   lambda: |-
-    ESPNow.init();
-    ESPNow.on("set bathroom_light toggle", []() {
+    ESPNow.begin();
+    ESPNow.on("set light_bathroom toggle", []() {
       id(light_1)->toggle().perform();
     });
-    ESPNow.on("set bathroom_fan toggle", []() {
+    ESPNow.on("set fan_bathroom toggle", []() {
       id(switch_1)->toggle();
     });
     return {};

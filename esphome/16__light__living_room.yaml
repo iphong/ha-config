@@ -45,14 +45,14 @@ switch:
   lambda: |-
     return digitalRead(1) || digitalRead(3);
   on_turn_on:
-  - lambda: ESPNow.send("pub living_room_light on");
+  - lambda: ESPNow.send("pub light_living_room on");
   on_turn_off:
-  - lambda: ESPNow.send("pub living_room_light off");
+  - lambda: ESPNow.send("pub light_living_room off");
 
 custom_component:
   lambda: |-
-    ESPNow.init();
-    ESPNow.on("set living_room_light toggle", []() {
+    ESPNow.begin();
+    ESPNow.on("set light_living_room toggle", []() {
       id(light_1)->toggle().perform();
     });
     return {};

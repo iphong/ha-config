@@ -1,34 +1,6 @@
-<<: !include templates/sonoff.yaml
+<<: !include templates/sonoff_light.yaml
 
 substitutions:
   host: light_dining_room
   area: Dining Room
   ipv4: 10.0.0.13
-
-output:
-- platform: gpio
-  pin: 12
-  id: output_1
-
-light:
-- platform: binary
-  output: output_1
-  id: light_1
-  name: $area Light
-
-switch:
-- platform: template
-  id: switch_1
-  lambda: return digitalRead(12);
-  on_turn_on:
-  - lambda: ESPNow.send("pub dining_room_light on");
-  on_turn_off:
-  - lambda: ESPNow.send("pub dining_room_light off");
-  
-custom_component:
-  lambda: |-
-    ESPNow.init();
-    ESPNow.on("set dining_room_light toggle", []() {
-      id(light_1)->toggle().perform();
-    });
-    return {};
