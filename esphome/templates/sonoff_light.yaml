@@ -1,36 +1,45 @@
 <<: !include sonoff.yaml
 
-output:
-- platform: gpio
-  pin: 12
-  id: output_1
+# output:
 
-light:
-- platform: binary
-  output: output_1
-  id: light_1
-  name: $area Light
+# - platform: gpio
+#   pin: 12
+#   id: output_1
+
+# light:
+# - platform: binary
+#   output: output_1
+#   id: light_1
+#   name: $area Light
 
 switch:
-- platform: template
+- platform: gpio
+  pin: 12
   id: switch_1
-  lambda: return digitalRead(12);
+  name: $area Light
   on_turn_on:
   - lambda: ESPNow.send("pub $host on");
   on_turn_off:
   - lambda: ESPNow.send("pub $host off");
-  
+# - platform: template
+#   id: switch_1
+#   lambda: return digitalRead(12);
+#   on_turn_on:
+#   - lambda: ESPNow.send("pub $host on");
+#   on_turn_off:
+#   - lambda: ESPNow.send("pub $host off");
+
 custom_component:
   lambda: |-
     ESPNow.begin();
     ESPNow.on("set $host on", []() {
-      id(light_1)->turn_on().perform();
+      id(switch_1)->turn_on();
     });
     ESPNow.on("set $host off", []() {
-      id(light_1)->turn_off().perform();
+      id(switch_1)->turn_off();
     });
     ESPNow.on("set $host toggle", []() {
-      id(light_1)->toggle().perform();
+      id(switch_1)->toggle();
     });
     ESPNow.on("req $host", []() {
       if (digitalRead(12)) {

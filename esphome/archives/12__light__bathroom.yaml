@@ -1,0 +1,56 @@
+<<: !include templates/sonoff_light_cw.yaml
+
+substitutions:
+  host: light_bathroom
+  area: Bathroom
+  ipv4: 10.0.0.12
+
+power_supply: []
+
+output:
+- platform: esp8266_pwm
+  id: output_1
+  pin: 1 # tx pin
+  frequency: 100hz
+
+- platform: esp8266_pwm
+  id: output_2
+  pin: 3 # rx pin
+  frequency: 100hz
+
+- platform: gpio
+  id: output_3
+  pin: 12
+
+fan:
+- platform: binary
+  output: output_3
+  id: fan_1
+  name: $area Fan
+
+switch:
+- platform: template
+  id: radiator
+  icon: mdi:radiator
+  name: $area Radiator
+  internal: true
+- platform: template
+  id: water_boiler
+  icon: mdi:water-boiler
+  name: $area Boiler
+  internal: true
+  turn_on_action:
+  - script.execute: delay_boiler
+
+script:
+- id: delay_boiler
+  then:
+  - if:
+      condition:
+        script.is_running: delay_boiler
+      then:
+        script.stop: delay_boiler
+  - lambda: id(water_boiler).publish_state(true);
+  - delay: '00:60:00'
+  - lambda: id(water_boiler).publish_state(false);
+

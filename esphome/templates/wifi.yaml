@@ -6,7 +6,7 @@ fast_connect: true
 reboot_timeout: 0s
 manual_ip:
   static_ip: $ipv4
-  gateway: 10.0.0.1
+  gateway: 0.0.0.0
   subnet: 255.255.255.0
 ap:
   ssid: esphome__$host

@@ -1,58 +1,6 @@
-<<: !include templates/sonoff.yaml
+<<: !include templates/sonoff_light_cw.yaml
 
 substitutions:
   host: light_living_room
   area: Living Room
   ipv4: 10.0.0.16
-
-power_supply:
-
-- id: psu_1
-  enable_time: 20ms
-  keep_on_time: 5s
-  pin: 12 # relay pin
-
-output:
-- platform: esp8266_pwm
-  id: output_1
-  pin: 1 # tx pin
-  power_supply: psu_1
-  min_power: 0.00
-  max_power: 0.98
-  frequency: 100hz
-
-- platform: esp8266_pwm
-  id: output_2
-  pin: 3 # rx pin
-  power_supply: psu_1
-  min_power: 0.00
-  max_power: 0.98
-  frequency: 100hz
-
-light:
-
-- platform: cwww
-  id: light_1
-  name: $area Light
-  cold_white: output_1
-  warm_white: output_2
-  cold_white_color_temperature: 6000 K
-  warm_white_color_temperature: 3000 K
-
-switch:
-- platform: template
-  id: switch_1
-  lambda: |-
-    return digitalRead(1) || digitalRead(3);
-  on_turn_on:
-  - lambda: ESPNow.send("pub light_living_room on");
-  on_turn_off:
-  - lambda: ESPNow.send("pub light_living_room off");
-
-custom_component:
-  lambda: |-
-    ESPNow.begin();
-    ESPNow.on("set light_living_room toggle", []() {
-      id(light_1)->toggle().perform();
-    });
-    return {};

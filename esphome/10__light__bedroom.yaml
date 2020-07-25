@@ -1,4 +1,4 @@
-<<: !include templates/sonoff_light.yaml
+<<: !include templates/sonoff_light_cw.yaml
 
 substitutions:
   host: light_bedroom

@@ -5,7 +5,7 @@ substitutions:
   area: Living Room
   ipv4: 10.0.0.52
 
-  target_1: light_living_room
+  target_1: living_room_light
   target_2: light_living_room
-  target_3: light_living_room
+  target_3: living_room_light
   

@@ -1,43 +1,16 @@
-<<: !include templates/sonoff.yaml
+<<: !include templates/sonoff_light_cw.yaml
 
 substitutions:
   host: light_bathroom
   area: Bathroom
   ipv4: 10.0.0.12
 
-output:
-
-- platform: esp8266_pwm
-  id: output_1
-  pin: 1 # tx pin
-  frequency: 100hz
-
-- platform: esp8266_pwm
-  id: output_2
-  pin: 3 # rx pin
-  frequency: 100hz
-
-- platform: gpio
-  id: output_3
-  pin: 12
-
-
 fan:
 
 - platform: binary
-  output: output_3
+  output: output_1
   id: fan_1
   name: $area Fan
-
-light:
-
-- platform: cwww
-  id: light_1
-  name: $area Light
-  cold_white: output_1
-  warm_white: output_2
-  cold_white_color_temperature: 6000 K
-  warm_white_color_temperature: 3000 K
 
 switch:
 
@@ -66,5 +39,17 @@ custom_component:
     });
     ESPNow.on("set fan_bathroom toggle", []() {
       id(switch_1)->toggle();
+    });
+    ESPNow.on("req bathroom", []() {
+      if (digitalRead(12)) {
+        ESPNow.send("pub fan_bathroom on");
+      } else {
+        ESPNow.send("pub fan_bathroom off");
+      }
+      if (digitalRead(1) || digitalRead(3)) {
+        ESPNow.send("pub light_bathroom on");
+      } else {
+        ESPNow.send("pub light_bathroom off");
+      }
     });
     return {};

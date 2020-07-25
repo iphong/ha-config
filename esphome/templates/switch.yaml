@@ -3,6 +3,11 @@ ota:
   
 wifi: !include wifi.yaml
 
+# api:
+# logger:
+# web_server:
+captive_portal:
+
 esphome:
   name: $host
   board: modwifi
@@ -17,13 +22,18 @@ esphome:
     board_build.f_cpu: 160000000L
     board_build.f_flash: 80000000L
 
-interval:
-  interval: 10min
-  then:
-  - lambda: |-
-      WiFi.mode(WIFI_AP_STA);
-      WiFi.disconnect();
-      WiFi.softAPdisconnect();
+# interval:
+# - interval: 15min
+#   then:
+#   - lambda: |-
+#       ESPNow.send("req $target_1");
+#       ESPNow.send("req $target_2");
+#       ESPNow.send("req $target_3");
+# - interval: 10min
+#   then:
+#   - lambda: |-
+#       WiFi.mode(WIFI_AP_STA);
+#       WiFi.disconnect();
 
 status_led:
   pin:
@@ -71,10 +81,7 @@ binary_sensor:
     inverted: true
   on_press:
   - lambda: |-
-      if (digitalRead(4))
-        ESPNow.send("set $target_1 off");
-      else
-        ESPNow.send("set $target_1 on");
+      ESPNow.send("set $target_1 toggle");
 
 - platform: gpio
   id: input_2
@@ -84,10 +91,7 @@ binary_sensor:
     inverted: true
   on_press:
   - lambda: |-
-      if (digitalRead(15))
-        ESPNow.send("set $target_2 off");
-      else
-        ESPNow.send("set $target_2 on");
+      ESPNow.send("set $target_2 toggle");
 
 - platform: gpio
   id: input_3
@@ -97,10 +101,7 @@ binary_sensor:
     inverted: true
   on_press:
   - lambda: |-
-      if (digitalRead(13))
-        ESPNow.send("set $target_3 off");
-      else
-        ESPNow.send("set $target_3 on");
+      ESPNow.send("set $target_3 toggle");
 
 custom_component:
   lambda: |-
