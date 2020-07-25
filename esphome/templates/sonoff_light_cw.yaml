@@ -33,12 +33,6 @@ light:
   warm_white: output_2
   cold_white_color_temperature: 6000 K
   warm_white_color_temperature: 3000 K
-
-switch:
-- platform: template
-  id: switch_1
-  lambda: |-
-    return digitalRead(12);
   on_turn_on:
   - lambda: ESPNow.send("pub $host on");
   on_turn_off:

@@ -26,13 +26,17 @@ sys_stats:
 #  - sensor.load_5m
 #  - sensor.load_15m
 
-network:
-  name: Network
+ipv4_address:
+  name: IPv4 address
   entities:
   - sensor.ipv4_address_eth0
+  - sensor.ipv4_address_wlan0
+
+network_throughput:
+  name: Network throughput
+  entities:
   - sensor.network_throughput_in_eth0
   - sensor.network_throughput_out_eth0
-  - sensor.ipv4_address_wlan0
   - sensor.network_throughput_in_wlan0
   - sensor.network_throughput_out_wlan0
 

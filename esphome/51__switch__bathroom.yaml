@@ -25,6 +25,8 @@ switch:
   on_turn_off:
   - lambda: ESPNow.send("pub boiler_bathroom off");
 
+http_request:
+
 binary_sensor:
 
 - platform: gpio
@@ -34,7 +36,12 @@ binary_sensor:
     mode: INPUT_PULLUP
     inverted: true
   on_press:
-  - lambda: ESPNow.send("set bathroom_light toggle");
+    if:
+      condition: wifi.connected
+      then:
+      - http_request.post: http://10.0.0.12/light/bathroom_light/toggle
+      else:
+      - lambda: ESPNow.send("set light_bathroom toggle");
 
 - platform: gpio
   id: touch_2
@@ -43,7 +50,12 @@ binary_sensor:
     mode: INPUT_PULLUP
     inverted: true
   on_press:
-  - lambda: ESPNow.send("set bathroom_fan toggle");
+    if:
+      condition: wifi.connected
+      then:
+      - http_request.post: http://10.0.0.12/fan/bathroom_fan/toggle
+      else:
+      - lambda: ESPNow.send("set fan_bathroom toggle");
 
 - platform: gpio
   id: touch_3
@@ -52,21 +64,21 @@ binary_sensor:
     mode: INPUT_PULLUP
     inverted: true
   on_press:
-  - switch.toggle: switch_1
+  - switch.toggle: switch_3
   
 custom_component:
   lambda: |-
     ESPNow.begin();
-    ESPNow.on("pub bathroom_light on", []() {
+    ESPNow.on("pub light_bathroom on", []() {
       id(switch_1)->turn_on();
     });
-    ESPNow.on("pub bathroom_light off", []() {
+    ESPNow.on("pub light_bathroom off", []() {
       id(switch_1)->turn_off();
     });
-    ESPNow.on("pub bathroom_fan on", []() {
+    ESPNow.on("pub fan_bathroom on", []() {
       id(switch_2)->turn_on();
     });
-    ESPNow.on("pub bathroom_fan off", []() {
+    ESPNow.on("pub fan_bathroom off", []() {
       id(switch_2)->turn_off();
     });
     
@@ -87,7 +99,6 @@ custom_component:
       }
     });
 
-    ESPNow.send("req light_bathroom");
-    ESPNow.send("req fan_bathroom");
+    ESPNow.send("req bathroom");
     return {};
   

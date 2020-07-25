@@ -1,12 +1,4 @@
-ota:
-  password: !secret wifi_password
-  
-wifi: !include wifi.yaml
-
-# api:
-# logger:
-# web_server:
-captive_portal:
+<<: !include common.yaml
 
 esphome:
   name: $host
@@ -21,19 +13,6 @@ esphome:
     upload_speed: 921600
     board_build.f_cpu: 160000000L
     board_build.f_flash: 80000000L
-
-# interval:
-# - interval: 15min
-#   then:
-#   - lambda: |-
-#       ESPNow.send("req $target_1");
-#       ESPNow.send("req $target_2");
-#       ESPNow.send("req $target_3");
-# - interval: 10min
-#   then:
-#   - lambda: |-
-#       WiFi.mode(WIFI_AP_STA);
-#       WiFi.disconnect();
 
 status_led:
   pin:
