@@ -1,46 +1,46 @@
-stream_cam_3:
-  alias: stream camera 3
-  sequence:
-  - data:
-      entity_id: media_player.bedroom_display
-      media_content_type: image/jpeg
-    data_template:
-      media_content_id: "{{ 'http://10.0.0.5:8123' + state_attr('camera.camera_3', 'entity_picture') | regex_replace(find='camera_proxy', replace='camera_proxy_stream', ignorecase=True) }}"
-    service: media_player.play_media
-
-alarm_view:
-  alias: Home alarm
-  sequence:
-  - service: cast.show_lovelace_view
-    data:
-      entity_id: media_player.bedroom_display
-      dashboard_path: lovelace-cast
-      view_path: alarm
-
-home_view:
-  alias: Controls panel
-  sequence:
-  - service: cast.show_lovelace_view
-    data:
-      entity_id: media_player.bedroom_display
-      dashboard_path: lovelace-cast
-      view_path: home
-
-
-system_status_view:
-  alias: System status
-  sequence:
-    - service: cast.show_lovelace_view
-      data:
-        entity_id: media_player.bedroom_display
-        dashboard_path: lovelace-cast
-        view_path: system
-
-frontend:
-  alias: Lovelace
-  sequence:
-    - service: cast.show_lovelace_view
-      data:
-        entity_id: media_player.bedroom_display
-        dashboard_path: lovelace
-        view_path: default_view
+#stream_cam_3:
+#  alias: stream camera 3
+#  sequence:
+#  - data:
+#      entity_id: media_player.bedroom_display
+#      media_content_type: image/jpeg
+#    data_template:
+#      media_content_id: "{{ 'http://10.0.0.5:8123' + state_attr('camera.camera_3', 'entity_picture') | regex_replace(find='camera_proxy', replace='camera_proxy_stream', ignorecase=True) }}"
+#    service: media_player.play_media
+#
+#alarm_view:
+#  alias: Home alarm
+#  sequence:
+#  - service: cast.show_lovelace_view
+#    data:
+#      entity_id: media_player.bedroom_display
+#      dashboard_path: lovelace-cast
+#      view_path: alarm
+#
+#home_view:
+#  alias: Controls panel
+#  sequence:
+#  - service: cast.show_lovelace_view
+#    data:
+#      entity_id: media_player.bedroom_display
+#      dashboard_path: lovelace-cast
+#      view_path: home
+#
+#
+#system_status_view:
+#  alias: System status
+#  sequence:
+#    - service: cast.show_lovelace_view
+#      data:
+#        entity_id: media_player.bedroom_display
+#        dashboard_path: lovelace-cast
+#        view_path: system
+#
+#frontend:
+#  alias: Lovelace
+#  sequence:
+#    - service: cast.show_lovelace_view
+#      data:
+#        entity_id: media_player.bedroom_display
+#        dashboard_path: lovelace
+#        view_path: default_view

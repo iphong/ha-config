@@ -3,7 +3,7 @@
 substitutions:
   host: switch_kitchen
   area: Kitchen
-  ipv4: 10.0.0.55
+  ipv4: 10.0.0.56
 
   target_1: light_dining_room
   target_2: light_alter

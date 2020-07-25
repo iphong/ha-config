@@ -1,8 +1,0 @@
-<<: !include templates/remote.yaml
-
-substitutions:
-  host: remote_1
-  area: Living Room
-  ipv4: 10.0.0.41
-  
-  

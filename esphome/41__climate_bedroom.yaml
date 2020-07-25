@@ -1,0 +1,42 @@
+<<: !include templates/bridge_ir.yaml
+
+substitutions:
+  host: climate_bedroom
+  area: Living Room
+  ipv4: 10.0.0.41
+
+remote_transmitter:
+- id: transmitter
+  pin: 14
+  carrier_duty_percent: 50%
+
+remote_receiver:
+- id: receiver
+  pin: 5
+  dump: all
+
+i2c:
+- sda: 3
+  scl: 1
+  scan: yes
+
+sensor:
+- platform: dht12
+  temperature:
+    id: temperature
+    name: $area Temperature
+  humidity:
+    id: humidity
+    name: $area Humidity
+  update_interval: 15s
+  
+climate:
+  - platform: daikin
+    name: $area AC
+    sensor: temperature
+    transmitter_id: transmitter
+    receiver_id: receiver
+    visual:
+      min_temperature: 16 °C
+      max_temperature: 30 °C
+#      temperature_step: 1 °C

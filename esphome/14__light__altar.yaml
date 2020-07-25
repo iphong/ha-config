@@ -1,7 +1,7 @@
 <<: !include templates/sonoff_light.yaml
 
 substitutions:
-  host: light_alter
-  area: Alter
+  host: light_altar
+  area: Altar
   ipv4: 10.0.0.14
   
