@@ -1,89 +1,89 @@
-
-- alias: living room motion light ON
-  trigger:
-  - platform: state
-    to: 'on'
-    entity_id:
-    - binary_sensor.living_room_motion
-  action:
-  - service: light.turn_on
-    entity_id: light.living_room_light
-
-- alias: living room motion light OFF
-  trigger:
-  - platform: state
-    entity_id: binary_sensor.living_room_motion
-    to: 'off'
-    for: 00:01:00
-  action:
-  - service: light.turn_off
-    entity_id: light.living_room_light
-    data:
-      transition: 60
-
-- alias: bedroom motion light ON
-  trigger:
-  - platform: state
-    to: 'on'
-    entity_id:
-    - binary_sensor.bedroom_motion
-    - binary_sensor.bedroom_door
-  action:
-  - service: light.turn_on
-    entity_id: light.bedroom_light
-
-- alias: bedroom motion light OFF
-  trigger:
-  - platform: state
-    entity_id: binary_sensor.bedroom_motion
-    to: 'off'
-    for: 00:10:00
-  action:
-  - service: light.turn_off
-    entity_id: light.bedroom_light
-    data:
-      transition: 60
-
-- alias: bathroom motion light ON
-  trigger:
-  - platform: state
-    to: 'on'
-    entity_id:
-    - binary_sensor.bathroom_motion
-    - binary_sensor.bathroom_door
-  action:
-  - service: light.turn_on
-    entity_id: light.bathroom_light
-
-- alias: bathroom motion light OFF
-  trigger:
-  - platform: state
-    entity_id: binary_sensor.bathroom_motion
-    to: 'off'
-    for: 00:01:00
-  action:
-  - service: light.turn_off
-    entity_id: light.bathroom_light
-    data:
-      transition: 120
-
-- alias: kitchen motion light ON
-  trigger:
-  - platform: state
-    to: 'on'
-    entity_id:
-    - binary_sensor.kitchen_motion
-    - binary_sensor.entrance_door
-  action:
-  - service: light.turn_on
-    entity_id: light.kitchen_light
-
-- alias: kitchen motion light OFF
-  trigger:
-  - platform: state
-    entity_id: binary_sensor.kitchen_motion
-    to: 'off'
-    for: 00:15:00
-  action:
-  - service: light.turn_off
-    entity_id: light.kitchen_light
+#
+#- alias: living room motion light ON
+#  trigger:
+#  - platform: state
+#    to: 'on'
+#    entity_id:
+#    - binary_sensor.living_room_motion
+#  action:
+#  - service: light.turn_on
+#    entity_id: light.living_room_light
+#
+#- alias: living room motion light OFF
+#  trigger:
+#  - platform: state
+#    entity_id: binary_sensor.living_room_motion
+#    to: 'off'
+#    for: 00:01:00
+#  action:
+#  - service: light.turn_off
+#    entity_id: light.living_room_light
+#    data:
+#      transition: 60
+#
+#- alias: bedroom motion light ON
+#  trigger:
+#  - platform: state
+#    to: 'on'
+#    entity_id:
+#    - binary_sensor.bedroom_motion
+#    - binary_sensor.bedroom_door
+#  action:
+#  - service: light.turn_on
+#    entity_id: light.bedroom_light
+#
+#- alias: bedroom motion light OFF
+#  trigger:
+#  - platform: state
+#    entity_id: binary_sensor.bedroom_motion
+#    to: 'off'
+#    for: 00:10:00
+#  action:
+#  - service: light.turn_off
+#    entity_id: light.bedroom_light
+#    data:
+#      transition: 60
+#
+#- alias: bathroom motion light ON
+#  trigger:
+#  - platform: state
+#    to: 'on'
+#    entity_id:
+#    - binary_sensor.bathroom_motion
+#    - binary_sensor.bathroom_door
+#  action:
+#  - service: light.turn_on
+#    entity_id: light.bathroom_light
+#
+#- alias: bathroom motion light OFF
+#  trigger:
+#  - platform: state
+#    entity_id: binary_sensor.bathroom_motion
+#    to: 'off'
+#    for: 00:01:00
+#  action:
+#  - service: light.turn_off
+#    entity_id: light.bathroom_light
+#    data:
+#      transition: 120
+#
+#- alias: kitchen motion light ON
+#  trigger:
+#  - platform: state
+#    to: 'on'
+#    entity_id:
+#    - binary_sensor.kitchen_motion
+#    - binary_sensor.entrance_door
+#  action:
+#  - service: light.turn_on
+#    entity_id: light.kitchen_light
+#
+#- alias: kitchen motion light OFF
+#  trigger:
+#  - platform: state
+#    entity_id: binary_sensor.kitchen_motion
+#    to: 'off'
+#    for: 00:15:00
+#  action:
+#  - service: light.turn_off
+#    entity_id: light.kitchen_light
