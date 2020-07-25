@@ -9,30 +9,30 @@ sys_stats:
   name: System
   entities:
   - binary_sensor.updater
-  - sensor.hacs
+#  - sensor.hacs
   - binary_sensor.remote_ui
   - sensor.last_boot
   - sensor.processor_use
-  - sensor.memory_use_percent
+#  - sensor.memory_use_percent
   - sensor.memory_use
-  - sensor.memory_free
-  - sensor.swap_use_percent
+#  - sensor.memory_free
+#  - sensor.swap_use_percent
   - sensor.swap_use
-  - sensor.swap_free
-  - sensor.disk_use_percent
+#  - sensor.swap_free
+#  - sensor.disk_use_percent
   - sensor.disk_use
-  - sensor.disk_free
-  - sensor.load_1m
-  - sensor.load_5m
-  - sensor.load_15m
+#  - sensor.disk_free
+#  - sensor.load_1m
+#  - sensor.load_5m
+#  - sensor.load_15m
 
 network:
   name: Network
   entities:
   - sensor.ipv4_address_eth0
-  - sensor.ipv4_address_wlan0
   - sensor.network_throughput_in_eth0
   - sensor.network_throughput_out_eth0
+  - sensor.ipv4_address_wlan0
   - sensor.network_throughput_in_wlan0
   - sensor.network_throughput_out_wlan0
 

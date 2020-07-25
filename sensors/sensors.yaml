@@ -1,22 +1,22 @@
 - platform: systemmonitor
   resources:
-  - type: disk_use_percent
-    arg: /
+#  - type: disk_use_percent
+#    arg: /
   - type: disk_use
     arg: /
-  - type: disk_free
-    arg: /
+#  - type: disk_free
+#    arg: /
   - type: last_boot
   - type: processor_use
-  - type: memory_use_percent
+#  - type: memory_use_percent
   - type: memory_use
-  - type: memory_free
-  - type: swap_use_percent
+#  - type: memory_free
+#  - type: swap_use_percent
   - type: swap_use
-  - type: swap_free
-  - type: load_1m
-  - type: load_5m
-  - type: load_15m
+#  - type: swap_free
+#  - type: load_1m
+#  - type: load_5m
+#  - type: load_15m
 
   - type: ipv4_address
     arg: eth0

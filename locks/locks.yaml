@@ -1,23 +1,23 @@
-- platform: template
-  name: Entrance
-  value_template: "{{ is_state('binary_sensor.entrance_door', 'off') }}"
-  lock:
-  - service: system_log.write
-    data:
-      message: send lock door command
-  unlock:
-  - service: system_log.write
-    data:
-      message: send unlock door command
-
-- platform: template
-  name: Bedroom
-  value_template: "{{ is_state('binary_sensor.bedroom_door', 'off') }}"
-  lock:
-  - service: system_log.write
-    data:
-      message: send lock door command
-  unlock:
-  - service: system_log.write
-    data:
-      message: send unlock door command
+#- platform: template
+#  name: Entrance
+#  value_template: "{{ is_state('binary_sensor.entrance_door', 'off') }}"
+#  lock:
+#  - service: system_log.write
+#    data:
+#      message: send lock door command
+#  unlock:
+#  - service: system_log.write
+#    data:
+#      message: send unlock door command
+#
+#- platform: template
+#  name: Bedroom
+#  value_template: "{{ is_state('binary_sensor.bedroom_door', 'off') }}"
+#  lock:
+#  - service: system_log.write
+#    data:
+#      message: send lock door command
+#  unlock:
+#  - service: system_log.write
+#    data:
+#      message: send unlock door command
